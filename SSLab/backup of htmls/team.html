@@ -1,0 +1,502 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>The Social Sensing Lab</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">    
+    <link rel="shortcut icon" href="favicon.ico">  
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>    
+    <!-- FontAwesome JS-->
+    <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
+    <!-- Plugins CSS -->    
+    <link rel="stylesheet" href="assets/plugins/flexslider/flexslider.css"> 
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="assets/css/theme-1.css">
+
+    <style type="text/css">
+
+.nav-link{  font-size: 1.1rem !important;
+}
+
+h1 {
+  font-size: 2rem !important;
+
+}
+
+h2 {
+  font-size: 1.8rem !important;
+
+}
+
+.h1 {
+  font-size: 2rem !important;
+
+}
+
+
+#topnav {
+   display: none !important;
+
+}
+
+
+@media  (max-width: 540px){
+#wrap{
+max-width: 90% !important;
+text-align: left; 
+
+}
+#topnav {
+   display: block !important;
+     position:fixed !important;
+    width:100% !important;
+    z-index: 1000000 !important;
+    top:0 !important;
+
+}
+li {font-size:1rem !important; } /*1rem = 16px*/
+   
+
+p {font-size:1rem !important; } /*1rem = 16px*/
+
+
+ul {line-height:1.2rem !important;}
+
+h1 {
+  font-size: 1.8rem !important;
+
+}
+
+h2 {
+  font-size: 1.5rem !important;
+
+}
+.edit {
+  font-size: 1.1rem !important;
+
+}
+
+.edit2 {
+  font-size: 1.2rem !important;
+
+}
+
+.edit3 {
+  font-size: 1.2rem !important;
+
+}
+
+#topnav {
+   display: block !important;
+
+}
+#midnav {
+   display: none !important;
+
+}
+
+
+.navedit {
+    font-size: 1rem !important;
+
+}
+
+
+img{
+    margin-top:40px !important
+}
+#nd {
+   display: none !important;
+
+}
+
+}
+
+
+#demo {
+  height:100%;
+  position:relative;
+  overflow:hidden;
+}
+
+
+.green{
+  background-color:#6fb936;
+}
+        .thumb{
+            margin-bottom: 30px;
+        }
+        
+        .page-top{
+            margin-top:85px;
+        }
+
+   
+img.zoom {
+    width: 100%;
+    height: 200px;
+    border-radius:5px;
+    object-fit:cover;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+}
+        
+ 
+.transition {
+    -webkit-transform: scale(1.2); 
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+}
+    .modal-header {
+   
+     border-bottom: none;
+}
+    .modal-title {
+        color:#000;
+    }
+    .modal-footer{
+      display:none;  
+    }
+
+
+</style>
+</head>	
+
+<body class="home-page">
+    <div class="wrapper" id ="wrap">
+        <!-- ******HEADER****** --> 
+
+
+
+<div class="main-nav-wrapper"  id= "topnav">
+            <div class="container">
+                <nav class="main-nav navbar navbar-expand-md navbar-fixed-top" role="navigation">    
+                    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button><!--//nav-toggle-->
+                    <div class="navbar-collapse collapse" id="navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item"><a class="active nav-link" href="index.html">Home</a></li>
+                   
+                            <li class="nav-item"><a class=" nav-link" href="projects.html">Research</a></li>
+
+                            <li class="nav-item"><a class=" nav-link" href="team.html">Members</a></li>
+
+                            <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+
+                                                </ul><!--//nav-->
+                    </div><!--//navabr-collapse-->
+                </nav><!--//main-nav-->
+            </div><!--//container-->
+        </div><!--//main-nav-container-->
+
+        <header class="header">  
+           
+            <div class="header-main container" style="margin-left: 10% !important; min-width: 80% !important;margin-right: 10% !important;">
+                <div class="row">
+                    <h1 class="logo col-md-4 col-12">
+                        <a href="index.html"><img id="logo" src="assets/images/logo.png" alt="Logo"></a>
+                    </h1><!--//logo-->           
+                    <div class="info col-md-8 col-12 ">
+                    <div class="float-right">
+                                                <a href="https://cse.nd.edu/"><img id="nd" src="assets/images/NotreDame.png" alt="NotreDame"></a>
+</div>
+                    </div><!--//info-->
+                </div><!--//row-->
+            </div><!--//header-main-->
+        </header><!--//header-->
+        <!-- ******NAV****** -->
+   <div class="main-nav-wrapper" id="midnav">
+            <div class="container">
+                <nav class="main-nav navbar navbar-expand-md" role="navigation">    
+                    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button><!--//nav-toggle-->
+                    <div class="navbar-collapse collapse" id="navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item"><a class=" nav-link" href="index.html">Home</a></li>
+                   
+                            <li class="nav-item"><a class=" nav-link" href="projects.html">Research</a></li>
+
+                            <li class="nav-item"><a class=" active nav-link" href="team.html">Members</a></li>
+
+                            <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+
+                                                </ul><!--//nav-->
+                    </div><!--//navabr-collapse-->
+                </nav><!--//main-nav-->
+            </div><!--//container-->
+        </div><!--//main-nav-container-->
+        <!-- ******CONTENT****** --> 
+        <div class="content container" style="margin-left: 7% !important; min-width: 86% !important;margin-right: 7% !important;">
+            <div class="page-wrapper">
+                <header class="page-heading clearfix">
+                    <h1 class="heading-title float-left">Members</h1>
+                    <div class="breadcrumbs pull-right">
+                        <ul class="breadcrumbs-list">
+                            <li class="breadcrumbs-label">You are here:</li>
+                            <li><a href="../../../index.html">Home</a><i class="fas fa-angle-right"></i></li>
+                            <li class="current">Current Members</li>
+                        </ul>
+                    </div><!--//breadcrumbs-->
+                </header> 
+                <div class="page-content">                 
+                    <div class="row page-row">                     
+                        <div class="team-wrapper col-lg-8 col-md-7 col-12">      
+
+  <div class="row page-row" >
+    <h3>Faculty </h3> </div>
+
+                            <div class="row page-row" >
+                                <figure class="thumb col-lg-3 col-4">
+                                    <img class="img-fluid" src="assets/images/team/1.jpg" alt="" height="174" width="148"/>
+                                </figure>
+                                <div class="details col-lg-9 col-8">
+                                    <h3 class="title"> <b>Dr. Dong Wang </b>  <a href="https://www3.nd.edu/~dwang5/"> <i class="fas fa-globe"></i></a>    <a href="mailto:dwang5@nd.edu"> <i class="fas fa-envelope"></i></a> </h3> 
+                                    <h4>Director/Assistant Professor</h4>
+                                    <p>Dr. Wang is an assistant professor in the College of Engineering at the University of Notre Dame, with appointments in the Interdisciplinary Center for Network Science and Applications (iCeNSA) and Department of Computer Science and Engineering. He received his Ph.D. degree in Computer Science at University of Illinois at Urbana Champaign (UIUC) with Professor Tarek F. Abdelzaher. He got his Master's degree in Electrical Engineering from Peking University (PKU), and Bachelor degree in Electrical Engineering from University of Electronic Science and Technology of China (UESTC).</p>                                 
+                                </div>                               
+                            </div>
+
+  <div class="row page-row" >
+    <h3>PhD Students </h3> </div>
+
+                            <div class="row page-row" >
+                                <figure class="thumb col-lg-3 col-4">
+                                    <img class="img-fluid" src="assets/images/team/2.jpg" alt="" height="174" width="148"/>
+                                </figure>
+                                <div class="details col-lg-9 col-8">
+                                    <h3 class="title"> <b>Daniel Zhang</b> <a href="http://dyzhang.net"> <i class="fas fa-globe"></i></a>    <a href="mailto:yzhang40@nd.edu"> <i class="fas fa-envelope"></i></a> </h3>
+                                    <h4>PhD Student</h4>
+                                    <p>Daniel (Yue) Zhang is  a  PhD  student  in  the Department of Computer Science and Engineering  at  the  University  of  Notre  Dame.  He  received his M.S. degree from Purdue University, West  Lafayette,  Indiana,  USA,  in  2012  and  a B.S.  degree  from  Shanghai  Jiaotong  University (SJTU), Shanghai, China, in 2008. His research area lies in the intersection of machine learning/artificial intelligence, edge computing, and human-in-the-loop systems. </p>                              
+                                </div>                               
+                            </div>
+                            <div class="row page-row" >
+                                <figure class="thumb col-lg-3 col-4">
+                                    <img class="img-fluid" src="assets/images/team/3.jpg" alt="" height="174" width="148"/>
+                                </figure>
+                                <div class="details col-lg-9 col-8">
+                                    <h3 class="title"><b>Yang Zhang</b><a href="https://sites.google.com/nd.edu/yang-zhang-notre-dame/home"> <i class="fas fa-globe"></i></a>    <a href="mailto:yzhang42@nd.edu"> <i class="fas fa-envelope"></i></a></h3>
+                                    <h4>PhD Student</h4>
+                                    <p>Yang Zhang is a Ph.D. student in the Department of Computer Science & Engineering at the University of Notre Dame. He received his M.S. in Data Science from Indiana University-Bloomington. Before that, he attained his B.S. in Software Engineering from Wuhan University. His research interests focus on the assured artificial intelligence with uncertainty quantification in human-cyber-physical systems (H-CPS). </p>                            
+                                </div>                               
+                            </div>
+                  
+
+  <div class="row page-row" >
+                                <figure class="thumb col-lg-3 col-4">
+                                    <img class="img-fluid" src="assets/images/team/5.jpg" alt="" height="174" width="148"/>
+                                </figure>
+                                <div class="details col-lg-9 col-8">
+                                    <h3 class="title"><b>Lanyu Shang</b><a href="mailto:lshang@nd.edu"> <i class="fas fa-envelope"></i></a></h3>
+                                    <h4>PhD Student</h4>
+                                    <p>Lanyu Shang is a Ph.D. student in the Department of Computer Science & Engineering at the University of Notre Dame. She received an M.S. in Data Science from New York University and a B.S. in Applied Mathematics from the University of California - Los Angeles (UCLA). Her research interest primarily lies in online misinformation detection using social media data. </p>                                    
+                                </div>                               
+                            </div>
+  <div class="row page-row" >
+                                <figure class="thumb col-lg-3 col-4">
+                                    <img class="img-fluid" src="assets/images/team/6.jpg" alt="" height="174" width="148"/>
+                                </figure>
+                                <div class="details col-lg-9 col-8">
+                                    <h3 class="title"><b>Md Tahmid Rashid</b> <a href="https://www.tahmid.me/"> <i class="fas fa-globe"></i></a>   <a href="mailto:mrashid@nd.edu"> <i class="fas fa-envelope"></i></a></h3>
+                                    <h4>PhD Student</h4>
+                                    <p>Tahmid is a second-year Ph.D. student  at the Social Sensing Lab under the supervision of Prof. Dong Wang. He got his B.S. in Electrical and Electronic Engineering from BRAC University, Bangladesh. His research centers on the unification of physical and cyber realms, otherwise known as cyber-physical systems. He aims to develop systems that will harness information from the social and physical worlds to solve some of the critical challenges in sensing, disaster response and situation awareness.</p>                                    
+                                </div>                               
+                            </div>
+
+
+  <div class="row page-row" >
+                                <figure class="thumb col-lg-3 col-4">
+                                    <img class="img-fluid" src="assets/images/team/7.jpg" alt="" height="174" width="148"/>
+                                </figure>
+                                <div class="details col-lg-9 col-8">
+                                    <h3 class="title"><b>Nuo Li</b><a href="mailto:mrashid@nd.edu"> <i class="fas fa-envelope"></i></a></h3>
+                                    <h4>PhD Student</h4>
+                                    <p> Nuo is a first-year PhD student. Her current research interests are federated Learning and control theory. </p>                                    
+                                </div>                               
+                            </div>
+
+
+  <div class="row page-row" >
+    <h3>Undergrad Researchers </h3> </div>
+  <div class="row page-row" ><p style="font-size:15px;">
+Thomas Plummer  (Undergraduate Student, ND)<br>
+James Dong  (Undergraduate Student, ND)<br>
+Jose Badilla   (Undergraduate Student, ND)<br>
+Brian Mann (Undergraduate Student, ND)<br>
+Steven Mike (Undergraduate Student, ND)<br>
+Ben Cunning (Undergraduate Student, ND)<br>
+Herman Tong (Undergraduate Student, ND) <br>
+Yiwen Lu (Undergraduate Student, Tshinghua University)<br>
+</p></div>
+
+
+
+
+
+
+  <!--div class="row page-row" >
+    <h3>Team Photos </h3> </div>
+
+
+
+<div class="row page-row">
+
+
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a href="pic/t1.jpg" class="fancybox" rel="ligthbox">
+                    <img  src="pic/t1.jpg" class="zoom img-fluid "  alt="">
+                   
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a href="pic/t2.jpg"  class="fancybox" rel="ligthbox">
+                    <img  src="pic/t2.jpg" class="zoom img-fluid"  alt="">
+                </a>
+            </div>
+            
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a href="pic/t3.jpg" class="fancybox" rel="ligthbox">
+                    <img  src="pic/t3.jpg" class="zoom img-fluid "  alt="">
+                </a>
+            </div>
+            
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a href="pic/t4.jpg" class="fancybox" rel="ligthbox">
+                    <img  src="pic/t4.jpg" class="zoom img-fluid "  alt="" width="320" height="250">
+                </a>
+            </div>
+            
+            
+            
+           
+           
+       </div-->
+
+
+
+
+
+
+                        </div><!--//team-wrapper-->
+                       
+                    </div><!--//page-row-->
+                </div><!--//page-content-->
+            </div><!--//page--> 
+        </div><!--//content-->
+    </div><!--//wrapper-->
+
+    <!-- ******FOOTER****** --> 
+
+          <footer class="footer">
+        <div class="footer-content">
+            <div class="container">
+                <div class="row">
+                <div class="footer-col col-lg-3 col-md-4 col-12 about">
+                    <div class="footer-col-inner">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="index.html"><i class="fas fa-caret-right"></i>Home</a></li>
+                            <li><a href="team.html"><i class="fas fa-caret-right"></i>People</a></li>
+                            <li><a href="projects.html"><i class="fas fa-caret-right"></i>Research</a></li>
+                            <li><a href="publications.html"><i class="fas fa-caret-right"></i>Publication</a></li>
+                        </ul>
+                    </div><!--//footer-col-inner-->
+                </div><!--//foooter-col-->
+                <div class="footer-col col-lg-6 col-md-8 col-12 newsletter">
+                    <div class="footer-col-inner">
+                        <h3>Join our mailing list</h3>
+                        <p>Subscribe to get our weekly newsletter delivered directly to your inbox</p>
+                        <form class="subscribe-form">
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Enter your email" />
+                            </div>
+                            <input class="btn btn-theme btn-subscribe" type="submit" value="Subscribe">
+                        </form>
+                    </div><!--//footer-col-inner-->
+                </div><!--//foooter-col--> 
+                <div class="footer-col col-lg-3 col-12 contact">
+                    <div class="footer-col-inner">
+                        <h3>Contact us</h3>
+                        <div class="row">
+                            <p class="adr clearfix col-lg-12 col-md-4 col-12">
+                                <i class="fas fa-map-marker-alt float-left"></i>        
+                                <span class="adr-group float-left">       
+                                    <span class="street-address">222 Cushing Hall</span><br>
+                                    <span class="region">Department of Computer Science and Engineering</span><br>
+                                    <span class="postal-code">Notre Dame, Indiana, 46556</span><br>
+                                    <span class="country-name">USA</span>
+                                </span>
+                            </p>
+                            <p class="email col-lg-12 col-md-4 col-12"><i class="fas fa-envelope"></i><a href="#">dwang5@nd.edu</a></p>  
+                        </div> 
+                    </div><!--//footer-col-inner-->            
+                </div><!--//foooter-col-->   
+                </div>   
+            </div>        
+        </div><!--//footer-content-->
+        <div class="bottom-bar">
+            <div class="container">
+                <div class="row">
+                    <small class="copyright col-lg-6 col-12"> Copyright @ <a href="#">SSLAB 2020</a></small>
+                    <ul class="social float-right col-lg-6 col-12">
+                        <li><a href="#" ><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#" ><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#" ><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="#" ><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#" ><i class="fab fa-google-plus-g"></i></a></li>
+                        <li><a href="#" ><i class="fab fa-pinterest"></i></a></li>
+                        <li><a href="#" ><i class="fab fa-skype"></i></a></li> 
+                        <li class="row-end"><a href="#" ><i class="fas fa-rss"></i></a></li>
+                    </ul><!--//social-->
+                </div><!--//row-->
+            </div><!--//container-->
+        </div><!--//bottom-bar-->
+    </footer><!--//footer-->
+
+
+    <!-- Javascript -->          
+    <script type="text/javascript" src="assets/plugins/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/popper.min.js"></script> 
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+    <script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
+    <script type="text/javascript" src="assets/plugins/flexslider/jquery.flexslider-min.js"></script>
+    <script type="text/javascript" src="assets/plugins/jflickrfeed/jflickrfeed.min.js"></script> 
+    <script type="text/javascript" src="assets/js/main.js"></script>    
+    
+    <!-- Theme Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
+    <script type="text/javascript" src="assets/js/demo/theme-switcher.js"></script> 
+    <script type="text/javascript">$(document).ready(function(){
+  $(".fancybox").fancybox({
+        openEffect: "none",
+        closeEffect: "none"
+    });
+    
+    $(".zoom").hover(function(){
+        
+        $(this).addClass('transition');
+    }, function(){
+        
+        $(this).removeClass('transition');
+    });
+});
+    </script>>
+</body>
+</html>	
+
