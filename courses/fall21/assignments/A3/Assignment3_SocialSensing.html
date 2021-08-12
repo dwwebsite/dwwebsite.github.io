@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <title>Assignment 3: Tweets Clustering</title>
+</head>
+
+
+<a href=../../index.html>IS 596</a>  / <a href=./Assignment3_SocialSensing.html>A3</a>
+<hr>
+
+
+<body>
+<h2>Assignment 3: Tweets Clustering</h2>
+Data redundancy is an important problem of Twitter. Twitter users are likely to generate similar tweets (e.g., using the Retweet function) about some popular topics/events. By clustering similar tweets together, we can generate a more concise and organized representation of the raw tweets, which will be very useful for many Twitter-based applications (e.g., truth discovery, trend analysis, search ranking, etc.).  Clustering is a classic data mining task which requires two essential components: a <i> distance metric </i> to measure similarity between data points and a <i> clustering algorithm </i> that groups data points into different clusters based on the similarity characterized by the distance metric.
+
+<p>
+In this assignment, you will learn how to cluster tweets by utilizing the Jaccard Distance metric and K-means clustering algorithm.
+
+<h2>Objectives:</h2>
+<dir>
+<li> Compute the similarity between tweets using the Jaccard Distance metric.
+<li> Cluster tweets using the K-means clustering algorithm.
+</dir>
+
+<h2>Introduction to Jaccard Distance:</h2>
+The Jaccard distance is a metric that measures dissimilarity between two sample sets (A and B). It is defined as the difference of the sizes of the union and the intersection of two sets divided by the size of the union of the sets.<br><br>
+<tt><img src="JaccardDistance.png"width="430" height="75"></tt> 
+
+<p>
+In this assignment, a tweet can be considered as an unordered set of words such as {a,b,c}. By "unordered", we mean that {a,b,c}={b,a,c}={a,c,b}=... <br>
+A Jaccard Distance Dist(A, B) between tweet A and B has the following properties:
+<dir>
+<li> It is small if tweet A and B are similar.
+<li> It is large if they are not similar.
+<li> It is 0 if they are the same.
+<li> It is 1 if they are completely different (i.e., no overlapping words).	
+</dir>
+
+Here is the reference for more details about Jaccard Distance: <a href=http://en.wikipedia.org/wiki/Jaccard_index>Jaccard Distance</a>
+
+<h2>Introduction to K-means:</h2>
+K-means is a classic unsupervised data clustering algorithm. In a nutshell, K-means uses k centroids (points which are the center of a cluster) to define clusters. 
+A data point is considered to be in a particular cluster if it is closer to that cluster's centroid than to any other centroid. The main steps of K-means are as follows:
+
+<ol>
+<li> Define k centroids, one for each cluster. The algorithm usually chooses the initial centroids randomly from the data set.
+<li> The K-means algorithm iterates between the following two steps until it converges:
+<dir>
+<li> Assign data points to clusters based on the current selection of the centroids.
+<li> Compute the new centroids based on the updated assignment of data points to clusters.	
+</dir>
+<p> The algorithm is considered to converge when the assignment of data points to clusters no longer changes.
+</ol>
+
+Here is the reference for more details about the K-means algorithm: <a href=http://en.wikipedia.org/wiki/K-means_clustering>K-means Clustering</a>  
+
+<p>
+<b> Hint: </b> Note that the tweets do not have the numerical coordinates in Euclidean space, you might want to think of a sensible way to compute the "centroid" of a tweet cluster.    
+
+<h2>Exercises:</h2>
+Implement the tweet clustering function using the Jaccard Distance metric and K-means clustering algorithm introduced above to cluster redundant/repeated tweets into the same cluster. You are expected to do the K-means implementation by yourself, <b> so please do  not use any external library that has K-means implementation in your code </b>.
+
+<p>
+Note that while the K-means algorithm is proven to converge, the algorithm is sensitive to the k initial selected cluster centroids (i.e., seeds) and the clustering result is not necessarily optimal on a random selection of seeds. In this assignment, we provide you with a list of <a href='./InitialSeeds.txt'> K initial centroids </a> that has been tested to generate good results.
+
+
+<!--you need to implement an algorithm to select k initial centroids based on the Jaccard Distance between tweets, so as to make the similarities among k initial centroids as small as possible.-->
+
+<p>
+<b>Inputs to your K-means Algorithm:</b><br><br>
+(1) The number of clusters K=25.<br> <br>
+(2) A real world dataset sampled from Twitter during the <a href=http://en.wikipedia.org/wiki/Boston_Marathon_bombings> Boston Marathon Bombing event </a> in April 2013 that contains 251 tweets. <a href='./Tweets.json'> <b> Tweet Dataset Download </b> </a>.<br> <br>
+<!--We assign each tweet in this dataset with a tweet ID. Tweet ID of each tweet is consistent with its order in this dataset. For example, tweet ID of the first tweet in this dataset is 1 and tweet ID of the last tweet in this dataset is 251.<br>-->
+(3) The list of initial centroids is here: <a href='./InitialSeeds.txt'> <b> Initial Seeds </b>  </a>. Note that each element in this list is the tweet ID (i.e., the id field in JSON format) of the tweet in the dataset.<br> <br>
+    
+    <!--[323906397735641088,<br>
+     &nbsp323906483584655360,<br> 
+     &nbsp323906657333682176,<br> 
+     &nbsp323907258301939713,<br> 
+     &nbsp323909308188344320,<br> 
+     &nbsp323913403460636673,<br> 
+     &nbsp324067437886713856,<br> 
+     &nbsp324117950774775809,<br> 
+     &nbsp324138055772561408,<br> 
+     &nbsp324219503401644033,<br> 
+     &nbsp324320247018573824,<br> 
+     &nbsp324346553835868161,<br> 
+     &nbsp324372750330363904,<br> 
+     &nbsp324408472441585664,<br> 
+     &nbsp324422817565257728,<br> 
+     &nbsp324448013999304704,<br> 
+     &nbsp324785120085176320,<br> 
+     &nbsp325059351209443329,<br> 
+     &nbsp325060324992643072,<br> 
+     &nbsp325162944931438592,<br> 
+     &nbsp325253327048822784,<br> 
+     &nbsp325337623910559745,<br> 
+     &nbsp325409910642835456,<br> 
+     &nbsp325701934273134594,<br> 
+     &nbsp325946633986641920].<p> -->
+
+    
+
+<p>
+<b>What to Turn In</b> :<br>
+(1) A result file that contains the clustering results. Each line represents a cluster. It is in the form of <i>cluster_id: a list of tweet IDs that belongs to this cluster </i> <br>
+(2) The source code to finish this task.
+
+<h2>Extra Credit:</h2>
+As we discussed above, K-means is known to be sensitive to initial centroids. Now your task is to design and implement an <i> efficient </i> algorithm to find the k initial centroids so that the K-means algorithm you implemented can generate good clustering results (similar as the results you obtained using the 25 seeds we provided to you).
+
+<p>
+<b>What to Turn In</b> :<br>
+(1) A result file that contains the clustering results. Each line represents a cluster. It is in the form of <i>cluster_id:  a list of tweet_id that belongs to this cluster </i> <br>
+(2) The source code to finish this task. <br>
+(3) A README file that briefly explains the main idea and implementation of your algorithm to find the initial seeds.
+
+<!--
+Here is an example of result file:<br>
+<tt><img src="cluster_result.png"width="270" height="85"></tt><br>
+It means the first tweet in the given dataset belongs to the second cluster, the second tweet in the given dataset belongs to the third cluster.-->
+
+
+
+<p>
+<h2>Notes:</h2> 
+<dir>
+<li> Please submit a README file about how to run your source code.
+<li> Please specify your Python version in your Readme file if your code is written a version different from Python 3.6. 
+</dir>
+
+<h2>Where to Turn In:</h2>
+Upload your work in a .zip or .tar.gz file to Canvas under Assignments/Assignment 3.
+
+<h2>Deadline:</h2>
+<b> This assignment is due at at the beginning of class on Friday, Oct. 15. </b> <br><br>
+
+<!-- 
+<h2>Grading Rubric</h2>
+It is available on <a href=https://sakailogin.nd.edu/portal/site/SP20-CSE-40437-CX-01/tool/0a324e46-a5af-4109-896d-8c3949b8d947?panel=Main
+><b>Sakai/Resources/Assignments</b></a>. <br> -->
+
+</body>
+</html>

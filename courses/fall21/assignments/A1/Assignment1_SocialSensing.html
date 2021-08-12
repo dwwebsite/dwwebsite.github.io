@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<style type="text/css">
+pre {
+        background: #ccccff;
+        border: 1px solid black;
+        padding: 10px 10px 10px 10px;
+        font: courier;
+        white-space: pre;
+}
+</style>
+<html>
+<head>
+  <title>Assignment 1: Twitter Data Crawler</title>
+</head>
+
+
+<a href=../../index.html>IS 596</a>  / <a href=./Assignment1_SocialSensing.html>A1</a>
+<hr>
+
+
+<body>
+<h2>Assignment 1: Twitter Data Crawler</h2>
+Twitter is an online social networking/media site that allows users to send and read short (i.e., 140 characters) messages called "tweets" in real time. Its popularity as a fast information dissemination platform has led to applications in various domains (e.g., business, disaster recovery, intelligent transportation, smart cities, military scenarios, etc.). Users on Twitter are generating about half a billion tweets everyday. Some of these tweets are available to researchers and developers through Twitter's public APIs.
+
+<p>
+In this assignment, you will learn how to collect different types of data from Twitter
+by using an open source library called <i> Tweepy </i> in order to build your own Twitter data crawler. Since Twitter has an <a href=https://support.twitter.com/articles/160385-twitter-api-limits> IP based rate limit policy,</a> please use your <b> own computer </b> to finish this assignment. If you have a problem in finding a machine to finish the assignment, please contact the instructor.
+
+
+<h2>Objectives:</h2>
+<dir>
+<li> Build a crawler that collects a user's profile information from Twitter given the user's Twitter ID.
+<li> Build a crawler that collects a user's social network information given the user's ID.
+<li> Build a crawler that collects the tweets using a set of specified keywords and a geolocation based criteria.
+</dir>
+
+<h2>Introduction to Open Authentication (OAuth):</h2>
+Open Authentication (OAuth) is an open standard for authentication that is adopted by Twitter to provide access to 
+the protected information. OAuth provides a safer alternative to traditional authentication approaches 
+using a three-way handshake.
+
+<p>
+Here is the reference for more details about OAuth: <a href=https://dev.twitter.com/oauth>Twitter OAuth</a>
+
+<p>
+The authentication of API requests on Twitter is done through OAuth. Note that Twitter APIs can only be accessed
+by registered <i> applications </i> (e.g., the crawlers you will develop in this assignment). In order to register your application, you first need to have a Twitter account. If you already have one, you can just use it. If not, you can go ahead and create an account at <a href=https://twitter.com/> Twitter.</a>  After that, you need to bind your Twitter account with the application you registered (i.e., crawlers). Once you finish the binding process, you will get the keys and tokens (i.e., a pair of consumer key and consumer secret and a pair of access token and access token secret) for your application. 
+
+<p>
+Here are the main steps for the above registration and binding process:
+
+<p>
+<dir>
+<li>Register your application to Twitter and get the consumer keys:	
+
+<dir>
+<li> Go to <a href=https://apps.twitter.com/>https://apps.twitter.com/</a>, apply for a developer's account, and register a new application to Twitter for this assignment. You can pick a name at your choice for the application. For Website URL, you can either use your own homepage or simply type http://IP address of your machine.
+
+<li> Fill in all required fields, accept the Developer Agreement, solve the CAPTCHA and submit the form.
+<li> Obtain the consumer key (API key) and consumer secret from the screen and use them in your application (i.e., crawlers).
+</dir>
+
+
+<li> Bind your Twitter account and application and get the access tokens:
+
+<dir>
+<li> On the webpage of your application, click the Keys and Access Tokens tab, then scroll down and click Create my access token.
+<li> On the webpage of your application, click the  Permissions tab and configure your application with the permission level you need (namely, read-write-with-direct messages).
+<li> Obtain the indicated access token and access token secret from the screen and use them in your application.
+</dir>
+
+Note: Please safely store the access token and access token secret <b>at the first time</b> that you generate it. The access token and access token secret might not be accessed beyond the first time they are generated.
+
+</dir>
+
+<h2>Introduction to Tweepy (A Python library for accessing the Twitter API):</h2>
+Python is a great programming language for fast text data processing. Active developer communities create many useful libraries that extend the language for various applications. One of those libraries is Tweepy. It is open-sourced and hosted on Github. Tweepy provides an easy way for your python code to talk to Twitter through its APIs. To get a quick start, please read the <a href=http://docs.tweepy.org/en/latest/> <b> Tweepy Documentation </b> </a> and its <a href=https://github.com/tweepy/tweepy> <b> Github Repository. </b> </a> For more information about Tweepy, you can visit <a href=http://www.tweepy.org/>www.tweepy.org</a>. 
+
+
+<!-- <p>
+This programming assignment requires Python <b>2.7.9 or later</b>* and additional Python packages, namely <b>Tweepy</b>. You can download Python 2.7.9 from <a href=https://www.python.org/downloads/>Python Download</a> and find more information about Python from <a href=https://www.python.org/>www.python.org</a>.
+If you are new to Python, here is a tutorial to get started on Python: <a href=https://docs.python.org/2/tutorial/>docs.python.org/2/tutorial/</a><p>
+
+* If you use other versions of Python (i.e., other than 2.7.9), please make sure your code runs correctly and specify the version number of your Python in the README file you turn in. -->
+
+<p>
+This programming assignment requires Python <b>3.6 or later</b>* and additional Python packages, namely <b>Tweepy</b>. You can download Python from <a href=https://www.python.org/downloads/>Python Download</a> and find more information about Python from <a href=https://www.python.org/>www.python.org</a>.
+If you are new to Python, here is a tutorial to get started on Python: <a href=https://docs.python.org/3/>docs.python.org/3/</a><p>
+
+* If you use other versions of Python (i.e., other than 3.6), please make sure your code runs correctly and specify the version number of your Python in the README file you turn in.
+
+
+
+<p>
+The main steps of installing Tweepy are as follows:
+
+<p>
+Tweepy can be cloned from the Github <a href=https://github.com/tweepy/tweepy>repository</a> using the commands below: <br> 
+<!-- <b>For MacOS/Linux User:</b> <br> -->
+<pre>
+$ git clone https://github.com/tweepy/tweepy.git
+$ cd tweepy
+$ pip install .
+</pre>
+<!-- Inside the home directory of Tweepy, execute:<br>
+<pre>
+$ python setup.py install
+</pre> -->
+
+<p>
+Or using easy install:<br>
+<pre>
+$ pip install tweepy
+</pre>
+Either way gives you the latest version of Tweepy.
+
+<!-- <p>
+<b>For Windows User:</b> <br>
+You can get the source code using the http method. <a href=https://github.com/tweepy/tweepy>github.com/tweepy/tweepy</a><br>
+Inside the home directory of Tweepy, execute:<br>
+<pre>
+$ python setup.py install
+</pre>
+ -->
+
+<p> <b> Note </b> : Just for your information, Twitter has some rate limits on its Public API. You could get more information here: <a href=https://dev.twitter.com/rest/public/rate-limiting> Twitter API Rate Limits </a>
+
+
+<h2>Exercises:</h2>
+<ol>
+<li> <b> Collecting user's profile information: </b> <br>
+Users create profiles to describe themselves on Twitter. User profiles provide a rich source of information to study the Twitter users.<br>
+
+<!-- The following is a snapshot of a user's profile information (the user ID is 13334762). <br><br> -->
+<!--<tt><img src="example_profile.png"width="250" height="125"></tt> <p>!-->
+<!-- <pre>
+Screen Name: github
+User Name: GitHub
+User Location: San Francisco, CA
+User Description: How people build software.
+
+Need help? Send us a message at https://t.co/YU5nzbpDIg for support.
+Number of Followers: 1782854
+Number of Friends: 294
+Number of Statuses: 4373
+User URL: https://t.co/FoKGHcCyJJ
+</pre> -->
+The following is a snapshot of a user's profile information (the user ID is 17883396). <br>
+<pre>
+Screen Name: iSchoolUI
+User Name: iSchool at Illinois
+User Location: Champaign, IL
+User Description: The School of Information Sciences at the University of Illinois Urbana-Champaign
+| The Power of Information | http://ischool.illinois.edu | #iSchoolUI
+Number of Followers: 4492
+Number of Friends: 1158
+Number of Statuses: 8345
+User URL: https://twitter.com/iSchoolUI
+</pre>
+
+<b>Task 1</b> :<br>
+Given a list of user IDs, please write a data crawler to collect the users' profile information.
+
+<p>
+<b>What to Turn In</b> :<br>
+(1) A result file that contains the profile information of the Twitter users with the following IDs: 18165866, 26257166, 12579252.<br>
+(2) The source code of your crawler to finish this task.
+
+<p>
+<li> <b> Collecting user's social network information: </b> <br>
+A user's social network on Twitter is a directed network. There are two types of connections between users: <i> follower </i> and <i> friend. </i> <br> If user A follows user B on Twitter, A is a follower of B and B is a friend of A. For example, in the following figure, John follows Alice, therefore John is Alice's follower. Alice follows Peter, and Peter
+is a friend of Alice.<br><br>
+<tt><img src="example_network.png"width="300" height="200"></tt>
+
+<p>
+The following is a snapshot of a user's social network information on Twitter (the user ID is 13334762). <br><br>
+<!--<tt><img src="example_friends.png"width="500" height="340"></tt> <p>
+<tt><img src="example_followers.png"width="500" height="320"></tt> <p>!-->
+<pre>
+Friends of 13334762:
+24PullRequests
+rainbowlesions
+redmonk
+sogrady
+monkchips
+LauraHeisman
+monatheoctocat
+afrodjiak
+chobberoni
+katesegrin
+mscccc
+Azure
+githubdesign
+tenderlove
+carlosmn
+linuxfoundation
+martinfowler
+natfriedman
+rauchg
+satyanadella
+</pre>
+
+<pre>
+Followers of 13334762:
+TurekBot
+newesissrl
+AndonyNS
+MaratLevit
+a1c0f94d264640d
+weare_solvers
+Dom_Cornrows
+ThisIsFlorianK
+linuxdaemon
+PludeScott
+ArtDragos
+imaedeamiri
+Kiml3eang
+spencer_corwin
+ManhVu74447997
+ldapdotcom
+eeruizr
+erickro98267524
+IntellectValley
+hilalyssa
+</pre>
+
+<b>Task 2</b> :<br>
+Given a list of user IDs, please write a data crawler to collect the user social network information (i.e., the lists of screen names of the user's friends and followers)
+
+<p>
+<b>What to Turn In</b> :<br>
+(1) A result file that contains the social network information of the Twitter users with the following IDs: 18165866, 26257166, 12579252. Note: you only need to collect the first 20 followers and friends of a specified user in the result file. <br>
+(2) The source code of your crawler to finish this task.
+
+<p>
+<li> <b> Collecting tweets in real-time filtered by specified keywords and geo-location: </b> <br>
+Searching on Twitter is facilitated through the use of search parameters. Acceptable search parameters on Twitter include keywords and geographic regions.<br>
+Twitter provides the APIs to collect tweets that contain the specified keywords or originate from a given geographic region. Returned tweets of the search are in JavaScript Object Notation (JSON) format, which is a popular format that is widely used as an object notation on the web. Please refer to <a href=https://dev.twitter.com/overview/api/tweets>Twitter Document</a> for what exact fields are available in a tweet. <p>
+
+<b> Hint:</b> Twitter has two different APIs for applications to collect tweets: search API and streaming API. For this assignment, you might want to look at both and decide which one to use.<br> <br>
+
+
+<b>Task 3</b> :<br>
+Please write a data crawler to: <br>
+(1) collect tweets that contain one of the following two keywords: [Illinois, weather] <br>
+(2) collect tweets that originate from the geographic region around Champaign: [-88.31,40.06,-88.22,40.15]. Note the coordinates correspond to two diagonal points of a rectangle: <b> Longitude </b> of left point, <b> Latitude </b> of left point, <b> Longitude </b> of right point, <b> Latitude </b> of right point. (Note that Google Map normally takes a slightly different format as [latitude, longitude]).
+
+
+<p>
+<b>What to Turn In</b> :<br>
+(1) A result file of tweets that contain one of the above two keywords (50 tweets will be enough and the result file size should be less than 1 M). <br>
+(2) A result file of tweets that originate from the specified geographic region (50 tweets will be enough and the result file size should be less than 1 M). <br>
+(3) The source code of your crawler to finish this task. <br>
+Note: In the result files, you only need to record the text part of the tweet instead of the entire JSON response you get from your query.
+</ol>
+
+<b>Notes:</b> 
+<dir>
+<li> For the above three tasks, you can either submit a single script file that finishes all three tasks altogether or three individual script files that finish task 1-3 respectively.  
+<li> Please submit a README file and describe in this file: 1) how to run your source code; 2) the Python version you used to test your code.
+<li> If you do not feel comfortable to submit your token, key and secrete (due to privacy concern), please leave them blank in your code and <b>make a comment in your code and README</b>. We will use ours to grade your code. 
+</dir>
+
+<h2>Where to Turn In:</h2>
+
+Upload your work in a .zip or .tar.gz file to Canvas under Assignments/Assignment 1.
+
+<h2>Deadline:</h2>
+
+<b> This assignment is due at the beginning of class on Monday, Sep. 20. </b> <br><br>
+
+
+<!-- <h2>Grading Rubric</h2>
+It is available on <a href=https://sakailogin.nd.edu/portal/site/SP20-CSE-40437-CX-01/tool/0a324e46-a5af-4109-896d-8c3949b8d947?panel=Main
+><b>Sakai/Resources/Assignments</b></a>. <br> -->
+
+</body>
+</html>
