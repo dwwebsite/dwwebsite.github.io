@@ -1,564 +1,593 @@
-<html>
-  
-<!DOCTYPE html>
+<title>IS 596 - Social Sensing and Human-Cyber-Physical Systems - Fall 2021</title>
 
-<html lang="en"  >
-<!--<![endif]-->
-<!-- BEGIN HEAD -->
-<head>
-  <meta charset="utf-8"/>
-<title>Dr. Dong Wang School of Information Sciences University of Illinois Urbana-Champaign</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-  <meta content="" name="description"/>
-  <meta content="" name="author"/>
-    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+<center>
+<h1>IS 596 - Social Sensing and Human-Cyber-Physical Systems - Fall 2021</h1>
+<hr>
+<table><tr><td><img src=images/socialsensing.png  width="320" height="210" align=right><td><img src=images/socialmedia.jpg width="300" height="210" align=right><td><img src=images/cps.jpg width="320" height="270" align=right></table>
+<hr>
+</center>
 
-  <script src="assets/plugins/jquery.min.js" type="text/javascript" ></script>
-  <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript" ></script>
-  <script src="assets/plugins/jquery.easing.min.js" type="text/javascript" ></script>
-<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="assets/plugins/bootstrap/css/bootstrap.min.js"></script>  <!-- END GLOBAL MANDATORY STYLES -->
-    <script src="https://kit.fontawesome.com/f75ceb64b5.js" crossorigin="anonymous"></script>
+<h2>Instructor</h2>
+<dir>
+<li>	
+<b><a href=http://www.wangdong.org>Prof. Dong Wang</a></b> <br>
+Email: dwang24 at illinois dot edu <br>
+Office Hours: By Appointment (<a href="https://illinois.zoom.us/j/89746060951?pwd=YW1zZ2M2R0dYdXJGamt2UmVzNnZBZz09">Office Hour Zoom</a>)
 
-     
-  
-    <!-- BEGIN THEME STYLES -->
+<li> <b>TA: Lanyu Shang</b><br>
+Email: lshang3 at illinois dot edu<br>
+Office Hours: Monday 10am - Noon or By Appointment (<a href="https://illinois.zoom.us/j/89746060951?pwd=YW1zZ2M2R0dYdXJGamt2UmVzNnZBZz09">Office Hour Zoom</a>)
+</dir>
 
 
-<style type="text/css">
-a {
-  text-decoration: underline;
-    color: blue;
+<h2>Lecture Time</h2>
+<dir>
+Monday 3:00 pm - 4:55 pm
+</dir>
 
-}
-.bio{
 
-  text-align: left !important;
-}
+<h2>Course Overview</h2>
 
-h1 {
-  font-size: 2rem !important;
+Online social media (e.g., Twitter, Facebook), smartphones, and ubiquitous internet connectivity have greatly facilitated data sharing at scale, allowing for a firehose of human and sensor observations to pour in about the physical world in real-time. This opens up unprecedented challenges and opportunities in the field of <i>social sensing and human-centric cyber-physical systems (H-CPS) </i> where an important goal is to efficiently organize the real-time data feeds and accurately reconstruct the "states of the world", both physical and social. This course offers students the opportunity to learn the theoretical foundations, state-of-the-art techniques, and hands-on experience in this exciting area. The topic of this class is timely due to the increasing interest in online social networks, big data, and human-in-the-loop systems, as well as the proliferation of computing artifacts that interact with or monitor the physical world. 
+<p>
+The class contains four main components: (i) the introduction to social sensing and cyber-physical systems; (ii) key technical challenges (e.g., big data analytics, system reliability, user mobility, energy, privacy, etc.); (iii) state-of-the-art techniques and systems (e.g., MapReduce/Hadoop, fact-finding, etc);  (iv) emerging applications (smartphone-based crowdsensing, online social media sensing, participatory/opportunistic sensing, intelligent transportation, smart buildings, body area networks etc). The students will have the opportunities to work with real world social sensing and cyber-physical system problems.
+<p>
 
-}
+<h2>Getting Help</h2>
 
-h2 {
-  font-size: 1.8rem !important;
+<dir>
+<li> <a href=https://canvas.illinois.edu/courses/7248>Canvas Page</a> - General announcement and Q&A after class 
+<li> <b>Office Hours</b> - Please refer to the above schedule.
+<li> <b>Email</b> - Contact Prof. Wang for questions about grades, course policies, etc.
+<li> <a href=https://canvas.illinois.edu/courses/7248/gradebook>Grades</a> are available on Canvas.
+</dir>
 
-}
 
-.h1 {
-  font-size: 2rem !important;
+<h2>Course Documents</h2>
+<dir>
+<li> <a href=https://canvas.illinois.edu/courses/7248/external_tools/327>Lecture Zoom Link</a>
+<li> <a href=syllabus/Syllabus_Fall2021.pdf>Syllabus</a> 
+<li> <a href=project/project.html>Course Project</a> (<a href="https://forms.gle/DSNWvJNXBZJLhXMi9">Group Signup Form</a>)
 
-}
 
+<!-- <li> <a href= http://www3.nd.edu/~dwang5/courses/spring20/assignments/A1/Assignment1_SocialSensing.html> Assignment 1: Build your own Twitter data crawler </a>	
+<li> <a href= http://www3.nd.edu/~dwang5/courses/spring20/assignments/A2/Assignment2_SocialSensing.html> Assignment 2: Tweets Clustering</a>	
+<li> <a href= http://www3.nd.edu/~dwang5/courses/spring20/assignments/A3/Assignment3_SocialSensing.html> Assignment 3: Truth Discovery and Credibility Analysis for Twitter</a>	
+ -->
 
-#topnav {
-   display: none !important;
-
-}
-
-
-
-@media  (max-width: 1800px){
-
-.bio{
-
-  text-align: left !important;
-}
-
-
-  h1 {
-  font-size: 1.5rem !important;
-
-}
-}
-
-
-
-
-@media  (max-width: 1450px){
-  h1 {
-  font-size: 1.5rem !important;
-
-}
-
-.bio{
-
-  text-align: left !important;
-  padding-left: 50px !important;
-}
-
-}
-
-
-
-@media  (max-width: 1250px){
-  h1 {
-  font-size: 1.5rem !important;
-
-}
-
-.bio{
-
-  text-align: left !important;
-  padding-left: 90px !important;
-}
-
-}
-
-
-
-@media  (max-width: 1150px){
-  h1 {
-  font-size: 1.5rem !important;
-
-}
-
-.bio{
-
-  text-align: center !important;
-  padding-left: 100px !important;
-}
-
-}
-
-
-@media  (max-width: 950px){
-  h1 {
-  font-size: 1.5rem !important;
-
-}
-
-.bio{
-
-  text-align: center !important;
-  padding-left: 0px !important;
-}
-
-}
-
-
-
-
-
-
-
-
-@media  (max-width: 790px){
-.bio{
-  margin-top: 30px !important;
-  text-align: center !important;
-    padding-left: 0px !important;
-
-}
-li {font-size:1.2rem !important; } /*1rem = 16px*/
-   
-
-p {font-size:1.2rem !important; } /*1rem = 16px*/
-
-
-ul {line-height:1.2rem !important;}
-
-h1 {
-  font-size: 1.5rem !important;
-
-}
-
-h2 {
-  font-size: 1.5rem !important;
-
-}
-.edit {
-  font-size: 1.1rem !important;
-
-}
-
-.edit2 {
-  font-size: 1.2rem !important;
-
-}
-
-.edit3 {
-  font-size: 1.2rem !important;
-
-}
-
-#topnav {
-   display: block !important;
-
-}
-#midnav {
-   display: none !important;
-
-}
-
-
-.navedit {
-    font-size: 1rem !important;
-
-}
-
-
-img{
-  margin-top:40px !important
-}
-
-}
-
-
-
-@media  (max-width: 540px){
-.bio{
-
-  text-align: center !important;
-    padding-left: 0px !important;
-
-}
-li {font-size:1rem !important; } /*1rem = 16px*/
-   
-
-p {font-size:1rem !important; } /*1rem = 16px*/
-
-
-ul {line-height:1.2rem !important;}
-
-h1 {
-  font-size: 1.8rem !important;
-
-}
-
-h2 {
-  font-size: 1.5rem !important;
-
-}
-.edit {
-  font-size: 1.1rem !important;
-
-}
-
-.edit2 {
-  font-size: 1.2rem !important;
-
-}
-
-.edit3 {
-  font-size: 1.2rem !important;
-
-}
-
-#topnav {
-   display: block !important;
-
-}
-#midnav {
-   display: none !important;
-
-}
-
-
-.navedit {
-    font-size: 1rem !important;
-
-}
-
-
-img{
-  margin-top:40px !important
-}
-
-}
-
-
-
-
-
-</style>
-
-<script type="text/javascript">
-function startTime()
-{
-var today=new Date();
-var h=today.getHours();
-var m=today.getMinutes();
-var s=today.getSeconds();
-var year=today.getFullYear();
-var month=today.getMonth()+1;
-var date=today.getDate();
-
-// add a zero in front of numbers<10
-m=checkTime(m);
-s=checkTime(s);
-//document.getElementById('timezone').innerHTML=year+"-"+month+"-"+date+" "+h+":"+m+":"+s;
-document.getElementById('timezone').innerHTML=year+"-"+month+"-"+date
-t=setTimeout('startTime()',500);
-}
-
-function checkTime(i)
-{
-if (i<10)
-  {
-  i="0" + i;
-  }
-return i;
-}
-
-</script>
-
-
-
-
-
-</head>
-
- 
-
-
-
-
-
-
-
-
-<!--<body style="background-color:PowderBlue;" onload="startTime()">-->
-
-<!--<body style="background-color:PowderBlue;">-->
-
-
-<body style="background-color:FCFDDD;">
-
-<div class="row" style="max-width:90%; display: table;
-  margin-right: 5%;  margin-top: 20px;
-  margin-left: 5%">
 <!--
-<body style="background-color:white">
+<li> <a href= ./assignments/A1/Assignment1_SocialSensing.html> Assignment 1: Build your own Twitter data crawler </a>	
+<li> <a href= ./assignments/A2/Assignment2_SocialSensing.html> Assignment 2: Tweets Sentiment Analysis</a>
+<li> <a href= ./assignments/A3/Assignment3_SocialSensing.html> Assignment 3: Tweets Clustering</a>		
+
+
+<li> <a href= ./presentation/presentations-mid.html>Mid-term Project Presentation</a>		
+
+<li> <a href= ./presentation/presentations-final.html>Final Project Presentation</a>
+
 -->
-  
-<!-- This is Test Version of Dong Webpage to Learn HTML Nov. 11 1-->
-<!---<h1>Welcome to Dong Wang Homepage</h1>-->
+
+<!--
+
+<li> <a href= http://www3.nd.edu/~dwang5/courses/spring20/presentation/presentations-paper.html>In-class Paper Presentation</a> </b> 
 
 
 
-
-<div class ="row">
-
-
-<div id="topnav" class ="col-md-12">
-
-<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light" style="background-color:FCFDDD !important;">
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-    <a class="nav-link" href="./index.html" style="color:black !important; text-decoration: none !important;"> <i class="fa fa-home fa-1x"></i>  <h1 class = "navedit" style="display: inline; text-decoration: underline !important"> Home </h1></a> 
-      </li>
-      <li class="nav-item">
-    <a class="nav-link" href="./sslab/index.html" style="color:black !important; text-decoration: none !important;"> <i class="fa fa-users fa-1x"></i> <h1 class = "navedit" style="display: inline; text-decoration: underline !important"> Social Sensing Lab</h1></a>
-      </li>
-      <li class="nav-item">
-    <a class="nav-link" href="./publication.html" style="color:black !important; text-decoration: none !important;"> <i class="fa fa-book fa-1x"></i> <h1 class = "navedit" style="display: inline; text-decoration: underline !important;"> Publications </h1></a>
-      </li>
-      <li class="nav-item">
-    <a class="nav-link" href="./teach.html" style="color:black !important;   text-decoration: none !important">  <i class="fa fa-glasses fa-1x"></i> <h1 class = "navedit" style="display: inline; text-decoration: underline !important"> Teaching & Services </h1></a>
-       <li class="nav-item">
-    <a class="nav-link" href="https://scholar.google.com/citations?user=-NfMhb0AAAAJ&hl=en" target="_blank" style="color:black !important;   text-decoration: none !important">  <i class="fa fa-graduation-cap fa-1x"></i> <h1 class = "navedit" style="display: inline; text-decoration: underline !important"> Google Scholar </h1></a>
-      </li>
-    
-    </ul>
-    </ul>
-  </div>
-</nav>
-</div>
-
-
-<div class ="col-md-4 col-lg-2 col-xs-12 col-sm-12  text-xl-left text-lg-center text-center">
-
-          <p align="center"><img src="./pic/dong1b.jpg", alt="Dong's Photo", width="202" height="240"  style="max-width:99% !important; margin-left:10px !important;margin-top:10px; min-width:202px; min-height:240px">  
-</p> </div>
-            
-
-   <p align="center"> 
-<div class ="bio col-md-8 col-lg-10  col-xs-12 col-sm-12  text-center" style="padding-left: -100px !important">
+-->
 
 <p>
-<b style="font-size:28px;"> Dong Wang </b>
-</p>
-<b class = "edit3" style="font-size:21px; ">
-Ph.D.
-<br>
-Associate Professor
-<br>
-School of Information Sciences
+</dir>
+
+
+<h2>Project Meeting Links</h2>
+<dir>
+
+
 <!--
-<br>
-Interdisciplinary Center for Network Science and Applications (iCeNSA)
+	
+<li> <a href=https://doodle.com/poll/tw4qpmckwezh5crk>Project Kick-off Meetings</a> [TO BE UPDATED]
+
+<li> <a href=https://doodle.com/poll/nn98rccbb2mutr28>Project Mid-term Meetings</a> [TO BE UPDATED]
+
 -->
+
+<!--
+
+
+
+
+<li> <a href=https://doodle.com/poll/a8ps5z258cztabxn>Project Pre-Final Meetings</a>	
+
+-->
+
+
+</dir>	
+
+<h2> Grading </h2>
+ 
+<dir>
+<li> 
+10% of the grade will be assigned on individuals' class participation and proactive discussion of lecture topics and project presentations. (Individual based)
+<p>
+
+<li> 
+10% of the grade will be assigned on an in-class paper presentation on the selected topic by each group. (Group based)
+<p>
+
+<li> 
+30% of the grade will be assigned on individuals' homework assignments. (Individual based)
+<p>
+
+
+
+<li> 
+50% of the grade will be determined by a group course project. This grade includes project proposal, mid-term report, mid-term project presentation, a final project presentation, a final project paper, and project updates and demonstrations (to the instructor). The project will implement some innovative social sensing model, service, system, or computing environment. Students will be allowed to work in groups of 1 or 2 on the project. The project will proceed through the landmarks stated below. (Group based)
+<p>
+
+
+<dir>
+<li> 
+5%:  Project discussion and updates
+<p>
+<li> 
+5%:  Project proposal
+<p>
+<li> 
+5%:  Mid-term project presentation
+<p>
+<li> 
+10%:  Mid-term project report
+<p>
+<li> 
+10%:  Final project presentation
+<p>
+<li> 
+15%:  Final project paper
+<p>
+</dir>
+
+
+<b> Note: </b> For individual based work, each student will receive the credit based on her/his own work. For the group based work, every student in the group will receive the same credit based on the group's work.   
+<!--
+<p>
+Final grade will be decided on a fixed scale:
+</p> 
+
+<li>	93 - 100:	 A
+<li>	88 - 92.9:	 A-
+<li>	85 - 87.9: 	B+
+<li>	82 - 84.9: 	B
+<li>	78 - 81.9:	B-
+<li>	74 - 77.9:	C+
+<li>	70 - 73.9:	C
+<li>	66 - 69.9:	C-
+<li>	60 - 65.9:	D
+<li>	0 - 59.9:	F
+-->
+
+</dir>
+
+<p>
+<!-- This class follows the binding Code of Honor at Notre Dame. The graded work you do in this class must be your own. In the case where you collaborate with other students make sure to fairly attribute their contribution to your project.
+You must read and abide by the Student Code.  <a href=https://studentcode.illinois.edu>https://studentcode.illinois.edu</a> -->
+The iSchool has the responsibility for maintaining academic integrity so as to protect the quality of education and research in our school and to protect those who depend on our integrity. Consequences of academic integrity infractions may be serious, ranging from a written warning to a failing grade for the course or dismissal from the University.
+See the student code for academic integrity requirements: <a href=http://studentcode.illinois.edu/article1/part4/1-401/> http://studentcode.illinois.edu/article1/part4/1-401/</a>
+
+
+<h2><a href=project/project.html> Course Project</a> </h2>
+
+<dir>
+<li>	
+The project will be chosen by each group within the first couple of weeks of class.  Here are <a href=project/project.html> <b> some ideas </b> </a> to help you get started. Groups are encouraged to come up with their own ideas. If you have some really cool idea that does not satisfy such restriction, please schedule a meeting to discuss it with the instructor. <b> Project title, abstract, and member list are due on Noon, Sep. 3.</b> 
+<p>
+
+<!-- The <b> only restriction of the project </b> is that it should use online social media data (e.g., Twitter, Flickr, Foursquare, Facebook, etc.) to solve some interesting problem in social sensing.-->
+
+<li>	
+Each group will schedule a regular meeting (during project meeting slots and office hours) to meet with the instructor and discuss the progress and problems encountered on their projects. 
+<p>
+ 
+<li> 
+Each group will prepare and submit a two page project proposal. The proposal should include an overview of the project (preferably with a diagram), a brief review of state-of-the-arts in related fields, the proposed method/solution, a credible set of initial project results if available, a list of further proposed milestones, and a plan of action for the rest of the semester. <b> The proposal is due on Noon, Oct. 1. </b>
+<p>
+
+
+
+<li> 
+Each group is responsible for <b> a Mid-term Project Presentation in class starting from Oct. 18. </b> The presentation will allow the instructor and classmates to comment on the initial results and current state of the project and also give constructive feedback to the group members. 
+<p>
+
+
+<li> 
+Each group will prepare and submit a three page mid-term project report. The mid-term report should include a reasonable amount of preliminary results, a description of finished milestones, a discussion of encountered problems and relevant solutions, and any modifications to the plan (if there are) to finish the remaining tasks. <b> The mid-term report is due on Noon, Oct. 22.</b> 
+<p>
+ 
+<li>
+<b> Final project presentations </b> will be conducted by each group in <b>the week of Dec. 13.</b>
+<p>
+ 
+<li> 
+Each group will prepare and submit a final project paper. The final project paper is a comprehensive summary of the whole project and should follow a technical paper writing style. The expected number of pages for the final paper is 5 to 8 pages (including references). <b> Final project paper is due on Noon, Dec. 17.</b>
+<p>
+
+<li>
+The proposal, mid-term report and final project paper should all follow a <b> standard technical paper format </b>. Here is the template: <a href="http://www.ieee.org/conferences_events/conferences/publishing/templates.html"> IEEE Latex or Word Template </a>. 
+<p>
+
+<li> 
+A successful project could result in a conference or journal quality paper.
+<p>
+
+
+</dir>
+<b> Note </b>: For more information about the project (e.g., possible ideas and milestones), please visit <a href=project/project.html> <b> Course Project Page </b> </a><br> 
+
+<p>
+You are encouraged to seek out and exploit external manuals, books, websites, and other documentation that can help you to complete your project, provided that you indicate what sources you have used. However, all software development, experimental work, and writing of the proposal, report and paper must be done solely by you and your project partner(s).
 <br>
-University of Illinois Urbana-Champaign
 <br>
-Tel: +1-217-244-6412
+
+</dir>
+<b> <i>Project Documents Submission Instruction: </i> To submit the project related documents (i.e., abstract, proposal, midterm/final presentation slides and reports), please (1) <u> email the document (i.e., pdf for text documents and pptx/pdf for slides) directly to Prof. Wang before the deadline; </u> (2) upload a copy of the submission to Canvas as a backup. One submission per group is sufficient. </b> </a><br>
+
+
+</dir>
+
+
+
+
+
+<h2>Assignments</h2>
+
+<p>
+ Assignments are normally due at the <b> beginning  of class on the date due </b>. This might change due to the break (e.g., Fall Break). Please double check with the assignment description and the course website for the actual due date. Late assignments will receive no credit. This includes assignments submitted after class has begun. 
+
+<p>
+ <!-- Programming assignments will be turned in electronically by copying all required files to a "dropbox" directory. You are free to turn in assignments multiple times before the deadline expires. It would be a good habit to turn in an incomplete but working assignment on a daily basis. Thus, there is no excuse for failing to turn in an assignment: everyone should turn in something long before the deadline. Exceptions will be made only in grave circumstances. -->
+ Programming assignments will be turned in electronically by uploading all required files to Canvas. You are free to turn in assignments multiple times before the deadline expires. It would be a good habit to turn in an incomplete but working assignment on a daily basis. Thus, there is no excuse for failing to turn in an assignment: everyone should turn in something long before the deadline. Exceptions will be made only in grave circumstances.
+
+
+<dir>
+
+<!--
+
+<li> <a href= ./assignments/A1/Assignment1_SocialSensing.html> Assignment 1: Build your own Twitter data crawler </a>	
+<li> <a href= ./assignments/A2/Assignment2_SocialSensing.html> Assignment 2: Tweets Sentiment Analysis</a>
+<li> <a href= ./assignments/A3/Assignment3_SocialSensing.html> Assignment 3: Tweets Clustering</a>		
+
+-->
+
+<!-- <li>	
+<a href= http://www3.nd.edu/~dwang5/courses/spring20/assignments/A1/Assignment1_SocialSensing.html> Assignment 1: Build your own Twitter data crawler </a>	
+
+
+
+<li> <a href= http://www3.nd.edu/~dwang5/courses/spring20/assignments/A2/Assignment2_SocialSensing.html> Assignment 2: Tweets Clustering</a>	
+
+
+	
+<li> <a href= http://www3.nd.edu/~dwang5/courses/spring20/assignments/A3/Assignment3_SocialSensing.html> Assignment 3: Truth Discovery and Credibility Analysis for Twitter</a>		
+ -->
+
+<p>
+
+
+
+</dir>
+
+
+<!--
+<h2><a href=presentation/presentations-paper.html>In-class Paper Presentation</a></h2>
+-->
+
+<h2>In-class Paper Presentation</h2>
+<dir>
+<li> Each group will do an in-class paper presentation to present a selected technical paper in the second half of the semester.
+
+<li> Detailed instructions will come soon.</a> </b> <br>
+
+
+
+
+<!--
+<p>
+<li> The in-class paper presentation will provide good opportunities for you to exercise your scientific presentation ability, practice critical thinking, understand how to judge and challenge other's work in a professional way, and learn how to organize and lead an active scientific/technical discussion session.
+<p>	
+-->
+
+<!--
+
+<li> Detailed instructions are available <a href= http://www3.nd.edu/~dwang5/courses/spring20/presentation/presentations-paper.html>here</a> </b> <br>
+-->
+
+
+
+
+</dir>
+
+
+
+<h2>Tentative Schedule</h2>
+<b> Note: </b> Lecture notes are avaliable on <a href=https://canvas.illinois.edu/courses/7248/modules><b>Canvas</b></a>.
+<table valign=top border=1>
+<tr>
+<td><b>Week</b>
+<td>Lecture
+<td><b>Materials</b>
+<tr>
+
+<td> Aug. 23 & Aug. 30
+<td> Social Sensing and Cyber-Physical Systems Landscape
+<td>
+Reading: <br>
+<a href=papers/intro/socialsense.pdf>Introduction to Social Sensing</a><br>
+<a href=papers/intro/cps-raj.pdf>Cyber-Physical Systems: The Next Computing Revolution</a><br>
+<b>Project Title, Abstract and Member List Due Friday, Sep. 3. (<a href="https://forms.gle/DSNWvJNXBZJLhXMi9">Group Signup Form</a>)</b> <br>
+<!-- <b>  <a href=./assignments/A1/Assignment1_SocialSensing.html> Assignment 1 </a> is out, due: Sep. 20</b> <br> -->
+
+
+<tr>
+<td> Sep. 6
+<td> Classical CPS Challenges
+<td>
+Reading: <br>
+<a href=papers/real-time/liu73.pdf>Liu and Layland Seminal Paper</a><br>
+<a href=papers/real-time/pip.pdf>Priority Inheritance Protocols</a><br>
+<a href=papers/real-time/survey.pdf>A Comprehensive Suervey on Real-time Scheduling Theory</a><br>
+<!-- <b>Project Title, Abstract and Member List Due Friday, Sep. 3.</b> <br> -->
+
+
+<tr>
+<td> Sep. 13
+<td> Classical CPS Challenges and Data Reliability
+<td>
+Reading: <br>
+<a href=papers/truth-discovery/ipsn12.pdf>Truth Discovery in Social Sensing</a><br>
+<a href=papers/truth-discovery/jsac13.pdf>Quantifying the Quality of Information</a><br>
+<a href=papers/truth-discovery/ipsn14.pdf>Using Humans as Sensors</a><br>
+
+
+<!-- <b><a href=./assignments/A2/Assignment2_SocialSensing.html> Assignment 2 </a> is out, due: Oct. 4</b> <br> -->
+
+
+<tr>
+<td> Sep. 20
+<td> Project Kick-off Meetings
+<td>
+	<!--
+Please sign up your meeting slot on <a href=https://doodle.com/poll/tw4qpmckwezh5crk> Doodle </a><br> [TO BE UPDATED]
+-->
+
+
+<tr>
+<td> Sep. 27
+<td> Data Reliability and Information Overload Cont.
+<td>
+Reading: <br>
+<a href=papers/truth-discovery/rtss13.pdf>Exploitation of Physical Constraints</a><br>
+<a href=papers/truth-discovery/tosn14.pdf>Handling Conflicting Claims</a><br>
+<a href=papers/truth-discovery/jstsp14.pdf>Provenance-Assisted Social Signal Classification</a><br>
+<b>Project Proposal Due Friday, Noon, Oct. 1.</b><br>
+
+
+<!-- <b><a href=./assignments/A3/Assignment3_SocialSensing.html> Assignment 3 </a> is out, due: Oct. 15</b> <br> -->
+
+
+
+
+<!--
+<b>Assignment 3 is out, due: March 4</b> <br>	
+-->
+
+
+<tr>
+<td> Oct. 4
+<td> Data Reliability and Online Social Media Sensing
+<td>
+Reading: 
 <br>
-Email: dwang24 at illinois dot edu
+<a href=papers/media-sensing/twitter-earthquake.pdf>Earthquake Shakes Twitter Users</a><br>
+<a href=papers/media-sensing/tweets-to-polls.pdf>From Tweets to Polls</a><br>
+<a href=papers/media-sensing/twitter-geolocation.pdf>You Are Where You Tweet</a><br>
+<a href=papers/media-sensing/twitter-duplicate.pdf>Groundhog Day: Near-Duplicate Detection on Twitter</a><br>
+
+
+
+
+
+
+
+<tr>
+<td> Oct. 11
+<td>
+Project Mid-term Meetings
+<td>
+	<!--
+Please sign up your meeting slot on <a href=https://doodle.com/poll/nn98rccbb2mutr28> Doodle </a><br> [TO BE UPDATED]
+-->
+
+
+<!-- 
+
+<tr>
+<td>March 9-22
+<td>Spring Break
+<td>	
+ -->
+
+<tr>
+<td> Oct. 18
+<td> Mid-term Project Presentations
+<td>
+<b>	
+Mid-term Project Presentation	
+<!-- <a href= ./presentation/presentations-mid.html>Mid-term Project Presentation</a>  -->
+</b> <br>	
+
+<b>Project Mid-term Report Due Friday, Noon, Oct. 22</b> <br>
+
+
+
+<tr>
+<td> Oct. 25
+<td> Online Social Media Sensing and Big Data Issues 
+<td>
+Reading: <br>
+
+<a href=papers/big-data/Bigtable.pdf>Big Table Paper</a><br>
+<a href=papers/big-data/Mapreduce.pdf>Map-Reduce Paper</a><br>
+<a href=papers/big-data/DataCubeGray.pdf>Data Cube Paper</a><br>
+
+
+
+<tr>
+<td> Nov. 1
+<td> Crowdsensing and Mobile Sensing
+<td>
+Reading: <br>
+
+<a href=papers/crowd-sensing/mcs-survey.pdf>A Survey of Mobile Sensing</a><br>
+<a href=papers/crowd-sensing/bus-predict-mobysis12.pdf>How Long to Wait: Bus Arrival Time Prediction</a><br>
+<a href=papers/crowd-sensing/csp-ubicom12best.pdf>Automatically Characterizing Places</a><br>
+
+
+<!--
+<tr>
+<td>March 30
+<td> Guest Lectures  
+<td> 
+	
+<a href=presentation/guest-lecture1.txt>Remote Sensing</a>, Prof. Marc Muller <br>
+<a href=presentation/guest-lecture2.txt>The Revolution Driven by Sensing: Possible Impacts on Security and Privacy</a>, Prof. Taeho Jung<br>
+
+Reading: <br>
+<a href=papers/guest/p1.pdf>Impact of the Syrian refugee crisis on land use and transboundary freshwater resources</a><br>
+<a href=papers/guest/p2.pdf>Combining satellite imagery and machine learning to predict poverty</a><br>
+-->
+
+
+<!--
+<tr>
+<td>March 29
+<td>  Energy Issues 
+<td>
+Reading:  <br>
+<a href=papers/energy/mPlatform.pdf>mPlatform: Energy-Optimal Scheduling and Data Processing</a><br>
+<a href=papers/energy/ACE.pdf>ACE: Energy-Efficient Conntinous Context Sensing</a><br>
+<a href=papers/energy/Smartthermostat.pdf>Smart Thermostat: Save Energy in Homes</a><br>
+<a href=papers/energy/BuildingAudit.pdf>Wireless Buidling Eenergy Auditing Network</a><br>
+-->
+
+
+
+
+
+<tr>
+<td> Nov. 8 
+<!-- April 13 (Mon): Easter Holiday <br>	 -->
+<td> Automotive Sensing and Intelligent Transportation <br>
+<td>
+Reading: <br>
+<a href=papers/auto-sensing/GreenGPS.pdf>GreenGPS: A Participatory Sensing Fuel-Efficient Maps Application</a><br>
+<a href=papers/auto-sensing/SignalGuru.pdf>SignalGuru: A Collaborative Traffic Signal Schedule Advisory Service</a><br>
+<a href=papers/auto-sensing/CarSpeak.pdf>CarSpeak: A Content-Centric Network for Autonomous Driving</a><br>
+	<!--
+Guest Lecture (April 19, Wed): <br>  
+<a href=presentation/guest-lecture.txt> Principled Structure Discovery from Networks </a>, Prof. Tim Weninger 
+-->
+
+<!--
+Lecture on April 19 Thursday will be canceled due to Prof. Wang's trip to <br>
+<a href=http://www.cpsweek.org/2017/> CPS Week 2017 </a>, please use it to prepare your in-class paper presentation <br>
+and final project presentation.
+-->
+
+
+<tr>
+<td> Nov. 15
+<td> Medical Sensing, Privacy or Open Issues <br> (Students In-class Presentation)
+<td> 	
+
+<b>
+	In-class Paper Presentation
+	<!-- <a href= ./presentation/presentations-paper.html>In-class Paper Presentation</a>  -->
 </b>
-</div></p>
-
-</div>
-
-
-<div class ="row">
-
-
-<div class ="col-md-12">
-<p style="font-size:22px;  margin-top:10px !important">  I am always looking for highly motivated students. If you are interested in working with me after reading my research profile and recent publications, please feel free to drop me an email with your CV. </p>
-</div>
 <br>
-
-</div>
-
-<div class ="row">
-
-<div id="midnav" class ="col-md-12">
-<ul class="nav justify-content-center" >
-  <li class="nav-item">
-    <a class="nav-link" href="./index.html" style="color:black !important; text-decoration: none !important;"> <i class="fa fa-home fa-2x"></i>  <h1 style="display: inline; text-decoration: underline !important"> Home </h1></a> 
-  </li>
-
-
-
-
-  <li class="nav-item">
-    <a class="nav-link" href="./sslab/index.html" style="color:black !important; text-decoration: none !important;"> <i class="fa fa-users fa-2x"></i> <h1 class = "navedit" style="display: inline; text-decoration: underline !important"> Social Sensing Lab</h1></a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="./publication.html" style="color:black !important; text-decoration: none !important;"> <i class="fa fa-book fa-2x"></i> <h1 style="display: inline; text-decoration: underline !important;"> Publications </h1></a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="./teach.html" style="color:black !important;   text-decoration: none !important">  <i class="fa fa-glasses fa-2x"></i> <h1 style="display: inline; text-decoration: underline !important"> Teaching & Services </h1></a>
-  </li>
-
-  <li class="nav-item">
-    <a class="nav-link" href="https://scholar.google.com/citations?user=-NfMhb0AAAAJ&hl=en" target="_blank" style="color:black !important;   text-decoration: none !important">  <i class="fa fa-graduation-cap fa-2x"></i> <h1 style="display: inline; text-decoration: underline !important"> Google Scholar </h1></a>
-  </li>
-
-  
-</ul>
-</div>
-</div>
-
-<br>
-
- <h1>Biography</h1> 
-
-<p style="font-size:22px;">I am an associate professor with tenure  in the <a href="https://ischool.illinois.edu/" target="_blank">School of Information Sciences</a> at the <a href="https://illinois.edu/" target="_blank"> University of Illinois Urbana-Champaign (UIUC)</a>. I received my Ph.D. degree in <a href="https://cs.illinois.edu/" target="_blank">  Computer Science </a> at UIUC. I am also affiliated with the <a href="https://informatics.ischool.illinois.edu/" target="_blank">  Illinois Informatics </a> at UIUC.
-
- <!-- I got my Master's degree in Electrical Engineering from <a href="http://english.pku.edu.cn/" target="_blank">Peking University (PKU)</a>, 
-  and Bachelor degree in Electrical Engineering from <a href="http://www.oice.uestc.edu.cn/en/" target="_blank"> University of Electronic Science and Technology of China (UESTC)</a>.
--->
-  
-</p>
-
-<hr />
- <h1>Research Interests</h1> 
-
-
-<ul style="font-size:22px;">
-
-    <li>
-    Social Sensing, Human-Centered AI 
-  </li>  <p>
-
-  <li>
-    Big Data Analytics, Reliable Information Distillation Systems
-  </li>  <p>
-
-  <li>
-    Human-Cyber-Physical Systems, Smart Cities, Internet of Things/Everything (IoT/IoE)
-  </li>  <p>
-
 <!--
-  
-   <li>
-    Network Science, Online Social Networks, Trust and Credibility Analysis 
-  </li>  <p>
+
+Reading:  <br>
+Medical Sensing: <br>
+<a href=papers/medical/p1.pdf>Detecting Cocaine Use with Wearable Electrocardiogram Sensors</a><br>
+<a href=papers/medical/p2.pdf>Sensor Selection for Energy-Efficient Ambulatory Medical Monitoring</a><br>
+<a href=papers/medical/p3.pdf>Real-time Clinical Monitoring and Deterioration Warning</a><br>
+<a href=papers/medical/p4.pdf>Context-Aware Assisted-Living and Residential Monitoring</a><br>
+<a href=papers/medical/p5.pdf>Cyber-Physical Modeling of Implantable Cardiac Medical Devices</a><br>
+<a href=papers/medical/p6.pdf>BiliCam: Using Mobile Phones to Monitor Newborn Jaundice</a><br>
+<a href=papers/medical/p7.pdf>Contactless Sleep Apnea Detection on Smartphones</a><br>
+<a href=papers/medical/p8.pdf>MyHealthAssistant: An Event-driven Middleware for Multiple Medical Applications on a Smartphone-Mediated Body Sensor Network</a><br>
+<a href=papers/medical/p9.pdf>SADHealth: A Personal Mobile Sensing System for
+Seasonal Health Monitoring</a><br>
+<a href=papers/medical/p10.pdf>Recognizing Academic Performance, Sleep Quality, Stress Level, and Mental Health using Personality Traits, Wearable Sensors and Mobile Phones</a><br>
+
+Privacy: <br>
+<a href=papers/privacy/p1.pdf>ProtectMyPrivacy: Detecting and Mitigating Privacy Leaks on iOS Devices</a><br>
+<a href=papers/privacy/p2.pdf>Cloud-Enabled Privacy-Preserving Collaborative Learning for Mobile Sensing</a><br>
+<a href=papers/privacy/p3.pdf>Understanding Users' Mental Models of Mobile App Privacy through Crowdsourcing</a><br>
+<a href=papers/privacy/p4.pdf>Privacy Manipulation and Acclimation in a Location Sharing Application</a><br>
+<a href=papers/privacy/p5.pdf>Privacy-aware Regression Modeling of Participatory Sensing Data</a><br>
+<a href=papers/privacy/p6.pdf>Privacy.Tag: Privacy Concern Expressed and Respected</a><br>
+<a href=papers/privacy/p7.pdf>Privacy-Preserving Compressive Sensing for Crowdsensing based Trajectory Recovery</a><br>
+<a href=papers/privacy/p8.pdf>A Privacy-Preserving Vehicular Crowdsensing-Based Road Surface Condition Monitoring System Using Fog Computing</a><br>
+<a href=papers/privacy/p9.pdf>Location Privacy-Preserving Task Allocation for Mobile Crowdsensing with Differential Geo-Obfuscation</a><br>
+<a href=papers/privacy/p10.pdf>AnonySense: Privacy-Aware People-Centric Sensing</a><br>
+<a href=papers/privacy/p11.pdf>Is This Thing On?</a><br>
+
 -->
 
-</ul>
+<tr>
+<td> Nov. 22
+<td> Fall Break
+<td>	
 
+<tr>
+<td> Dec. 6
+<td> Body-Area Sensor Network <br>
 
-
-</p>
-
-<hr />
-<h1>Honors and Awards</h1>
-
-<ul style="font-size:22px; line-height:36px">
-
-
-  <li>
-      NSF CAREER Award: Fall 2019
-      </li>
-
-  <li>
-      Google Faculty Research Award: Spring 2018
-      </li>
-
-  <li>
-      ARO Young Investigator Program Award (YIP): Fall 2017
-  </li>
-
-  <li> NSF CISE Research Initiation Initiative (CRII) Award: Spring 2016
-    </li>
-
-  <li>
-      Wing Kai Cheng Fellowship:  University of Illinois at Urbana Champaign: Fall 2012
-  </li>
-
-  <li>
-      Best Paper Award:  16th IEEE Real-Time and Embedded Technology and Applications Symposium (RTAS): Spring 2010 
-  </li>
-  <!--
-  <li>
-    Graduate Research Elite Award:  Peking University: April 2007 
-  </li>
-
-  <li>
-    Outstanding EECS Graduate Research Award:  Peking University: July 2007 
-  </li>
-  <li>
-    <strong>Graduate Innovative Research Award</strong>:  Peking University: October 2006 
-  </li>
-    
-  <li>
-    <strong>Outstanding Student Award</strong>:  Peking University: 2005-2006 
-  </li>
-  <li>
-    <strong>Peking University May Fourth Scholarship</strong>:  Peking University: 2004-2005
-  </li>
-
-  <li>
-    <strong>Outstanding Graduate Award</strong>:  Sichuan Province, China: July 2004 
-  </li>
-  <li>
-    <strong>Excellent Bachelor Thesis of UESTC</strong>:  June 2004 
-  </li>
-  <li>
-    <strong>Exceptional Outstanding Graduate Award</strong>:  UESTC: 2003-2004
-  </li>
-  <li>
-    <strong>UESTC Exceptional Outstanding Scholarship</strong>:  UESTC: 2001, 2002, 2003
-  </li>
-  <li>
-    <strong>First Prize in National College English Contest of China</strong>:  December 2002 
-  </li>
+<td>
+Reading:  <br>
+<a href=papers/bsn/BSNOverview.pdf>Body Sensor Networks (BSN) </a><br>
+<!-- <a href=papers/bsn/BikeCalorie.pdf>Accurate Caloric Expenditure of Bicyclists using Cellphones</a><br>
+<a href=papers/bsn/RadioSense.pdf>RadioSense: ExploitingWireless Communication Patterns for BSN</a><br>
 -->
-</ul>
+<a href=papers/bsn/BodyScope.pdf> BodyScope: A Wearable Acoustic Sensor for Activity Recognition</a><br>
+<!--
+Please sign up your meeting slot for Pre-Final Project Meetings on <a href=https://doodle.com/poll/a8ps5z258cztabxn> Doodle </a><br>
+-->
 
-</div>
 
-</body>
-</html>
+
+
+
+
+
+
+
+
+<tr>
+<td> Dec. 13
+<td> Final Project Presentations
+<td>
+	
+<b> 
+	Final Project Presentation
+	<!-- <a href= ./presentation/presentations-final.html>Final Project Presentation</a>  -->
+</b> <br>
+<b>Final Project Paper Due Monday, Noon, Dec 17</b>
+
+
+</table>
+</center>
+
+<p>
+
 
