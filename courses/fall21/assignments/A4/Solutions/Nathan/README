@@ -1,9 +1,0 @@
-The following executables are used:
-
-truth.py [SCMATRIX]
-
-    Performs EM on sensing matrix to discover true claims.
-
-convert.py
-
-    Converts the file Cluster_Result_Tweetsid.txt into input for truth.py

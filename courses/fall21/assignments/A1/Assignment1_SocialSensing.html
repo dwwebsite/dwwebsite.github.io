@@ -24,14 +24,14 @@ Twitter is an online social networking/media site that allows users to send and 
 
 <p>
 In this assignment, you will learn how to collect different types of data from Twitter
-by using an open source library called <i> Tweepy </i> in order to build your own Twitter data crawler. Since Twitter has an <a href=https://support.twitter.com/articles/160385-twitter-api-limits> IP based rate limit policy,</a> please use your <b> own computer </b> to finish this assignment. If you have a problem in finding a machine to finish the assignment, please contact the instructor.
+by using an open-source library called <i> Tweepy </i> in order to build your own Twitter data crawler. Since Twitter has an <a href=https://support.twitter.com/articles/160385-twitter-api-limits> IP based rate limit policy,</a> please use your <b> own computer </b> to finish this assignment. If you have a problem in finding a machine to finish the assignment, please contact the instructor.
 
 
 <h2>Objectives:</h2>
 <dir>
 <li> Build a crawler that collects a user's profile information from Twitter given the user's Twitter ID.
 <li> Build a crawler that collects a user's social network information given the user's ID.
-<li> Build a crawler that collects the tweets using a set of specified keywords and a geolocation based criteria.
+<li> Build a crawler that collects the tweets using a set of specified keywords and a geolocation-based criterion.
 </dir>
 
 <h2>Introduction to Open Authentication (OAuth):</h2>
@@ -44,7 +44,7 @@ Here is the reference for more details about OAuth: <a href=https://dev.twitter.
 
 <p>
 The authentication of API requests on Twitter is done through OAuth. Note that Twitter APIs can only be accessed
-by registered <i> applications </i> (e.g., the crawlers you will develop in this assignment). In order to register your application, you first need to have a Twitter account. If you already have one, you can just use it. If not, you can go ahead and create an account at <a href=https://twitter.com/> Twitter.</a>  After that, you need to bind your Twitter account with the application you registered (i.e., crawlers). Once you finish the binding process, you will get the keys and tokens (i.e., a pair of consumer key and consumer secret and a pair of access token and access token secret) for your application. 
+by registered <i> applications </i> (e.g., the crawlers you will develop in this assignment). In order to register your application, you first need to have a Twitter account. If you already have one, you can just use it. If not, you can go ahead and create an account on <a href=https://twitter.com/> Twitter.</a>  After that, you need to bind your Twitter account with the application you registered (i.e., crawlers). Once you finish the binding process, you will get the keys and tokens (i.e., a pair of consumer key and consumer secret and a pair of access token and access token secret) for your application. 
 
 <p>
 Here are the main steps for the above registration and binding process:
@@ -54,7 +54,7 @@ Here are the main steps for the above registration and binding process:
 <li>Register your application to Twitter and get the consumer keys:	
 
 <dir>
-<li> Go to <a href=https://apps.twitter.com/>https://apps.twitter.com/</a>, apply for a developer's account, and register a new application to Twitter for this assignment. You can pick a name at your choice for the application. For Website URL, you can either use your own homepage or simply type http://IP address of your machine.
+<li> Go to <a href=https://apps.twitter.com/>https://apps.twitter.com/</a>, apply for a developer's account, and register a new application to Twitter for this assignment. You can pick a name of your choice for the application. For website URL, you can either use your own homepage or simply type http://IP address of your machine.
 
 <li> Fill in all required fields, accept the Developer Agreement, solve the CAPTCHA and submit the form.
 <li> Obtain the consumer key (API key) and consumer secret from the screen and use them in your application (i.e., crawlers).
@@ -129,7 +129,7 @@ $ python setup.py install
 <h2>Exercises:</h2>
 <ol>
 <li> <b> Collecting user's profile information: </b> <br>
-Users create profiles to describe themselves on Twitter. User profiles provide a rich source of information to study the Twitter users.<br>
+Users create profiles to describe themselves on Twitter. User profiles provide a rich source of information to study Twitter users.<br>
 
 <!-- The following is a snapshot of a user's profile information (the user ID is 13334762). <br><br> -->
 <!--<tt><img src="example_profile.png"width="250" height="125"></tt> <p>!-->
@@ -151,11 +151,11 @@ Screen Name: iSchoolUI
 User Name: iSchool at Illinois
 User Location: Champaign, IL
 User Description: The School of Information Sciences at the University of Illinois Urbana-Champaign
-| The Power of Information | http://ischool.illinois.edu | #iSchoolUI
+| The Power of Information | https://t.co/UTls1Hlggg | #iSchoolUI
 Number of Followers: 4492
 Number of Friends: 1158
 Number of Statuses: 8345
-User URL: https://twitter.com/iSchoolUI
+User URL: https://t.co/YUWpBWGCpj
 </pre>
 
 <b>Task 1</b> :<br>
@@ -256,9 +256,9 @@ Note: In the result files, you only need to record the text part of the tweet in
 
 <b>Notes:</b> 
 <dir>
-<li> For the above three tasks, you can either submit a single script file that finishes all three tasks altogether or three individual script files that finish task 1-3 respectively.  
+<li> For the above three tasks, you can either submit a single script file that finishes all three tasks altogether or three individual script files that finish task 1-3, respectively.  
 <li> Please submit a README file and describe in this file: 1) how to run your source code; 2) the Python version you used to test your code.
-<li> If you do not feel comfortable to submit your token, key and secrete (due to privacy concern), please leave them blank in your code and <b>make a comment in your code and README</b>. We will use ours to grade your code. 
+<li> If you do not feel comfortable to submit your token, key and secrete (due to privacy concerns), please leave them blank in your code and <b>make a comment in your code and README</b>. We will use ours to grade your code. 
 </dir>
 
 <h2>Where to Turn In:</h2>
@@ -267,7 +267,7 @@ Upload your work in a .zip or .tar.gz file to Canvas under Assignments/Assignmen
 
 <h2>Deadline:</h2>
 
-<b> This assignment is due at the beginning of class on Monday, Sep. 20. </b> <br><br>
+<b> This assignment is due at the beginning of class on Monday, Sep. 13. </b> <br><br>
 
 
 <!-- <h2>Grading Rubric</h2>
