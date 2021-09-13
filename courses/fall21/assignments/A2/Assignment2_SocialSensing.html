@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<style type="text/css">
+pre {
+        background: #ccccff;
+        border: 1px solid black;
+        padding: 10px 10px 10px 10px;
+        font: courier;
+        white-space: pre;
+}
+</style>
+<html>
+<head>
+  <title>Assignment 2: Tweet Sentiment Analysis</title>
+</head>
+
+
+<a href=../../index.html>IS 596</a>  / <a href=./Assignment2_SocialSensing.html>A2</a>
+
+
+
+<body>
+<h2>Assignment 2: Tweet Sentiment Analysis</h2>
+Sentiment analysis (or opinion mining) is a fundamental text mining technique in natural language processing that aims to computationally identify people's opinions, sentiments or emotions from textual data. Sentiment analysis has a wide range of real-world applications, such as product review monitoring, disease breakouts, and stock price prediction. 
+
+<br>
+<br>
+In this assignment, you will learn how to build your own sentiment analysis tool for social sensing applications and use it to determine a tweet's sentiment. 
+
+
+
+<h2>Objectives:</h2>
+<dir>
+<li> Extract features from tweets using TF-IDF measurement.
+<li> Train a logistic regression classification model to predict the sentiment of a tweet using the TF-IDF-based features.
+</dir>
+
+
+<b>Note:</b> This programming assignment requires Python <b>3.6 or later</b>*. You can download Python from <a href=https://www.python.org/downloads/>Python Download</a> and find more information about Python from <a href=https://www.python.org/>www.python.org</a>.
+<br><br>
+* If you use other versions of Python (i.e., other than 3.6), please make sure your code runs correctly and specify the version number of your Python in the README file you turn in.
+
+
+
+<h2>Introduction to Sentiment Analysis:</h2>
+Sentiment in social sensing is an estimate of the emotion/attitude expressed by human sensors in a piece of text (e.g., tweet) they generate. Recent advances in machine learning have greatly facilitated the performance of sentiment analysis in classifying sentiments with quantitative features of the documents.
+<br><br>
+
+
+In this assignment, we assume a simplified version of sentiment analysis which predicts the binary sentiment (i.e., positive or negative) of a given tweet. In particular, you will train a logistic regression classifier using the TF-IDF statistics computed from the raw text of the tweet. In real-world applications, sentiment is often categorized into more fine-grained classes for various purposes (e.g., intent prediction, emotion detection). More information about sentiment analysis can be found <a href="https://en.wikipedia.org/wiki/Sentiment_analysis">here</a>.
+
+
+<!-- In this assignment, we will focus on predicting the binary sentiment (i.e., positive or negative) of a given tweet by training a machine learning classifier using the TF-IDF statistics computed from the raw text of the tweet.  -->
+
+
+
+
+
+<h2>Introduction to TF-IDF:</h2>
+Term Frequency - Inverse Document Frequency (TF-IDF) is an effective technique for quantifying the importance of a word in a text document. TF-IDF is measured as a product of term frequency (i.e., tf(t,d)) and inverse document frequency (i.e., idf(t,D)). In particular, the term frequency is the frequency of term t (e.g., a word) in document d (e.g., a tweet), and is defined as: 
+<br>
+<tt><img src="eq1.jpg"width="150" height="60"></tt>
+<br>
+where f<sub>t,d</sub> is the number of times that term t occurs in document d. 
+
+Inverse document frequency is a measure of how much information the term provides across all documents. Formally, inverse document frequency is defined as:
+<br>
+<tt><img src="eq2.jpg"width="220" height="60"></tt>
+<br>
+where N is the total number of documents, |{d &isin; D: t &isin; d}| is the number of documents where the term t appears. (Note: To avoid division-by-zero issue caused by out-of-vocabulary terms, it is common to adjust the denominator in idf(t, D) to 1+|{d &isin; D: t &isin; d}|.) Intuitively, a high weight in TF-IDF means a high term frequency (in the given document) and a low document frequency of the term in the whole collection of documents. 
+<br>
+<br>
+More information about TF-IDF can be found <a href=https://en.wikipedia.org/wiki/Tf%E2%80%93idf>here</a>.
+
+
+
+
+<h2>TF-IDF Representation of Tweets:</h2>
+
+A collection of raw documents (e.g., tweets) can be converted to a matrix of TF-IDF features (denoted as TF-IDF representation). For example, suppose we have two short documents:
+<br>
+<br>
+<i>
+	documentA = 'the man went out for a walk'<br>
+	documentB = 'the children sat around the fire'
+</i>
+<br>
+<br>
+The frequency of each term is shown as follows:
+<br>
+<tt><img src="example1.jpg"width="600" height="110"></tt>
+<br>
+
+After computing the TF-IDF score of each term in the corpus, the two documents can be represented in a fixed-length vector as below. 
+
+<br>
+<tt><img src="example2.jpg"width="600" height="110"></tt>
+<br>
+
+
+<h2>Logistic Regression:</h2>
+
+Logistic regression is a basic machine learning algorithm that is used to predict the probability (between 0 and 1) of a target categorical variable (e.g., the sentiment of a tweet). More information about logistic regression can be found <a href="https://en.wikipedia.org/wiki/Logistic_regression">here</a>.
+
+
+<br><br>
+In this assignment, you will be asked to use the fixed-length TF-IDF representation of a set of tweets as the model input to fit a logistic regression classifier. The fitted classifier can then be used to predict the binary sentiment (i.e., positive or negative) of a tweet. 
+
+
+<br><br>
+More details on how to fit a binary logistic regression classifier using scikit-learn can be found <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html">here</a>.
+
+
+<h2>Exercises:</h2>
+
+In this assignment, we provide a Twitter dataset of 10000 tweets (<a href='./data.zip'>download</a>). The dataset has been split into a  <b>training set</b> (tweets_train.csv) for model fitting, a <b>validation set</b> (tweets_validation.csv) for model validation and hyperparameter tuning, and a <b>testing set</b> (tweets_test.csv) for final model evaluation. Both the training and validation sets contain the ground-truth label of the binary sentiment of each tweet. You will train a logistic regression classifier based on the ground-truth labels and submit your prediction results on the testing set. (More information about training/validation/testing sets can be found <a href="https://en.wikipedia.org/wiki/Training,_validation,_and_test_sets">here</a>.)
+
+<br><br>
+In particular, you will need to:
+<dir>
+<ol>
+<li>Implement a function to compute the TF-IDF score of each term in the training set. (Note: you may also need to pre-process the raw tweets by lowercasing the text, removing stop words/numbers/mentions/URLs/special characters, lemmatizing words.)</li>
+
+<li>Implement a function to generate the TF-IDF representation of a tweet using the TF-IDF score computed above. </li>
+
+<li>Use the TF-IDF representation of each tweet to train a logistic regression classifier and predict the binary sentiment (i.e., positive or negative) of each tweet in the testing set. (Note: you may use existing libraries (e.g., scikit-learn) to normalize the TF-IDF representation and build/train your model.) </li>
+
+</ol>
+</dir>
+
+<h2>What to Turn In:</h2>
+<dir>
+<ol>
+<li>A csv file that contains the prediction results (i.e., storing your binary prediction results in the column "prediction_binary" in tweets_test.csv).</li>
+<li>The source code to finish the above tasks. </li>
+<li>A README file that contains your name & NetID, and the Python version and example commands to run your code.</li>
+</ol>
+</dir>
+
+<h2>Where to Turn In:</h2>
+
+Upload your work in a .zip or .tar.gz file to Canvas under Assignments/Assignment 2.
+
+<h2>Deadline:</h2>
+
+<b> This assignment is due at the beginning of class on Monday, Sep. 27. </b> <br><br>
+
+<!-- 
+<h2>Grading Rubric</h2>
+It is available on <a href=https://sakailogin.nd.edu/portal/site/SP20-CSE-40437-CX-01/tool/0a324e46-a5af-4109-896d-8c3949b8d947?panel=Main
+><b>Sakai/Resources/Assignments</b></a>. <br> -->
+
+</body>
+</html>
