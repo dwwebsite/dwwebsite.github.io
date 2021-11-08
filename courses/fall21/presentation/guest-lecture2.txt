@@ -1,5 +1,0 @@
-Title: The Revolution Driven by Sensing: Possible Impacts on Security and Privacy
-
-Abstract: In the guest lecture, I will introduce various security and privacy concerns emerging with the big data industry enabled by IoT, CPS, and sensing. I will introduce various revolution brought by the sensing technology, and then explain how such technology can be exploited to compromise security as well as individual privacy.
-
-Bio: Taeho Jung is an assistant professor at the University of Notre Dame. He is struggling to solve the security and privacy concerns now.
