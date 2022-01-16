@@ -1,0 +1,103 @@
+
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="GENERATOR" content="Mozilla/4.78 [en] (X11; U; SunOS 5.8 sun4u) [Netscape]">
+  <meta name="Author" content="Dong Wang"><title>Spring 2022 IS496 Student Machine Instruction</title>
+</head>
+
+<body bgcolor="#ffffff">
+ <br>
+
+<h1>Spring 2022 IS496 Student Machine Instruction</h1>
+<br>
+
+<h2>Student Machines</h2>
+
+In this course, <b>four Linux servers</b> (a.k.a. student machines) are provided for you to access remotely in order to complete the <b>programming assignments</b> (sections CN3 and CN4) and the <b>mini-project</b> (section CN4 only). The operating system of the student machines is Ubuntu 20.04 ("focal fossa"). You may connect to any of the following machines using <b>Secure Shell (SSH)</b> from the campus wired and wireless networks, using your <b>NetID and password</b>:<br><br>
+
+<code>
+student00.ischool.illinois.edu<br>
+student01.ischool.illinois.edu<br>
+student02.ischool.illinois.edu<br>
+student03.ischool.illinois.edu<br>
+</code>
+
+
+
+
+<h2>Acceptable Use</h2>
+These student machines are dedicated to the class assignments in IS 496 only. These machines should <b>not</b> be used for:
+
+<ul>
+  <li>long-running CPU-intensive programs</li>
+  <li>any program that consumes exessive memory, disk, network or interferes with other users of the system</li>
+  <li>anything that violates the law, or the <a href="https://www.ethics.uillinois.edu/compliance/university_code_of_conduct">University Code of Conduct</a></li>
+</ul>
+
+Programs that violate these guidelines may be terminated without notice, with an explanation given to the responsible user. Gross violations may result in banning the user from the system.
+If you are unable to use a machine due to interference from another program, please contact the instructor or the TA with the name of the machine and any relevant information.
+
+
+<h2>Connect to Student Machines via SSH</h2>
+
+
+<h3>From MacOS and Linux</h3>
+
+<ul>
+  <li>Open up a terminal window </li>
+  <ul>
+    <li>Mac: Applications->Utilities->Terminal.</li>
+    <li>Linux: Try Applications->Accessories->Terminal, but this may vary.</li>
+  </ul>
+  <li>Enter the command: <code style="background-color:#eee; color: black">ssh [netid]@[server name]</code> </li>
+  <li>[First-time connection only] Confirm the host authenticity if prompted.</li>
+  <li>Enter your password, and you are connected. </li>
+
+</ul>
+
+
+<h3>From Windows</h3>
+You will need an SSH client, such as <a href="https://docs.microsoft.com/en-us/windows/terminal/install">Windows Terminal</a> or <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">PuTTY</a>.  
+ 
+<ul>
+  <li>Start->All Programs->Windows Terminal/PuTTY</li>
+  <li>Enter the server name into the dialog, then click "Open".</li>
+  <li>Type in your NetiID and password as prompted, and you are good to go.</li>
+</ul>
+ 
+ 
+
+<h3>Remote access from off-campus</h3>
+To access the student machines, you will need to connect to the campus VPN. More information about the campus VPN can be found <a href="https://help.uillinois.edu/TDClient/42/UIUC/Requests/ServiceDet?ID=167">here</a>.
+
+
+<h2>Transfer Files</h2>
+<h3>From Command Line</h3>
+You may use <a href="https://en.wikipedia.org/wiki/Secure_copy_protocol">SCP (Secure Copy Protocol)</a> to securely transfer computer files between your local machine and a student server using the following command:
+
+<ul>
+  <li>From Remote to Local:</li>
+  <ul>
+    <li>File: <code style="background-color:#eee; color: black">scp [netid]@[server name]:/remote/path/to/file /local/path</code></li>
+    <li>Directory: <code style="background-color:#eee; color: black">scp -r [netid]@[server name]:/remote/path/to/directory  /local/path</code></li>
+  </ul>
+  <li>From Local to Remote:</li>
+  <ul>
+    <li>File: <code style="background-color:#eee; color: black">scp /local/path [netid]@[server name]:/remote/path/to/file </code></li>
+    <li>Directory: <code style="background-color:#eee; color: black">scp -r /local/path [netid]@[server name]:/remote/path/to/directory</code></li>
+  </ul>
+
+</ul>
+
+
+<h3>From FTP/SFTP Client</h3>
+You may also use an FTP/SFTP client (e.g., <a href="https://cyberduck.io">Cyberduck</a>, <a href="https://filezilla-project.org">FileZilla</a>) to transfer files between your local machine and the student machines. Please refer to the webpage of each FTP/SFTP client for more information about the installation and usage.   
+
+<h2>Demo</h2>
+<video width="600" height="360" controls>
+  <source src="studentmachine_demo.mp4" type="video/mp4">
+Demo video.
+</video>
+
+</body></html>
