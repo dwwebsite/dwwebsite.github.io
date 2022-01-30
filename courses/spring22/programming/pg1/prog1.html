@@ -1,0 +1,277 @@
+
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="GENERATOR" content="Mozilla/4.78 [en] (X11; U; SunOS 5.8 sun4u) [Netscape]">
+  <meta name="Author" content="Dong Wang"><title>Spring 2022 IS496 Programming Assignment 1 - Simple Secure UDP Program</title>
+</head>
+
+<body bgcolor="#ffffff">
+ <br>
+
+<h1>Spring 2022 IS496 Programming Assignment 1 - Simple Secure UDP Program</h1>
+<br>
+<b>Total Points:</b> 100 points
+<br>
+<b>Goal:</b> Refresh how to compile code, gain experience with network syscalls.<br>
+&emsp;&emsp;&nbsp; Write a simple UDP network client and server. <br>
+<font color="black"><b>Assigned:</b> January 31, 2022 </font>
+<br>
+<b>Due: <font color="red"> February  14, 2022 by the end of day (11:59 pm CST). </font> </b>
+<br>
+<font color="black"><b>Grouping:</b>  <b> <u> To be developed by a group. </u> </b></font>
+<br>
+<!-- <font color="black"><b>Programming Language:</b> C/C++ or Python 3.X or later.</font> -->
+<font color="black" style="background-color:#FFFF00"><b>Note: This instruction is based on Python. The C/C++ version is available <a href=prog1_c.html>here</a>.</b></font>
+<br>
+
+<hr>
+<h2>Background</h2>
+You will be writing a simple and secure communication protocol using UDP client and server. The program will build a UDP connection between two hosts and exchange encryption keys. The client will then send an encrypted message to the server. The server will decrypt the message and reply with the timestamp when it receives the message. You also need to compute the round-trip-time (RTT) of your message. More background information about public key encryption and socket programming is provided in the "Helpful Links" section at the end of this document. 
+
+<h2>Problem:</h2>
+
+<font color="black">
+<h3>Part 1: UDP Practice</h3>
+
+In the first part of this assignment, you are asked to build a simple UDP server and client where the server can successfully 1) establish the connection with the client, and 2) send a string (e.g., "Hello World") to the client. The finished code for Part 1 can also be used for Part 2 of this assignment. <br><br>
+
+We have provided an <b>optional</b> starter skeleton code to get you started on the right track. 
+The starter code files (i.e., udpserver.py and udpclient.py) can be downloaded from <a href=program1-files.zip>here</a>. Please refer to the "Running the programs on student machines" subsection for additional details about how to test your program on the student machines.
+
+</font>
+
+<h3>Part 2: Simple Secure UDP Program</h3>
+Write a simple UDP client that takes in:<br>
+<ul>
+<li>The <b>hostname</b> of the server (<code>argument 1</code>).</li>
+<li>The <b>port number</b> on the server (<code>argument 2</code>).</li>
+<li>The <b>text to be sent</b> (<code>argument 3</code>).  
+<!-- Note that <code>argument3</code> could be a string or a file name.  You need to handle both.</li> -->
+</ul>
+Also write a simple UDP server that takes in:<br>
+<ul>
+<li>The <b>port number</b> to listen on (<code>argument 1</code>).</li>
+</ul>
+
+<font color="black">
+<b>The library pg1lib.py (provided) contains the following methods:</b><br><br>
+<code>
+  """<br>
+  Generate and return an encryption key<br>
+  Returns:<br>
+  &nbsp; bytes: this host's encryption key<br>
+  """<br>
+  <b style="background-color:#eee">getPubKey()</b><br>
+<br>
+	"""<br>
+  Encrypt a message with peer's encryption key<br>
+  Args:<br>
+    &nbsp;message (bytes): plaintext message to encrypt<br>
+    &nbsp;pubkey (bytes): peer's encryption key (formatted as output to getPubKey())<br>
+  Returns:<br>
+    &nbsp;bytes: base64 encoded ciphertext<br>
+  """<br>
+	<b style="background-color:#eee">encrypt(message, pubkey)</b><br>
+<br>
+  """<br>
+  Decrypt a message with this host's private key<br>
+  Args:<br>
+  &nbsp;cipher (bytes): plaintext message to encrypt <br>
+  Returns:<br>
+  &nbsp;bytes: decrypted plaintext message<br>
+  """<br>
+  <b style="background-color:#eee">decrypt(cipher)</b><br>
+<br>
+	"""<br>
+  Calculate the checksum for the input data<br>
+  Args: <br>
+  &nbsp;data (bytes): the data to process<br>
+  Return: <br>
+  &nbsp;int: the checksum<br>
+  """<br>
+	<b style="background-color:#eee">checksum(data)</b><br>
+</code>
+</font>
+
+<br>
+<b> Note: </b> You <b>do not</b> need to implement the encryption/decryption and checksum functions listed above, as they are provided in the file <b><font color="black">pg1lib.py</font></b>. You can download it from  <a href=program1-files.zip>here</a>. 
+If you are not familiar with public key cryptography, please refer to the links provided in the "Helpful Links" section.
+<br> <br>
+
+<b>The following protocol is to be implemented in your assignment:</b><br>
+<ol type="a">
+
+<li><font color="black">The client reads the host name, port number, and the message to be sent from the user input.</font></li>
+<li>The client generates a public key using <code style="background-color:#eee; color: black">getPubKey()</code>, connects to the server, and sends it its public key.</li>
+
+<li>The server generates its own public key (also using <code style="background-color:#eee; color: black">getPubKey()</code>), encrypts it using the client's public key and the method <code style="background-color:#eee; color: black">encrypt(message, pubkey)</code>, and sends the encrypted key as a response back to the client.</li>
+
+<li>The client decrypts the server's public key (<code style="background-color:#eee; color: black">decrypt(cipher)</code>). 
+<!-- It then reads a file (or string) into a temporary buffer (a suggested buffer size is 4096 characters in this assignment),  -->
+<font color="black">It then</font> calculates a checksum for the message (using <code style="background-color:#eee; color: black">checksum(data)</code>), and prints the checksum to the screen. It then encrypts the message using the server's public key ( <code style="background-color:#eee; color: black">encrypt(message, pubkey)</code>). The client then sends both the encrypted message and the checksum to the server. (The checksum does not need to be encrypted as it cannot be used to reconstruct the original message.)
+<b>Hint</b>: The checksum is an unsigned long, and you will need to take into account endianness to transmit it correctly.</li>
+
+<li>The server receives the encrypted message as well as the checksum. <font color="black">It decrypts the message (using <code style="background-color:#eee; color: black">decrypt(cipher)</code>), and prints both the message and the received checksum to the screen. </font>
+Then it calculates the checksum with <code style="background-color:#eee; color: black">checksum(data)</code> from the decrypted message, prints it, and compares it with the received checksum. If the checksum matches, <font color="black">the server sends a confirmation to the client (e.g., an integer of value 1).</font> If the checksum does not match, the server reports an error message, and acknowledges the client (e.g., an integer of value 0).
+<!-- The server then sends the calculated checksum back to the client.  -->
+</li>
+<li>
+<font color="black">
+The client receives the response message from the server, and calculates the round-trip-time (RTT), in microseconds, from the time it sent the message to when it received a response. If the response message confirms the server has received the message without errors (e.g., an integer of value 1), print the RTT to the screen; otherwise, report an error message.</font>
+</li>
+<!-- <li>The client receives the checksum, and calculates the round-trip-time (RTT), in microseconds, from the time it sent the message to when it received a response. It also verifies that the server has received the message without errors by comparing the reported checksum with what it had calculated in step c. It prints both the checksum and the RTT to the screen. If the checksum does not match, report an error message. </li> -->
+
+</ol>
+
+<font color="black"><b>Note:</b> a suggested buffer size is 1024 characters in this assignment.</font>
+<b>DO NOT output any debugging information, or other informational messages to the screen.  Doing so will cost you points!</b><br><br>
+
+<!-- There are three test files (File1.txt, File2.txt, File3.txt) in: <b><font color="black">/mnt/efs/fs1/public/program1/Python/</font></b>.  You can also download them from <a href=program1-files-python.zip>here</a>. <br>  -->
+<!-- You need to run your program using these test files and a random command line string.  For example:<br><br> -->
+
+<h3>Running the programs on student machines</h3>
+<font color="black">You need to run your program using a random command line string.  For example:<br><br></font>
+
+<b> Server </b> <br>
+
+<code style="background-color:#eee; font-size:14px"><b>[</b>netid@is-student02 <b>~] $ python3 udpserver.py [port] </b></code><br><br>
+
+
+<b> Client </b> <br>
+
+<!-- <code style="background-color:#eee; font-size:14px"><b>[</b>netid@student00 <b>~] $ python3 udpclient.py student02.cse.nd.edu 41100 ./File1.txt</b></code><br> -->
+<font color="black">
+<code style="background-color:#eee; font-size:14px"><b>[</b>netid@is-student00 <b>~] $ python3 udpclient.py [hostname] [port] [test message]</b></code></font>
+<br><br>
+
+
+<font color="black"><b>Note: </b>The client and server should be executed on different student machines (e.g., if the server is running on student 00, then the client should be tested on student 01/02/03). <b>You may use the port numbers assigned to any of your group members to test your code (refer to appendix A).</b></font> 
+<br>
+
+<!--
+<font color="black"> Note: The File1.txt, File2.txt, File3.txt should be transmitted successfully without error.</font>
+<font color = "black"> Hint: The bad.txt is to help you  debug the checksum implementation. Due to the large file size (larger than buffer), the full message cannot be sent, so the checksums at the server could not match. You will learn how to handle large files in the next assignment!</font>
+-->
+
+<!--h2> Bonus Problem</h2>
+
+<b> Part A: Did bad.txt tranmitted sucessfully? If not, what is the reason?</b><br>
+
+<b> Part B: Modify your current code to handle the issue identified in Part A.</b-->
+
+
+<h2> Demo </h2>
+
+<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/-LT-nQHg_hw?vq=hd720" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+<video width="600" height="360" controls>
+  <source src="pg1_demo_python.mp4" type="video/mp4">
+Demo video.
+</video>
+
+<h2> Submission </h2>
+
+
+Create a README file that contains a complete listing / explanation of what files are present in the directory and the instructions to compile and run your code (e.g., give a command line example to test your code with a sample file or random string). <br><br>
+
+<font color="black">Upload a <b>gzipped tar file</b> containing your <b>.py</b> files, pg1lib.py, and your <b>README</b> file to the corresponding assignment on <a href="https://canvas.illinois.edu/courses/16629/assignments">Canvas</a>.</font> <b>One submission per group is sufficient. <font color="red">Your source code files must contain the name and netid of each group member or it will not be graded.</font><br></b><br>
+
+<!-- Note that you are encouraged to submit a Makefile for your code. If you do not submit one, please make sure to include the instructions on how to compile your code in your README file.<br><br> -->
+<font color="black"><b>Note:</b> The default version of Python 3 on student machines is 3.8.10, and is located at <b>/usr/bin/python3</b>. 
+<!-- To run your Python code on student machines, please make sure you have the right shebang line (i.e., <code style="background-color:#eee;">#!/usr/bin/python3</code>) at the beginning of your python files, and make these files executable (i.e., <code style="background-color:#eee;">chmod +x yourcode.py</code>). -->
+Please also specify your Python version in your readme file if your code is written a version different from Python 3.8.</font><br><br>
+
+Your code will be evaluated on the student <font color="black"> 00/01/02/03</font>  machines based on the following evaluation rubric.<br><br>
+
+
+<h2>Evaluation Rubric (100 pts)</h2>
+
+The points for the assignment are as follows:<br>
+
+<font color="black">
+<ul>
+<li><b>Part 1: 20 pts</b></li>
+<ul>
+<li>[10 pts] Code successfully establishes the UDP connection between the server and client.</li>
+<li>[10 pts] Code successfully sends a string from the client to the server.</li>
+</ul>
+
+<li><b>Part 2: 80 pts</b></li>
+<ul>
+<li>Code mechanics (35 pts total)</li>
+<ul>
+<li>[5 pts] Code was properly submitted.</li>
+<li>[5 pts] Code runs without warnings or errors.</li>
+<li>[10 pts] Code executes error-free with the correct order / specification for arguments.</li>
+<li>[10 pts] Code contains appropriate error checking (socket failure, function returns, etc.).</li>
+<li>[5 pts] Code has an appropriate comment block explaining the code, and your name.</li>
+</ul>
+
+<li>[10 pts] Code correctly uses the encryption and decryption functions.</li>
+<!-- <li>10 pts <b>each</b> - Code obtains correct results when run using the three test files.</li> -->
+<li>[10 pts] Code obtains proper results when run with a random command line string as input.</li>
+<li>[10 pts] Code obtains proper results of the RTT time.</li>
+<li>[10 pts] Code obtains and prints out proper results of the checksums on both server and client sides.</li>
+<!-- <li>5 pts - Code obtains and prints out proper results of the date and time on both server and client sides.</li> -->
+<li>[5 pts] README file is present and correctly documented including the instructions to run your code (e.g., give a command line example to test your code with a random string).</li>
+<!--li>5 points (Bonus) - Answer the question in the Bonus problem Part A.</li>
+<li>15 points (Bonus) -Fix the code to handle the identified issue and sucessfully transmit bad.txt.</li-->
+</ul></ul><br>
+
+</font>
+
+<h2>Helpful Links</h2>
+  *Socket Programming in Linux :  <a href="http://beej.us/guide/bgnet/">Beej's Guide to Network Programming</a>, <a href="https://realpython.com/python-sockets/">Socket Programming in Python</a> and <a href="https://wiki.python.org/moin/UdpCommunication">UDP Socket Example in Python</a> <br>
+  *Public-key Cryptography : <a href="https://www.comodo.com/resources/small-business/digital-certificates2.php">Public Key and Private Keys</a> and  <a href="https://en.wikipedia.org/wiki/Public-key_cryptography">Wikipedia Link</a> <br>
+ <br><br>
+
+
+ <h2>Appendix</h2>
+
+ Use the port number corresponding to your name in the appendix below.<br><br>
+
+ <!-- Assign a unique port number to each of the student (names can be found on Sakai), the port number starts from 41001. Do this on Aug 29
+ Contents generated using:
+ port=41001; while read line; do line="`cut -d '"' -f4 <<< $line`"; first=`cut -d ',' -f2 <<< $line | xargs`; last=`cut -d ',' -f1 <<< $line`; echo "<tr><td>$port</td><td>$first $last</td></tr>"; port=$((port+1)); done <<< `cat FA18_CSE_30264_01.csv`
+ -->
+<center><table border="1"><caption><b>Table 1. Port Assignments</b></caption>
+<tbody><tr><th>UDP Port to Use</th><th>Name</th></tr>
+<tr><td>41001</td><td> Canty, Angel </td></tr>
+<tr><td>41002</td><td> Guo, Jerry </td></tr>
+<tr><td>41003</td><td> Lee, Ivy </td></tr>
+<tr><td>41004</td><td> Shamim, Iman </td></tr>
+<tr><td>41005</td><td> Shi, Tiancheng </td></tr>
+<tr><td>41006</td><td> Shuaibi, Alaa </td></tr>
+<tr><td>41007</td><td> Torres, Michael </td></tr>
+<tr><td>41008</td><td> Xiao, Justin </td></tr>
+<tr><td>41009</td><td> Cui, Cilia </td></tr>
+<tr><td>41010</td><td> Donelson, Curt </td></tr>
+<tr><td>41011</td><td> Fang, Hongli </td></tr>
+<tr><td>41012</td><td> He, Richard </td></tr>
+<tr><td>41013</td><td> He, Xiang </td></tr>
+<tr><td>41014</td><td> Huang, Chung-An </td></tr>
+<tr><td>41015</td><td> Huang, Houshuo </td></tr>
+<tr><td>41016</td><td> Jia, Bo </td></tr>
+<tr><td>41017</td><td> Jia, Hao </td></tr>
+<tr><td>41018</td><td> Jiang, Yuxuan </td></tr>
+<tr><td>41019</td><td> Li, Chang </td></tr>
+<tr><td>41020</td><td> Li, Ziheng </td></tr>
+<tr><td>41021</td><td> Liu, Amelia </td></tr>
+<tr><td>41022</td><td> Liu, River </td></tr>
+<tr><td>41023</td><td> Wang, Jingwei </td></tr>
+<tr><td>41024</td><td> Wang, Weiyu </td></tr>
+<tr><td>41025</td><td> Wang, Xiuyuan </td></tr>
+<tr><td>41026</td><td> Wang, Zeyu </td></tr>
+<tr><td>41027</td><td> Xia, Yilin </td></tr>
+<tr><td>41028</td><td> Xu, Yuting </td></tr>
+<tr><td>41029</td><td> Xu, Zhizhou </td></tr>
+<tr><td>41030</td><td> Yang, Qinwen </td></tr>
+<tr><td>41031</td><td> Zhang, Boyu </td></tr>
+<tr><td>41032</td><td> Zhang, Jingfang </td></tr>
+<tr><td>41033</td><td> Zhang, Yunjia </td></tr>
+<tr><td>41034</td><td> Zhang, Zheng </td></tr>
+<tr><td>41035</td><td> Zheng, Shaojun </td></tr>
+</tbody></table></center>
+
+
+</body></html>
