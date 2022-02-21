@@ -1,0 +1,952 @@
+
+
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+
+<html><head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+  <meta name="GENERATOR" content="Mozilla/4.78 [en] (X11; U; SunOS 5.8 sun4u) [Netscape]">
+
+  <meta name="Author" content="Dong Wang"><title>Spring 2022 IS496 Programming Assignment 2 - File Transportation Protocol (FTP)</title>
+
+</head>
+
+<body bgcolor="#ffffff">
+
+ <br>
+
+
+
+<h1>Spring 2022 IS496 Programming Assignment 2 - File Transfer Protocol (FTP)</h1>
+
+<br>
+
+<b>Total Points:</b> 100 points
+
+<br>
+
+<b>Goal:</b> Program a Prototype of a FTP application using TCP
+
+<br>
+
+<font color="black"><b>Assigned:</b> February 21, 2022 </font>
+
+<br>
+
+<b>Due: <font color="red">March 7, 2022 by the end of day (11:59 pm CST). </font></b>
+
+<br>
+
+<b>Grouping: <u> To be completed by a group.</u> </b>
+
+<br>
+
+<font color="black"><b style="background-color:#FFFF00">Note: This instruction is based on C/C++. The Python version is available at <a href=prog2.html>here</a>.</b></font>
+
+<br>
+
+<hr>
+
+<h2>Background</h2>
+
+In this programming assignment, you will implement the client and server sides of a simple File Transfer Protocol (FTP) application. <font color="black">The file transfer itself will take place using <b>TCP</b> with the client determining the operation to be performed (creating a file, deleting a file, creating a new directory, removing a directory, changing to a different directory, obtaining a directory listing, or closing the connection). </font> The server should respond appropriately to the specific command. The specifics of the protocol are detailed in this document. <b><i>Note: please refer to appendix A for the port number assigned to you (the same as PG1).</i></b>
+
+<br><br>
+
+
+<h2>Problem:</h2>
+<font color="black">
+<h3>Part 1: TCP Practice</h3>
+
+
+In the first part of this assignment, you are asked to build a simple TCP server and client where the client can successfully 1) establish the connection with the server, and 2) send a string (e.g., "Hello World") to the client. The finished code for Part 1 can also be used for Part 2 of this assignment. <br><br>
+
+
+We have provided an <b>optional</b> starter skeleton code to get you started on the right track. 
+The starter code files (i.e., tcpserver.c and tcpclient.c) can be downloaded from <a href="https://canvas.illinois.edu/courses/16629/files/3710263">here</a>. 
+
+
+</font>
+
+
+<h3>Part 2:  Simple File Transfer Protocol </h3>
+
+<ol>
+
+<li>Server opens the port, and goes into "wait for connection" state.</li>
+
+<li>Client connects to the server on the appropriate port.</li>
+
+<li>Server goes into "wait for operation from client" state and waits for operation command from the client.</li>
+
+<li>Client goes into "prompt user for operation" state and prompts user for operation.</li>
+
+<li>
+  <font color="black">Client passes operation (<b>DN</b>: Download, <b>UP</b>: Upload, 
+  <b>RM</b>: Remove File, <b>LS</b>: List, <b>MKDIR</b>: Make Directory, <b>RMDIR</b>: Remove Directory, <b>CD</b>: Change Directory, <b>QUIT</b>: Quit) to server. </font>
+</li>
+
+<li>Operation is executed as follows:
+
+
+
+<ol type="a">
+
+
+
+<li><b>DN:</b> <br>
+
+<font color="black"><b> Note: </b> Please test <b>DN</b> with the provided test file (i.e., TestFile.txt) discussed in the general notes.</font>
+
+
+<ol type="i">
+
+
+
+<li>Client sends operation (<b>DN</b>) to download a file from the server.</li>
+
+
+
+<li>Client sends the <b>length of the filename</b>  (short int) followed by the <b>filename</b> (character string).</li>
+
+<li>Server decodes what it receives, and checks to see if the file exists in its local directory.  
+
+<ol>
+
+<li>If the file exists, server returns the size of the file to the client as a 32-bit integer.
+
+<ol type="a">
+
+<!-- <li> <font color="black"><u>[Extra Credit 2]</u> Server first calculates the md5 hash of the file using md5sum system utility and returns the md5 hash to the client. (Please refer to the general notes for more details about MD5 Hash.) </font></li> -->
+
+<!-- <li> Server returns the size of the file to the client as a 32-bit integer. </li> -->
+
+</ol>
+
+</li>
+
+<li>If the file does not exist, server will return a negative confirmation (<font>32-bit integer value -1</font>). After that, the server should return to the "wait for operation from client" state.</li>
+
+</ol>
+
+</li>
+
+<li>Client receives the 32-bit file length from server.
+
+<ol>
+
+<li>Client should decode the 32-bit value.
+
+<ol type="a">
+
+<li>If the value is -1, user should be informed that the file does not exist on the server. Client should return to "prompt user for operation" state.</li>
+
+<li>If the value is not -1, save the value as the file size for later use.</li>
+
+</ol>
+
+</li></li>
+
+</ol>
+
+</li>
+
+
+
+<li>Server sends the file to client.
+
+<ol>
+
+<!-- <li><font color="black"><u>[Extra Credit 2]</u> Client reads md5 hash from server.</font></li> -->
+
+<li>Client reads "file size" bytes from server.</li>
+
+<li>The client saves the file to disk as "filename".</li>
+
+<!-- <li><font color="black"><u>[Extra Credit 1]</u> To save a large file, you may need to enter a loop to receive the entire file in multiple rounds. Make sure to take into consideration the <b>return value</b> from reading the socket. The system may <b>not</b> provide the same number of bytes as you requested to fill the buffer!</font></li> -->
+
+<!-- <li><font color="black"><u>[Extra Credit 2]</u> The client calculates the md5 hash of the file received (using the md5sum system utility), compares it to the hash the server sent, and displays a confirmation if they match or an error if they do not.</font></li> -->
+
+<li>Inform user that the transfer was successful, and return to "prompt user for operation" state. The client displays throughput results for the transfer.</li>
+
+<!-- <li><font color="black"><u>[Extra Credit 2]</u> The client displays md5 hash of the transferred file.</font></li> -->
+
+
+</li>
+
+</ol>
+
+</li>
+
+</ol>
+
+</li>
+
+
+
+<br>
+
+<li><b>UP:</b>
+
+<ol type="i">
+
+
+
+<li>Client sends operation (<b>UP</b>) to upload a local file to a server.</li>
+
+<li>Client sends the <b>length of the filename</b> which will be sent (short int) followed by the <b>filename</b> (character string). <b> Note:</b> you can create a local file called "upload.txt" with random strings to test the <b>UP</b> operation.</li>
+
+
+
+<!-- <li>Server receives the above information, <font>decodes the filename,</font> and acknowledges that it is ready to receive. (It is up to you how to do the acknowledgment.)</li> -->
+
+<li>Server receives the above information, decodes filename size and filename, and acknowledges that it is ready to receive (it is up to you how to do the acknowledgment).</li>
+
+<li>Client replies with a 32-bit value which is the size of the file (in bytes).</li>
+
+<li>Server receives and decodes the 32-bit value.
+
+<ol>
+
+<li>Server enters the loop to receive file</li>
+
+<li>Client sends file to server.  Server reads "file size" bytes from client and saves them to disk as "filename".</li>
+
+<li>Server computes throughput results for the transfer and sends it to the client. </li>
+
+<!-- <li><font color="black"><u>[Extra Credit 2]: Server computes the md5 hash of the file and sends it to the client.</u> </font></li> -->
+
+<!-- <li>Server sends the throughput results and hash to the client.  This information should be used by the client to inform user that the transfer was successful or not (i.e., if the hash from the server matches the hash of the local file). If the transfer was successful, client displays the throughput information and md5 hash of the transfer. Otherwise, client informs the user the transfer failed. Finally, client returns to  "prompt user for operation" state.</li> -->
+<li>Server sends the throughput results to the client. The client displays the throughput of the transfer. </li>
+
+<!-- <li><font color="black"><u>[Extra Credit 2]: </u> Server computes the md5 hash of the file to the client. This information should be used by the client to inform user that the transfer was successful or not (i.e., if the hash from the server matches the hash of the local file). If the transfer was successful, client displays the md5 hash of the transfer. Otherwise, client informs the user the transfer failed. Finally, client returns to  "prompt user for operation" state.</font></li> -->
+
+</li>
+
+</ol>
+
+</li>
+
+</ol>
+
+</li>
+
+<br>
+
+
+
+<!-- <li><b>HEAD</b>:<br>
+
+<ol type="i">
+
+<li>Client sends operation (<b>HEAD</b>) to show the first ten lines of a file on the server.</li>
+
+<li>Client sends the <b>length of the filename</b> which will be sent (short int) followed by the <b>filename</b> (character string). 
+
+
+
+<li>Server receives the above information, decodes filename size and filename, and checks to see if the file exists in its local directory.  
+
+
+
+<ol>
+
+<li>If the file exists:
+
+<ol type="a">
+
+<li> Server reads the first ten lines of the file, and computes the size of it.</li>
+
+<li> Server sends the size to client as a 32-bit integer.</li>
+
+</ol>
+
+</li>
+
+<li>If the file does not exist, server will return a negative confirmation (32-bit integer value -1). After that, the server should return to the "wait for operation from client" state.</li>
+
+</ol> 
+
+
+
+<li>Client receives the 32-bit integer from server.
+
+<ol>
+
+<li>If the value is positive, the client saves the value for later use. </li>
+
+<li>If the value is negative, it should inform the user that the file does not exist on the server, and return to "prompt user for operation" state.</li>
+
+</ol>
+
+</li>
+
+<li>Server sends the content of the first ten lines of file to the client.</li>
+
+<ol>
+
+	<li>Client goes into a loop to read the content of the first ten lines of the file. </li>
+
+	<li>Client displays the content to the user, and returns to "prompt user for operation" state.</li>
+
+</ol>
+
+</li>
+
+</li>
+
+</ol> -->
+
+
+
+<br>
+
+<li><b>RM:</b>
+
+<ol type="i">
+
+<li>Client sends operation (<b>RM</b>) to delete a file from the server. <font> <b> Note:</b> you can create a test file called "delete.txt" in the server directory to test the RM operation.</font></li> 
+
+
+
+<li>Client sends the <b>length of the filename</b> which will be sent (short int) followed by the <b>filename </b> (character string).</li>
+
+<!-- <li>Server receives the above information, <font>decodes the filename</font>, and checks if the file to be deleted exists or not. -->
+
+<li>Server receives the above information, decodes filename size and filename, and checks if the file to be deleted exists or not.
+
+<ol>
+
+<li>If the file exists, the server sends a positive confirmation (integer value 1) back to the client.</li>
+
+<li>If the file does not exit, the server sends a negative confirmation (integer value -1) back to the
+
+
+
+client.</li>
+
+</ol>
+
+</li>
+
+<li>Client receives the confirmation from the server.
+
+<ol>
+
+<li>If the confirmation is negative, it should inform the user that the file does not exist on the server and return to "prompt user for operation" state.</li>
+
+<li>If the confirmation is positive, the client further confirms if the user wants to delete
+
+the file: "Yes" to delete, "No" to ignore. The client then sends the user's confirmation (i.e., "Yes" or
+
+"No") back to the server.
+
+<ol type="a">
+
+<li>If the user's confirmation is "Yes", the client waits for the server to send the confirmation of file
+
+deletion.</li>
+
+<li>If the user's confirmation is "No", the client prints out "Delete abandoned by the user!" and
+
+returns to "prompt user for operation" state.</li>
+
+</ol>
+
+</li>
+
+</ol>
+
+</li>
+
+<li>The server waits for the delete confirmation sent by the client.
+
+<ol>
+
+<li>If the confirmation is "Yes", the server deletes the requested file and returns an acknowledgment to the client to indicate the success or failure of file deletion operation.</li>
+
+<li>If the confirmation is "No", the server returns to "wait for operation from client" state.</li>
+
+</ol>
+
+</li>
+
+</ol>
+
+
+
+<br>
+
+<li><b>LS:</b>
+
+<ol type="i">
+
+<li>Client sends operation (<b>LS</b>) to list the directory at the server.</li>	
+
+<li>Server obtains listing of it's directory, including both the permission settings and the name of each file (e.g., "-rwxr-xr-x  1 netid dip  21K Aug 22 12:58 test.txt" or simply "-rwxr-xr-x test.txt"
+
+)</li>
+
+<li>Server computes the size of directory listing and sends the size to client as a 32-bit integer.
+
+<ol>
+
+<li>Client receives the size, and goes into a loop to read directory listing.</li>
+
+<li>Once the listing is received, client displays the listing to user.</li>
+
+<li>Client and server return to "prompt user for operation" and "wait for operation from client" state respectively.</li>
+
+</ol>
+
+</li>
+
+</ol>
+
+</li>
+
+</li>
+
+
+
+<br> 
+
+<li><b>MKDIR:</b>
+
+<ol type="i">
+
+<li>Client sends operation (<b>MKDIR</b>) to make a directory on the server.</li>
+
+<li>Client sends the <b> length of the directory name </b> which will be sent (short int) followed by the <b> directory name </b> (character string).</li>
+
+<!-- <li>Server receives the above information, decodes <font>the directory name</font>, and checks if the directory to be created exists or not. -->
+
+<li>Server receives the above information, decodes directory name size and directory name, and checks if the directory to be created exists or not.		
+
+<ol>
+
+<li>If the directory exists, the server sends a negative confirmation (integer value -2) back to the client.</li>
+
+<li>If the directory does not exit, the server sends a positive confirmation (integer value 1) back to the client if the directory is successfully created; otherwise, the server sends a negative confirmation (integer value -1) back to the client.</li>
+
+</ol>
+
+</li>
+
+<li>Client receives the confirmation from the server.
+
+<ol>
+
+<li>If the confirmation is negative (-2), it prints out "The directory already exists on server" and returns to "prompt user for operation/wait for operation" state.</li>
+
+<li>If the confirmation is negative (-1), it prints out "Error in making directory" and returns to "prompt user for operation/wait for operation" state.</li>
+
+<li>If the confirmation is positive, the client prints out "The directory was successfully made" and returns to "prompt user for operation/wait for operation" state.</li>
+
+</ol>
+
+</li>
+
+</ol>
+
+</li>
+
+</li>
+
+<br>
+
+<li><b>RMDIR:</b>
+
+<ol type="i">
+
+<li>Client sends operation (<b>RMDIR</b>) to remove a directory on the server. <b>Note</b>: Directory must be empty for <b>RMDIR</b> to work.</li>
+
+<li>Client sends the <b> length of the directory name </b> which will be sent (short int) followed by the <b> directory name </b> (character string).</li>
+
+<!-- <li>Server receives the above information, <font>decodes the directory name</font>, and checks if the directory to be deleted exists or not. -->
+
+<li>Server receives the above information, decodes directory name size and directory name, and checks if the directory to be deleted exists or not.
+
+<ol>
+
+<li>If the directory exists and is empty, the server sends a positive confirmation (integer value 1) back to the client.</li>
+
+<li>If the directory does not exit, the server sends a negative confirmation (integer value -1) back to the client.</li>
+
+<li>If the directory exists and is not empty, the server sends a negative confirmation (integer value -2) back to the client.</li>
+
+</ol>
+
+</li>
+
+<li>Client receives the confirmation from the server.
+
+<ol>
+
+<li>If the confirmation is negative (-1), it prints out "The directory does not exist on server" and returns to "prompt user for operation/wait for operation" state.</li>
+
+<li>If the confirmation is negative (-2), it prints out "The directory is not empty" and returns to "prompt user for operation/wait for operation" state.</li>
+
+<li>If the confirmation is positive, the client further confirms if the user wants to delete the directory: "Yes" to delete, "No" to ignore. The client then sends the user's confirmation (i.e., "Yes" or "No") back to the server.
+
+<ol type="a">
+
+<li>If the user's confirmation is "Yes" the client waits for the server to send the confirmation of directory deletion.</li>
+
+<li>If the user's confirmation is "No" the client prints out "Delete abandoned by the user!" and returns to prompt user for operation/wait for operation state.</li>
+
+</ol>
+
+</li>
+
+</ol>
+
+</li>
+
+<li>The server waits for the delete confirmation sent by the client.
+
+<ol>
+
+<li>If the confirmation is "Yes" the server deletes the requested directory and returns an acknowledgment to the client to indicate the success or failure of file deletion operation. <b>(Directory must be empty in order for deletion to occur).</b>
+
+<ol type="a">
+
+<li>If the acknowledgment is positive, the client prints out "Directory deleted" and returns to "prompt user for operation" state.</li>
+
+<li>If the acknowledgment is negative, the client prints out "Failed to delete directory" and returns to "prompt user for operation" state.</li>
+
+</ol>
+
+</li>
+
+<li>If the confirmation is "No" the server returns to "wait for operation" state.</li>
+
+</ol>
+
+</li>
+
+</ol>
+
+</li>
+
+<br>
+
+<li><b>CD:</b>
+
+<ol type="i">
+
+<li>Client sends operation (<b>CD</b>) to change to a different directory on the server. <b>Note:</b> You can use <b>CD</b> followed by <b>LS</b> to verify that <b>CD</b> worked successfully.</li>
+
+<li>Client sends the <b>length of the directory name</b> which will be sent (short int) followed by the <b> directory name </b> (character string).</li>
+
+<!-- <li>Server receives the above information, <font>decodes the directory name</font>, and checks if the directory to be changed to exists or not. -->
+
+<li>Server receives the above information, decodes directory name size and directory name, and checks if the directory to be changed to exists or not.
+
+<ol>
+
+<li>If the directory exists, the server sends a positive confirmation (integer value 1) back to the client if it successfully changed directories; otherwise, the server sends a negative confirmation (integer value -1) back to the client.</li>
+
+<li>If the directory does not exist, the server sends a negative confirmation (integer value -2) back to the client.</li>
+
+</ol>
+
+</li>
+
+<li>Client receives the confirmation from the server.
+
+<ol>
+
+<li>If the confirmation is negative (-2), it prints out "The directory does not exist on server" and returns to "prompt user for operation/wait for operation" state.</li>
+
+<li>If the confirmation is negative (-1), it prints out "Error in changing directory" and returns to "prompt user for operation/wait for operation" state.</li>
+
+<li>If the confirmation is positive, the client prints out "Changed current directory" and returns to "prompt user for operation/wait for operation" state.</li>
+
+</ol>
+
+</li>
+
+</ol>
+
+</li>
+
+<br>
+
+<li><b>QUIT:</b>
+
+<ol type="i">
+
+<li>Client sends operation (<b>QUIT</b>) to exit.</li>	
+
+<li>Client closes the socket, and exits.</li>
+
+<li>Server closes the socket and goes back to the "wait for connection" state.</li>
+
+<li>Client informs user that the session has been closed.</li>
+
+</ol></li>
+
+</ol>
+
+
+
+<br>
+
+<b>Note:</b> If it is not explicitly specified, the client and server will return to "prompt user for operation" and "wait for operation from client" state respectively after a successful operation and wait for the next operation.
+
+</li>
+
+</ol>
+
+
+
+<b>Important Hint:</b> When uploading and downloading large files, make sure to take into consideration the <b>return value</b> from reading the socket. The system may <b>not</b> provide the same number of bytes as you requested to fill the buffer!<br>
+
+
+
+<br>
+
+
+
+<h3>General Notes</h3>
+
+<ul>
+
+<li>Your code may be written in C or C++. You should create two separate directories: a <b>server</b> directory for the server code and a <b>client</b> directory for the 
+
+client code.
+
+<b>Each directory should contain a Makefile for building your code appropriately.</b>
+
+</li>
+
+<li>The request for a file is transmitted using a 16-bit value (short int -  containing the length of the filename) followed by a string which contains the name of the file.  When sending a file to the server, you need to send a 16-bit value (short int) followed by the filename to the server.</li>
+
+<!-- <li> Whenever you send a file (through <b>UP</b> or <b>DN</b>), calculate the MD5 hash on both the sending and receiving end.  If the hashes match, then the file transferred successfully. In particular, the MD5 hash is to be calculated with the md5sum command line utility. The syntax is <code  style="background-color:#eee;">md5sum filename</code> to obtain the hash as a string (in hex). You can find more information about MD5 Hash at the <a href="https://en.wikipedia.org/wiki/MD5">Wikipedia Link.</a></li>
+ -->
+<li>Don't forget that the <b>Endian-ness matters.</b> Use <code style="background-color:#eee;">htons/ntohs</code> in order to encode a 16 bit (short) value for transmission. Use <code style="background-color:#eee;">htonl/ntohl</code> for 32-bit (int) values.</li>
+
+<li>You need to display the throughput for the file transfer. Throughput will be part of your grade.  Most likely, you will want to use the high-resolution <b><i>_timeval_ struct</i></b>, which will allow you to keep track of accuracy at the microsecond level. The <b>gettimeofday</b> function will allow you to retrieve a timer accurate to microsecond levels.</li>
+
+<li>To determine the size of files, you may want to use the fseek (or equivalent ifstream operation) function and/or the peek operation.  For efficiency reasons you probably should not "roll your own".</li>
+
+<li>When in doubt, add in extra printf or cout statements to assist with debugging. Make sure to add in a carriage return or do a flush on the I/O buffer to ensure that debug information is displayed before program crashes occur. <b>Make sure to disable your debugging output before handing in the assignment.</b> </li>
+
+<li>You can connect back to localhost (127.0.0.1) which will allow you to test your code on the same machine where you have the server running. Create a separate ssh terminal session back to the server and then run your client code by connecting to localhost. <b> But make sure you have tested your solution on two different student machines before submission.</b> </li>
+
+<li><font color="black"> We provided a file TestFile.txt (1KB) (<a href="https://canvas.illinois.edu/courses/16629/files/3710263">download</a>) which will be used to test the <b>DN</b> operation. </font></li>
+
+<!-- <li><font color="black"> [Extra Credit Only] We provided two large files, LargeFile1.pdf (780KB) and LargeFile2.mp4 (44MB) (<a href="program2-files.zip">download</a>) which will be used to test the <b>DN</b> operation. </font></li> -->
+
+<!-- <li><font color="black"> [Extra Credit Only] Whenever you send a file (through <b>UP</b> or <b>DN</b>), calculate the MD5 hash on both the sending and receiving end.  If the hashes match, then the file transferred successfully. In particular, the MD5 hash is to be calculated with the md5sum command line utility. The syntax is <code style="background-color:#eee;">md5sum filename</code> to obtain the hash as a string (in hex). You can find more information about MD5 Hash at the <a href="https://en.wikipedia.org/wiki/MD5">Wikipedia Link.</a></font></li> -->
+
+</ul>
+
+<h3>FTP-Server Side Design</h3>
+
+The server is responsible for handling the connection request from a single client, processing the request, 
+
+
+
+then looping back to handle further requests. For this particular assignment, your code only needs to handle 
+
+
+
+one client at a time. The server binary should be named <code  style="background-color:#eee;">tcpserver</code>.<br><br>
+
+The server should listen on the <b>specified port number [the port number assigned to any of 
+
+
+
+your group members]</b> that is given by command line argument. Your server should bind to the port and then listen 
+
+
+
+for incoming client connections. You may decide if you would like to allow timeouts for better 
+
+
+
+responsiveness but any sort of a timeout is purely optional. You may want to allow for port reuse for 
+
+
+
+quicker recovery after a crash.<br><br>
+
+Once a new client request arrives, your server should  use the accept function to create a new client socket.   
+
+
+
+Once the file has been transmitted, return to the state where your server is waiting for a new command. 
+
+
+
+Your server should be invoked as follows:<br>
+
+<code style="background-color:#eee; font-size:14px"><b>[</b>netid@is-student00 <b>~] $ ./tcpserver [Port]</b></code>
+
+<h3>FTP-Client Side Design</h3>
+
+The client is responsible for initiating a connection to a server.  Once connected, the client code should 
+
+prompt the user for an operation (<b>DN, UP, HEAD, RM, LS, MKDIR, RMDIR, CD, QUIT</b>), and should transmit the operation to the 
+
+server.  Your client binary should be named <code style="background-color:#eee;">tcpclient</code>.  Your client should be invoked as follows:<br>
+
+<code style="background-color:#eee; font-size:14px"><b>[</b>netid@is-student02 <b>~] $ ./tcpclient [Server Name] [Port]</b></code>
+
+
+
+<br><br>
+
+The first argument is the hostname of the server to connect to (this will depend on what machine you start 
+
+your server code on).  The second argument is the port number.<br><br>
+
+Once a transfer completes successfully, you need to display the throughput for the transfer.  You should display 
+
+information similar to the following for each file transfer (<b>DN/UP</b>):<br><br>
+
+
+
+<code>99 bytes transferred in 0.029757 seconds: 0.003326 Megabytes/sec<br></code>
+
+
+
+<h2> Demo </h2>
+
+
+
+<video width="700" height="420" controls>
+
+  <source src="pg2_c_demo.mp4" type="video/mp4">
+
+Demo video.
+
+</video>
+
+
+
+<!-- 
+
+<br> 
+
+<b>Note: Please set the quality of the video to be 720p by clicking the gear in the lower right of the video.</b> <br> <br>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/RSgAfRwDwq8?vq=hd720" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
+
+<br>
+
+<h3><a href="./pg2.mp4">Download the Demo.</a></h3>
+
+
+
+ -->
+
+<h2>Submission</h2>
+
+<font color="black">Submit a <b>gzipped tar file</b> of your entire assignment package to the corresponding assignment on <a href="https://canvas.illinois.edu/courses/16629/assignments">Canvas</a>. One submission per group is sufficient. 
+The archive must include the following:</font>
+
+<ul>
+<li>Working client code in a client subdirectory 
+<ul>
+  <li>Makefile for the client</li>
+	<li><font color="black
+  ">Source code for the client in the TCP Practice (Part 1)</font></li>
+  <li><font color="black
+  ">Source code for the FTP client (Part 2)</font></li>
+	<li>Appropriate comments and your name</li>
+</ul>
+
+</li>
+
+<li>Working server code in a server subdirectory</li>
+
+<ul>
+  <li>Makefile for the server.</li>
+  <li><font color="black
+  ">Source code for the server in the TCP Practice (Part 1)</font></li>
+  <li><font color="black
+  ">Source code for the FTP server (Part 2)</font></li>
+  <li>Appropriate comments and your name</li></ul>
+</li>
+
+<li>README file
+
+<ul>
+  <li>The name and netid of each team member</li>
+  <li>Listing of the included filenames and example commands to run your code in the archive </li>
+</ul>
+
+</li>
+
+</ul>
+
+<h2>Evaluation Rubric</h2>
+
+<font color="black">Your code will be evaluated on one of the student 00/01/02/03 machines based on the following evaluation rubric.<br>
+
+
+<ul>
+<li><b>Part 1: 20 pts</b></li>
+<ul>
+<li>[10 pts] Code successfully establishes the TCP connection between the server and client.</li>
+<li>[10 pts] Code successfully sends a string from the client to the server.</li>
+</ul>
+
+
+<li><b>Part 2: 80 pts</b></li>
+
+<ul>
+
+<li>Client code (35 pts total) 
+
+<ul>
+
+<li>[5 pts] Included Makefile and code compiles/runs without errors.</li>
+
+<li>[4 pts] Code performs the <b>DN</b> operation correctly.</li>
+
+<li>[4 pts] Code performs the <b>UP</b> operation correctly.</li>
+
+<li>[4 pts] Code performs the <b>RM</b> operation correctly.</li>
+
+<li>[3 pts each] Code performs the <b>MKDIR, RMDIR, and CD</b> operations correctly.</li>
+
+<li>[2 pts each] Code performs the <b>LS and QUIT</b> operations correctly.</li>
+
+<li>[4 pts] Code provides reasonable error checking.</li>
+
+<li>[2 pts] Reasonable code performance (block transfers vs. single byte transfers).</li>
+
+<li>[2 pts] Code is commented with appropriate header information.</li>
+
+
+
+</ul></li>
+
+<li>Server code (35 pts total) 
+
+<ul>
+
+<li>[5 pts] Included Makefile and code compiles/runs without errors.</li>
+
+<li>[4 pts] Code performs the <b>DN</b> operation correctly.</li>
+
+<li>[4 pts] Code performs the <b>UP</b> operation correctly.</li>
+
+<li>[4 pts] Code performs the <b>RM</b> operation correctly.</li>
+
+<li>[3 pts each] Code performs the <b>MKDIR, RMDIR, and CD</b> operations correctly.</li>
+
+<li>[2 pts each] Code performs the <b>LS and QUIT</b> operations correctly.</li>
+
+<li>[4 pts] Code provides reasonable error checking.</li>
+
+<li>[2 pts] Reasonable code performance (block transfers v.s. single byte transfers).</li>
+
+<li>[2 pts] Code is commented with appropriate header information.</li>
+
+</ul></li>
+
+<li>Performance Metrics (5 pts total)<ul>
+
+  <li>[5 pts] Performance metrics are reported properly by client and server.</li>
+
+  <!-- <li>[3 pts] MD5 hash is calculated and checked correctly by client and server.</li> -->
+
+</ul></li>
+
+<li>Overall (5 pts total)<ul><li>[2 pts] Code is submitted in requested form.</li><li>[3 pts] Code follows argument convention.</li></ul> </li>
+</ul>
+
+</ul><br>
+
+</font>
+
+
+
+<h2>Extra Credits</h2>
+<font color="black">
+<ol>
+  <li><b>Download Large Files:</b> The client will be able to download large files (in serveral MB) from the server. In particular, when the client receives the large file from the server, it will need to enter a loop to receive the entire file in multiple rounds. In each round, the client will be able to write the data up to the buffer size (e.g., 4096). <br>
+    <b>Note:</b> You will need take into consideration the <b>return value</b> from reading the socket. The system may <b>not</b> provide the same number of bytes as you requested to fill the buffer. We provided a large files, LargeFile.mp4 (44MB) (<a href="https://canvas.illinois.edu/courses/16629/files/3709881">download</a>), which will be used to test the <b>DN</b> operation. 
+  </li>
+
+    
+  <li><b>MD5 Hash for Data Integrity:</b> You will need to calculate the MD5 hash of the transferred file for data integrity purpose. Whenever you send a file (through <b>UP</b> or <b>DN</b>), calculate the MD5 hash on both the sending and receiving ends. 
+
+    <ul>
+      <li><b>Download (DN)</b>: The server will send the calculated MD5 hash to the client. The client will compare the received MD5 hash and the MD5 hash calculated from the received file. If the MD5 hash matches, the client will print a confirmation message with the MD5 hash. Otherwise, the client will display an error message. 
+
+      <li><b>Upload (UP)</b>: The client will send the calculated MD5 hash to the server. The server will compare the received MD5 hash and the MD5 hash calculated from the received file. If the MD5 hash matches, the server will send a confirmation message to the client. Otherwise, the server will send an error message. The client receives the message, and displays it to the user. If the MD5 hash matches, the client will also display the MD5 hash. 
+    </ul>
+
+   
+    <b>Note:</b> The MD5 hash is to be calculated with the md5sum command line utility. The syntax is <code style="background-color:#eee;">md5sum filename</code> to obtain the hash as a string (in hex). You can find more information about MD5 Hash at the <a href="https://en.wikipedia.org/wiki/MD5">Wikipedia Link.</a></li>
+</ol>
+
+
+
+
+<b>Extra Credit Rubric (20 pts)</b>
+<ul>
+  <li>[10 pts] Code performs the <b>DN</b> operation correctly for large files.</li>
+  <li>[10 pts] MD5 hash is calculated and checked correctly by client and server.</li> 
+  
+</ul>
+</font>
+
+
+<h2>Appendix A</h2>
+
+<center><table border="1"><caption><b>Table 1. Port Assignments</b></caption>
+<tbody><tr><th>Port to Use</th><th>Name</th></tr>
+<tr><td>41001</td><td> Canty, Angel </td></tr>
+<tr><td>41002</td><td> Guo, Jerry </td></tr>
+<tr><td>41003</td><td> Lee, Ivy </td></tr>
+<tr><td>41004</td><td> Shamim, Iman </td></tr>
+<tr><td>41005</td><td> Shi, Tiancheng </td></tr>
+<tr><td>41006</td><td> Shuaibi, Alaa </td></tr>
+<tr><td>41007</td><td> Torres, Michael </td></tr>
+<tr><td>41008</td><td> Xiao, Justin </td></tr>
+<tr><td>41009</td><td> Cui, Cilia </td></tr>
+<tr><td>41010</td><td> Donelson, Curt </td></tr>
+<tr><td>41011</td><td> Fang, Hongli </td></tr>
+<tr><td>41012</td><td> He, Richard </td></tr>
+<tr><td>41013</td><td> He, Xiang </td></tr>
+<tr><td>41014</td><td> Huang, Chung-An </td></tr>
+<tr><td>41015</td><td> Huang, Houshuo </td></tr>
+<tr><td>41016</td><td> Jia, Bo </td></tr>
+<tr><td>41017</td><td> Jia, Hao </td></tr>
+<tr><td>41018</td><td> Jiang, Yuxuan </td></tr>
+<tr><td>41019</td><td> Li, Chang </td></tr>
+<tr><td>41020</td><td> Li, Ziheng </td></tr>
+<tr><td>41021</td><td> Liu, Amelia </td></tr>
+<tr><td>41022</td><td> Liu, River </td></tr>
+<tr><td>41023</td><td> Wang, Jingwei </td></tr>
+<tr><td>41024</td><td> Wang, Weiyu </td></tr>
+<tr><td>41025</td><td> Wang, Xiuyuan </td></tr>
+<tr><td>41026</td><td> Wang, Zeyu </td></tr>
+<tr><td>41027</td><td> Xia, Yilin </td></tr>
+<tr><td>41028</td><td> Xu, Yuting </td></tr>
+<tr><td>41029</td><td> Xu, Zhizhou </td></tr>
+<tr><td>41030</td><td> Yang, Qinwen </td></tr>
+<tr><td>41031</td><td> Zhang, Boyu </td></tr>
+<tr><td>41032</td><td> Zhang, Jingfang </td></tr>
+<tr><td>41033</td><td> Zhang, Yunjia </td></tr>
+<tr><td>41034</td><td> Zhang, Zheng </td></tr>
+<tr><td>41035</td><td> Zheng, Shaojun </td></tr>
+</tbody></table></center>
+
+
+<br><br><br>
+
+ </body></html> </body></html>
+
+
+
