@@ -1,0 +1,78 @@
+
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="GENERATOR" content="Mozilla/4.78 [en] (X11; U; SunOS 5.8 sun4u) [Netscape]">
+  <meta name="Author" content="Dong Wang"><title>Spring 2022 IS496 Homework 2</title>
+</head>
+
+<body bgcolor="#ffffff">
+ <br>
+
+<h1>Spring 2022 IS496 Homework 2</h1>
+<br>
+<b>Total Points:</b> 70 points
+<br>
+<b>Scope:</b> Chapters 2
+<br>
+<!-- <b> Due: October 14, 2020, by the beginning of the class </b>  -->
+<!-- <b> Due: TBD </b>  -->
+<b>Due: <font color="red"> Mar. 25, 2022 by the end of day (11:59 pm CST)  </font></b>
+<br>
+<b>Grouping: <u>To be completed individually</u></b>
+<br>
+<b>Note: This assignment is also available in the Word Document (.docx) format and can be downloaded <a href="https://canvas.illinois.edu/files/3827921/">here</a>.</b>
+<br>
+<br>
+<hr>
+<h2>Problems</h2>
+
+<b>Problem 1: [20 points: 10 points for each sub-question]</b> 
+ Suppose we want to transmit a bit sequence 11010110 and protect it from errors using CRC polynomial x<sup>3</sup>+1.
+
+<ol>
+  <li type="a">Use polynomial long division to determine the message that should be sent.</li><br>
+  
+  <li type="a">Suppose the second bit from the left of the message is inverted due to noise on the transmission link. What is the result of the receiver's CRC calculation? How does the receiver know an error has occurred?</li>
+</ol> <br>
+
+
+<b>Problem 2: [15 points, 5 points for each sub-question]</b> Consider a Stop-and-Wait algorithm running over a 15-km point-to-point fiber link.</b>
+<ol>
+  <li type="a">Compute the one-way propagation delay for this link. Assuming the speed of light is 2&times;10<sup>8</sup> m/s in the fiber.</li><br>
+  <li type="a">Suggest a suitable timeout value for the Stop-and-Wait algorithm to use.</li><br>
+  <li type="a">Given the timeout value you suggest in (b), is it still possible for the Stop-and-Wait algorithm to timeout and retransmit a frame? Please also justify your answer.</li>
+</ol><br>
+
+
+<b>Problem 3: [10 points]</b> Suppose you are designing a sliding window protocol for a 1.5 Mbps point-to-point link to the moon, which has a one-way latency of 3 seconds. Assuming each frame carries 1KB of data, what's the minimum number of bits you need for the sequence number (assume SWS=RWS)?
+Note: B denotes Byte and b denotes bit. <br><br>
+
+<b>Problem 4: [25 points: 10 points (a), 15 points for (b)]</b> Draw a timeline diagram for the sliding window algorithm with SWS=RWS=4 frames, for the following situations. Use a timeout interval of about 2&times;RTT.<br> <br>
+Note: In problem 4, assume the sequence number of the first frame is 1 and accumulative ACKs is used. Please draw Frame 1 to 7 (including the lost and retransmission ones) from the sender and all ACKs from the receiver in the timeline diagram. Please also highlight the timeout and retransmission events in the diagram. You only need to consider the timeout and retransmission of the <b>lost frames</b>.
+
+<ol>
+  <li type="a">Frame 4 is lost.</li><br>
+  <li type="a">Frames 3-5 are lost. </li>
+</ol><br>
+<!-- <b>Problem 5: [8 points]</b> What is the MAC protocol of Ethernet and describe how it works using your own words.  -->
+<!-- Does Wireless MAC protocol use "collision detection"? If yes, explain why. If not, explain why not. -->
+<br><br>
+
+<!-- <b>Problem 6: [6 points]</b> What is a hidden terminal problem? How is the hidden terminal problem addressed in 802.11 networks?
+<br><br>
+ -->
+
+<!--
+<b>Problem 7: [12 points: 2 points for each sub-question] Chapter 3 Question 1</b> 
+<br><br>
+<b>Problem 8: [8 points: 2 points for the forwarding table at each switch] Chapter 3 Question 4</b> 
+<br><br>
+-->
+<hr>
+<h2>Submission Instructions</h2>
+Create a PDF file containing your answers.  Place your name and netid at the beginning of the file. 
+Upload the file to the corresponding assignment on <a href="https://canvas.illinois.edu/courses/16629/assignments">Canvas</a>.
+<!-- Copy the file into <b>/escnfs/courses/sp21-cse-30264.01/dropbox/yournetid/hw2/hw2.pdf.</b> -->
+<br><br>
+</body></html>
