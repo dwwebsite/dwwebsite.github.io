@@ -1,0 +1,435 @@
+
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="GENERATOR" content="Mozilla/4.78 [en] (X11; U; SunOS 5.8 sun4u) [Netscape]">
+  <meta name="Author" content="Dong Wang"><title>Spring 2022 IS496 Programming Assignment 3 - Online Chat Room</title>
+</head>
+
+<body bgcolor="#ffffff">
+ <br>
+
+<h1>Spring 2022 IS496 Programming Assignment 3 - Online Chat Room</h1>
+<br>
+<b>Total Points: </b> 100 points
+<br>
+<b>Goal: </b> Program a Prototype of an Online Chat Room
+<br>
+<font color="black"><b>Assigned:</b> Mar 21, 2022</font>
+<br>
+<b>Due: <font color="red">April 18, 2022 by the end of day (11:59 pm CST). </font> </b>
+<br>
+<b>Grouping: <u> To be completed by a group. </u></b>
+<br>
+<font color="black" style="background-color:#FFFF00"><b>Note:</b> This instruction is based on Python. The C/C++ version is available at <a href=prog3-c.html>here</a>.</font>
+<br>
+<hr>
+<h2>Background</h2>
+In this programming assignment, you will implement the client and server sides of an "online chat room" application. You can choose to use <b>either TCP or UDP</b> in your implementation. In this application, the client determines the operation to be performed: <b>broadcast messaging</b>  and <b>private messaging</b>. Even though only one port is being used, the server should be able to accept <b>multiple</b> simultaneous client connections. The server should respond appropriately to the specific command sent by the client. The specifics of the protocol are detailed in this handout. You are free to reuse part of your programs in PG1 and PG2 to finish this assignment. <b>Please refer to Appendix for the port number assigned to you (same as PG1)</b>.
+<br><br>
+
+
+<h2>Type of Messages</h2>
+In this assignment, we define two types of message frames: <b>data message</b> and <b>command message</b>. A <b>data message</b> is the message exchanged between clients (i.e., the <i>broadcast</i> and <i>private</i> messages described in the following online chat room protocol). A <b>command message</b> is the message exchanged between the client and server (e.g., operation, acknowledgment, confirmation messages described below). In your implementation, you can define your own message format to encode the message type. For example, you can use the first character of the message to distinguish between the two types of messages (e.g., "C" for command message and "D" for data message).
+<b>Note:</b>
+In your implementation, the sender is responsible for encoding the type information into the message frame and the receiver is responsible for extracting the type information from the message and performing accordingly. (Refer to "Technical Instruction" section for more details.)
+
+
+<h2>Online Chat Room</h2>
+<ol>
+<li>Server opens a port, creates the TCP/UDP socket, goes into "wait for connection" state, and actively listens for socket connections. <b>Hint:</b> <u>please read the Technical Instruction section for details.</u></li>
+<li>Client logs in to the system by connecting to the server on the appropriate <b><i>port</i></b>.</li>
+<li>Client sends the <b><i>username</i></b>.</li>
+<li>Server checks to see if it is a new user or existing user and requests a <b><i>password</i></b>. <b>Note:</b> <u>store users and their passwords in a file rather than in memory (otherwise the credentials will get lost once the server program is terminated).</u></li>
+<!-- <li>Server generates a <b><i>public key</i></b> and sends it to the client. </li> -->
+<!-- <li>Client encrypts its password using server's public key, and sends the <b><i>encrypted password</i></b> to server.</li> -->
+<li><font color="black">Client sends the <b><i>password</i></b> to the server.</font></li>
+<!-- <li>Server receives the password and decrypts it. Then, server either registers a new user or checks to see if the password matches. Server also sends the <b><i>acknowledgment</i></b> to the client.</li>  -->
+
+<li><font color="black">Server receives the password and either registers a new user or checks to see if the password matches. Server also sends the <b><i>acknowledgment</i></b> to the client.</font></li> 
+
+<!-- <li>Client generates a <b><i>public key</i></b> and sends it to the server. <b>Note:</b> <u>multiple clients should be able to register at the same time.</u></li> -->
+
+<li>Server continues to wait for operation command from a client or a new client connection.</li>
+<li>Client goes into "prompt user for operation" state and prompts user for operation.</li>
+<li>Client passes <b><i>operation</i></b> (<b style="color: #3333ff">BM</b>: Broadcast Messaging, <b style="color: #3333ff">PM</b>: Private Messaging, <b style="color: #3333ff">EX</b>: Exit) to server.</li>
+<li>Operation is executed as follows:
+<ol type="a">
+
+<li><b style="color: #3333ff">BM:</b>
+<ol type="i">
+<li>Client sends <b><i>operation</i></b> (<b style="color: #3333ff">BM</b>) to broadcast a message to all <b>active clients</b> (i.e., clients who successfully log in to the system but have not exited yet).</li>
+<li>Server sends the <b><i>acknowledgment</i></b> back to the client to prompt for the message to be sent. </li>
+<li>Client sends the <b><i>broadcast message</i></b> to the server.</li>
+<li>Server receives the message and sends that <b><i>broadcast message</i></b> to all other client connections. <b>Note:</b> <u>the server should keep track of the socket descriptors it has created for each client since the program began running. You can decide how to implement this tracking function.</u></li>
+<li>Server sends the <b><i>confirmation</i></b> that the message was sent. <b>Note:</b> <u>you can decide the content/format of the confirmation.</u></li>
+<li>Client receives the confirmation.</li> 
+<li>Client and server return to "prompt user for operation" and "wait for operation from client" state, respectively.</li>
+</ol>
+</li>
+
+<li><b style="color: #3333ff">PM:</b>
+<ol type="i">
+<li>Client sends <b><i>operation</i></b> (<b style="color: #3333ff">PM</b>) to leave a message to a specific client.</li> 
+<li>Server sends the list of <b><i>current online users</i></b>. <b>Note:</b> <u>the server should keep track of the usernames of all online users (i.e., users associated with active clients) since the program began running. You can decide how to implement this tracking function. We assume that any client can go offline by using operation (<b style="color: #3333ff">EX</b>).</u> </li>
+<li>Client receives the list of online users from the server. </li>
+<!-- <li>Client prompts the user for the <b><i>username</i></b> (of the target user) to send a message to.</li> -->
+<li><font color="black">Client prompts the user for the <b><i>username</i></b> (of the target user) to send a message to, and the <b><i>message</i></b> to be sent.</font></li>
+<!-- <li>Client sends the <b><i>username</i></b> to the server, and the server replies with the user's <b><i>public key</i></b>.</li> -->
+<li><font color="black">Client sends the <b><i>username</i></b> and the <b><i>message</i></b> to the server.
+</font></li>
+<!-- <li>Client then prompts for, encrypts, and sends the <b><i>message</i></b> to be sent.</li> -->
+
+<li>Server receives the above information and checks to make sure the target user exists/online.</li>
+<li><font color="black">If the target user exists/online, the server forwards the message to the user, which displays the message. The server should do this by sending the message to the corresponding socket descriptor of the target user.</font></li>
+<li>Server sends the <b><i>confirmation</i></b> that the message was sent or that the user did not exist. <b>Note:</b> <u>you can decide the content/format of the confirmation.</u></li></li>
+<li>Client receives the <b><i>confirmation</i></b> from the server.</li>
+<li>Client and server return to "prompt user for operation" and "wait for operation from client" state, respectively.</li>
+</ol>
+</li>
+<!-- <li><b>CH:</b>
+<ol type="i">
+<li>Client sends operation (CH) to view the chat history.</li>
+<li >The chat history should be stored <b>in a file on the server</b>  that keeps track of all previous chat messages received and sent by the client. The file is stored on the server rather than on the client so that the user cannot  modify or delete the chat history. The file should be created upon user registration. For example, when user Alice registers, the server will create a file "Alice.chat" to store her chat history. </li>
+<li >Each chat history entry should include [Timestamp] [Type of Chat (BM or PM)] [Source and Destination] and [Message Content]. The timestamp is the moment when a client sends or receives a message. In this assignment, you can use the timestamp of the server when it receives the message of the client, given all four student machines are synchronized on a high-speed LAN with negligible communication delay. [Source and Destination] refers to the sender and receiver of the message. For broadcast messages, you only need to specify the sender. </li>
+<li >When receiving the (CH) command, the server sends the  chat history to the client.</li>
+<li >The client receives and then displays the chat history on screen.</li>
+<li >Client and server return to "prompt user for operation" and "wait for operation from client" state, respectively.</li>
+</ol>
+</li> -->
+<li><b style="color: #3333ff">EX:</b>
+<ol type="i">
+<li>Client sends <b><i>operation</i></b> (<b style="color: #3333ff">EX</b>) to close its connection with the server and end the program.</li> 
+<li>Server receives the operation and closes the socket descriptor for the client.</li>
+<li>Server updates its tracking record on the socket descriptors of active clients and usernames of online users.</li>
+<li>Client should close the socket and exit.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+
+<b>Note:</b> If it is not explicitly specified, the client and server will return to "prompt user for operation" and "wait for operation from client" state, respectively after a successful operation and wait for the next operation.
+</li>
+</ol>
+
+
+<h2>Technical Instructions</h2> 
+<ul>
+<b>Multithread Server:</b> The server must be able to monitor and handle messages from multiple clients simultaneously. This can be done using multithreading. We encourage you to use  <a href=" https://realpython.com/intro-to-python-threading/"><b>threading</b> module</a>.
+
+Basically, you will need a <b>main thread</b> to listen to all new connections. This can be done using the <a href="https://pythontic.com/modules/socket/accept">socket accept function</a> within a while loop. This main thread is just your main program. For each connected client, you will need to create a new thread using <code style="color:black; background-color:#eee">threading.Thread()</code> method. You can set a threshold (e.g., <code>maxThreadNumber=10</code>) for the total number of threads.
+
+A multithreaded server implementation example can be found <a href="https://www.geeksforgeeks.org/socket-programming-multi-threading-python/">here</a>. 
+
+
+
+<br>
+<br>
+<b>Multithread Client:</b> The client must also be able to handle concurrent messages from multiple origins (e.g., command messages from the server and data messages from other clients). This should be done using multithreading as well. In particular, each client should have one thread (e.g., thread1) to collect all messages from the socket and another thread (e.g., thread2) to parse and react to those messages. Note that the main program itself is a thread so you only need to create <b>one</b> extra thread. The client will also need to identify the type of the messages it received and perform appropriately based on the application protocol (e.g., if a data message is received, the client simply prints out the message; if a command message is received, the client should continue the interaction with server based on the command message). 
+
+
+
+<!--
+    For example, a server is prompting for a client to enter a broadcast message, while at the same time another user is sending a private message to this client. Then, thread1 should store both messages and a thread2 should look into each message and understand how to handle them (print the private message and then prompt for input).
+    The complication here is the client can get concurrent messages of acknowledgment from server and chat/broadcast messages from other clients. Since all messages come from the server, without a proper messaging protocol, it will be hard to distinguish between these different messages. Therefore, the each message needs a proper header to label it as data message or command message, so the client can understand which message comes from private or broadcast messaging, and which message comes from the inetration with server. If a data message is received, the client simply print out the message; if a command message is received, the client should continue the interation with server based on that message
+
+-->
+
+<br>
+<br>
+ <b> Note:</b> when using the (EX) command to exit, make sure all threads are properly terminated. Specifically, you should terminate the main thread after the extra thread has finished its job. This can be done by using the <code style="color:black; background-color:#eee">yourThread.join()</code> method. 
+<br>
+<br>
+
+<!-- <b>Use the library pg3lib.h (available at <font color="black">/escnfs/courses/sp21-cse-30264.01/public/program3/pg3lib.h</font>) to simplify the implementation of cryptography for passwords and private messages. The library contains the following methods:</b><br><br>
+
+<code style="background-color:#eee">
+        /* Generate and return an encryption key<br>
+         * (won't generate a new one if one exists already)<br>
+         * return: this host's encryption key<br>
+         */<br>
+        <b>char* getPubKey();</b><br>
+<br>
+        /* Encrypt a message with peer's encryption key<br>
+         * char *message: plaintext message to encrypt<br>
+         * char *pubkey: peer's encryption key (formatted as output to getPubKey())<br>
+         * return: base64 encoded ciphertext<br>
+         */<br>
+        <b>char* encrypt(char *message, char *pubkey);</b><br>
+<br>
+        /* Decrypt a message with this host's private key<br>
+         * char *cipher: base64 encoded ciphertext<br>
+         * return: decrypted plaintext message<br>
+         */<br>
+        <b>char* decrypt(char *cipher);</b><br>
+</code>
+<br> -->
+
+<!-- <font color="black">
+<b>Use the library pg3lib.py (available at <font color="black">/escnfs/courses/sp21-cse-30264.01/public/program3/Python/pg3lib.py</font>) to simplify the implementation of cryptography for passwords and private messages. The library contains the following methods:</b><br><br>
+<code>
+  """<br>
+  Generate and return an encryption key<br>
+  Returns:<br>
+  &nbsp; bytes: this host's encryption key<br>
+  """<br>
+  <b style="background-color:#eee">getPubKey()</b><br>
+<br>
+    """<br>
+  Encrypt a message with peer's encryption key<br>
+  Args:<br>
+    &nbsp;message (bytes): plaintext message to encrypt<br>
+    &nbsp;pubkey (bytes): peer's encryption key (formatted as output to getPubKey())<br>
+  Returns:<br>
+    &nbsp;bytes: base64 encoded ciphertext<br>
+  """<br>
+    <b style="background-color:#eee">encrypt(message, pubkey)</b><br>
+<br>
+  """<br>
+  Decrypt a message with this host's private key<br>
+  Args:<br>
+  &nbsp;cipher (bytes): plaintext message to encrypt <br>
+  Returns:<br>
+  &nbsp;bytes: decrypted plaintext message<br>
+  """<br>
+  <b style="background-color:#eee">decrypt(cipher)</b><br>
+<br>
+</code>
+</font> -->
+
+
+To ensure multithreading is working correctly on both client and server, you can perform the following simple tests:
+
+<ul>
+<li>Try logging/registering with multiple clients with the server at the same time. One client's login process should not block any other clients.</li>
+
+<li>Reach a state where a server is prompting client 1 to type in some message (e.g., after client 1 sends a BM command). Then send a private message to client 1 from client 2. Client 1 should first print out the message from client 2 and then return to the prompt state.</li>
+</ul> <br>
+
+<b>Note:</b> A simple test scenario of your implementation: <b>three clients</b> and <b>one server</b>. You can run three clients on three different student machines and run the server on any of the three machines where you run the client or on a fourth student machine. You can then easily test broadcast messaging, private messaging and multithreading in this scenario. 
+
+
+<br>
+</ul>
+
+
+
+<h2>General Notes</h2>
+<ul>
+<font color="black">
+<li>The <b>optional</b> starter code is provided and the files (i.e., chatserver.py and chatclient.py) can be downloaded <a href="https://canvas.illinois.edu/courses/16629/files/4029582/">here</a>.</li>
+<li>Your code may be written in Python 3.8 or later. Please also specify your Python version in your README file if your code is written a version different from Python 3.8.
+</li>
+<li>You should create two separate directories in your submission, a <b>server</b> directory for the server code and a <b>client</b> directory for the client code. </li>
+</font>
+<li>Don't forget that the <b>endian-ness matters.</b> Use <code style="color:black; background-color:#eee;">htons/ntohs</code> or <code style="color:black; background-color:#eee;">struct.pack()</code> in order to encode a 16-bit (short int) value for transmission. Use <code style="color:black; background-color:#eee;">htonl/ntohl</code> or <code style="color:black; background-color:#eee;">struct.pack()</code> for 32-bit (long int) values.</li>
+<!-- <li>To determine the <b>size of files</b>, you may want to use the <code>fseek</code> (or equivalent ifstream operation) function and/or the <code>peek</code> operation.  For efficiency reasons you probably should not "roll your own".</li> -->
+<li>When in doubt, add in extra <code>print</code> statements to assist with debugging. 
+    <!-- Make sure to add in a carriage return or do a flush on the I/O buffer to ensure that debug information is displayed before program crashes occur.  -->
+<b>Make sure to disable your debugging output before handing in the assignment.</b> 
+</li>
+<li>You can connect back to <b>localhost</b> (127.0.0.1), which will allow you to test your code on the same machine where you have the server running. Create a separate ssh terminal session back to the server and then run your client code by connecting to localhost.</li>
+<!-- <li>When compiling your code, remember to link the libraries <code style="background-color:#eee">-lcrypto -lpthread</code>.</li> -->
+<!-- <li><font color="black">The default version of Python 3 on student machine is 3.6.1, and is located at <b>/escnfs/home/csesoft/2017-fall/anaconda3/bin/python</b>. To run your Python code on student machines, please make sure you have the right shebang line (i.e., <code style="background-color:#eee;">#!/escnfs/home/csesoft/2017-fall/anaconda3/bin/python</code>) at the beginning of your python files, and make these files executable (i.e., <code style="background-color:#eee;">chmod +x yourcode.py</code>). Please also specify your Python version in your readme file if your code is written a version different from Python 3.6.</font><br><br></li> -->
+</ul>
+
+<h2>Server Side Design</h2>
+The server is responsible for handling the connection request from multiple clients, processing the request, then looping back to handle further requests from any client.  
+
+
+The server should listen on the <b>specified port number (refer to Appendix for the port number)</b> that is given by the command-line argument. Your server should bind to the port and then listen for incoming client connections. You may decide if you would like to allow timeouts for better responsiveness but any sort of a timeout is purely optional. You may want to allow for port reuse for quicker recovery after a crash.<br><br>
+
+
+Once a new client request arrives, your server should use the accept function to create a new client socket.<br><br>
+
+The server executable should be named <b>chatserver.py</b> and be invoked as follows:<br><br>
+<font color="black"><code style="background-color:#eee;font-size:14px"><b>[</b>netid@is-student00 <b>~] $ python3 chatserver.py [Port]</b></code></font>
+
+<h2>Client Side Design</h2>
+The client is responsible for initiating a connection to a server.  Once connected, the client code should prompt the user for an operation (BM, PM, EX), and should transmit the operation to the server.  <br><br>
+The client executable should be named <b>chatclient.py</b> and be invoked as follows:<br><br>
+<font color="black"><code style="background-color:#eee;font-size:14px"><b>[</b>netid@is-student02 <b>~] $ python3 chatclient.py [Server Name] [Port] [Username]</b></code></font>
+
+<br><br>
+The first argument is the hostname of the server to connect to (this will depend on what machine you start your server code on).  The second argument is the port number. The third argument is the username for login.<br><br>
+
+
+
+<h2>Demo:</h2>
+
+
+<video width="700" height="450" controls>
+  <source src="pg3_python_demo.mp4" type="video/mp4">
+Demo video.
+</video>
+<!-- (You can ignore the debug messages on the server. The top-left terminal is the online chat server and the rest are clients.)
+<br>
+<br>
+
+<br> 
+<b>Note: Please set the quality of the video to be 720p by clicking the gear in the lower right of the video.</b> <br> <br>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/csOa6lo4afA?VQ=HD720" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<br><br> -->
+
+<br>
+<!-- <h3><a href="./pg3_python_demo.mp4">Download the Demo.</a></h3>
+ -->
+
+<h2>Submission</h2>
+<!-- Submit a <b>gzipped  tar</b>  file of your entire assignment package to your dropbox <font color="black">(i.e., /mnt/efs/fs1/dropbox/yournetid/program3/).</font>  -->
+<font color="black">Submit a <b>gzipped tar file</b> of your entire assignment package to the corresponding assignment on <a href="https://canvas.illinois.edu/courses/16629/assignments">Canvas</a>. One submission per group is sufficient. </font> 
+The archive must include the following:<ul>
+<li><b>Working client code in a client subdirectory</b>
+<ul>
+  <!-- <li>Makefile for the client.</li> -->
+  <li>Source file for the client.</li><li>Appropriate comments and each member's name.</li></ul>
+</li>
+<li><b>Working server code in a server subdirectory</b>
+<ul>
+  <!-- <li>Makefile for the server.</li> -->
+  <li>Source file for the server</li><li>Appropriate comments and each member's  name.</li></ul>
+</li>
+<li><b>User file</b>
+<ul><li>Listing of the registered usernames and corresponding passwords. <b>Note:</b> You should read this file in on the server side to handle registered users.</li></ul>
+<li><b>README file</b>
+<ul><li>Listing of the included file names and example commands to run your code in the archive. </li></ul>
+</li>
+</ul>
+<h2>Grading Rubric</h2>
+<ul>
+<li><b>Client code</b>(45 pts total)
+<ul>
+<li>[5 pts] Code compiles without warnings or errors.</li>
+<li><font color="black">[5 pts] Code performs the login operation correctly.</font></li>
+<li>[5 pts] Code performs the broadcast messaging operation correctly.</li>
+<li>[5 pts] Code performs the private messaging operation correctly.</li>
+<li>[6 pts] Code accepts incoming broadcast and private messages correctly.</li>
+<li>[5 pts] Code performs exit operation correctly.</li>
+<li>[5 pts] Code provides reasonable error checking.</li>
+<li>[5 pts] Reasonable code performance (runs without errors).</li>
+<li>[4 pts] Code is commented with appropriate header information.</li>
+
+</ul></li>
+<li><b>Server code</b> (45 pts total)
+<ul>
+<li>[5 pts] Code compiles without warnings or errors.</li>
+<li>[5 pts] Code handles multiple client connections correctly.</li>
+<li><font color="black">[5 pts] Code performs the login operation correctly.</font></li>
+<li>[5 pts] Code performs the broadcast messaging operation correctly.</li>
+<li>[6 pts] Code performs the private messaging operation correctly.</li>
+<li>[5 pts] Code performs exit operation correctly.</li>
+<li>[5 pts] Code provides reasonable error checking.</li>
+<li>[5 pts] Reasonable code performance (runs without errors).</li>
+<li>[4 pts] Code is commented with appropriate header information.</li>
+</ul></li>
+<li><b>Overall</b> (10 pts total)
+    <ul><li>[3 pts] Code is submitted in the requested form.</li>
+        <li>[3 pts] Code follows argument convention.</li>
+        <li>[4 pts] User information is stored in file.</li></ul> </li>
+</ul><br>
+
+
+<h2>Extra Credits</h2>
+<font color="black">
+<ol>
+  <li><b>Chat History (CH) Command:</b>  
+    <ol type="i">
+    <li>Client sends operation (CH) to view the chat history.</li>
+    <li >The chat history should be stored <b>in a file on the server</b>  that keeps track of all previous chat messages received and sent by the client. The file is stored on the server rather than on the client so that the user cannot  modify or delete the chat history. The file should be created upon user registration. For example, when user Alice registers, the server will create a file "Alice.chat" to store her chat history. </li>
+    <li >Each chat history entry should include [Timestamp] [Type of Chat (BM or PM)] [Sender and Receiver] and [Message Content]. The timestamp is the moment when a client sends or receives a message. (You may use the corresponding timestamp on the server to record the chat history.)
+    <!-- In this assignment, you can use the timestamp of the server when it receives the message of the client, given all four student machines are synchronized on a high-speed LAN with negligible communication delay.  -->
+    <!-- [Source and Destination] refers to the sender and receiver of the message. For broadcast messages, you only need to specify the sender. </li> -->
+    <li >When receiving the (CH) command, the server sends the chat history to the client.</li>
+    <li >The client receives and then displays the chat history on the screen. For long chat history that exceeds the buffer size, the client will need to enter a loop to receive the chat history.</li>
+    <li >Client and server return to "prompt user for operation" and "wait for operation from client" state, respectively.</li>
+    </ol>
+  </li>
+    
+  <li><b>Password and Private Message Encryption:</b> 
+    <ul>
+      <li><b>Password Encryption</b></li>
+      <ol type="i">
+        <li>After the server receives the username from the client, the server generates a <b><i>public key</i></b> and sends it to the client. </li>
+        <li>Client encrypts its password using server's public key, and sends the <b><i>encrypted password</i></b> to server.</li>
+        <li>Server receives the encrypted password and decrypts it. Server continues the login process as shown in the main instruction.</li>
+      </ol>
+
+      <li><b>Private Message Encryption</b></li>
+      <ol type="i">
+        <li>After the client has successfully logged in to the chat room, the client generates a <b><i>public key</i></b> and sends it to the server.</li>
+        <li>Server stores the public key of the client. </li>
+        <li>When a client wants to send a private message, the client first sends the <b><i>username</i></b> to the server, and the server replies with the user's <b><i>public key</i></b>.</li>
+        <li>Client receives the user's public key and then prompts for, encrypts, and sends the <b><i>message</i></b> to be sent.</li>
+        <li>The server forwards the encrypted message to the target user, which will receive the encrypted message, and decrypt and display the message.</li>  
+      </ol>
+      
+    </ul>
+  <b>Note:</b> The encryption/decryption functions are provided in the file pg3lib.py that can be downloaded <a href="https://canvas.illinois.edu/courses/16629/files/4031610/">here</a>.
+
+  </li>
+</ol>
+
+
+
+<br><br>
+
+<b>Extra Credit Rubric (20 pts)</b>
+<ul>
+  <li>[10 pts] Code performs the <b>CH</b> command correctly.</li>
+  <li>[4 pts] The password of each user is encrypted/decrypted correctly. </li> 
+  <li>[6 pts] The private messages are encrypted/decrypted correctly.</li> 
+  
+</ul>
+</font>
+
+
+
+
+
+
+<h2>Appendix</h2>
+Use the port number corresponding to your name in the appendix below.<br><br>
+
+<center><table border="1"><caption><b>Table 1. Port Assignments</b></caption>
+<tbody><tr><th>Port to Use</th><th>Name</th></tr>
+<tr><td>41001</td><td> Canty, Angel </td></tr>
+<tr><td>41002</td><td> Guo, Jerry </td></tr>
+<tr><td>41003</td><td> Lee, Ivy </td></tr>
+<tr><td>41004</td><td> Shamim, Iman </td></tr>
+<tr><td>41005</td><td> Shi, Tiancheng </td></tr>
+<tr><td>41006</td><td> Shuaibi, Alaa </td></tr>
+<tr><td>41007</td><td> Torres, Michael </td></tr>
+<tr><td>41008</td><td> Xiao, Justin </td></tr>
+<tr><td>41009</td><td> Cui, Cilia </td></tr>
+<tr><td>41010</td><td> Donelson, Curt </td></tr>
+<tr><td>41011</td><td> Fang, Hongli </td></tr>
+<tr><td>41012</td><td> He, Richard </td></tr>
+<tr><td>41013</td><td> He, Xiang </td></tr>
+<tr><td>41014</td><td> Huang, Chung-An </td></tr>
+<tr><td>41015</td><td> Huang, Houshuo </td></tr>
+<tr><td>41016</td><td> Jia, Bo </td></tr>
+<tr><td>41017</td><td> Jia, Hao </td></tr>
+<tr><td>41018</td><td> Jiang, Yuxuan </td></tr>
+<tr><td>41019</td><td> Li, Chang </td></tr>
+<tr><td>41020</td><td> Li, Ziheng </td></tr>
+<tr><td>41021</td><td> Liu, Amelia </td></tr>
+<tr><td>41022</td><td> Liu, River </td></tr>
+<tr><td>41023</td><td> Wang, Jingwei </td></tr>
+<tr><td>41024</td><td> Wang, Weiyu </td></tr>
+<tr><td>41025</td><td> Wang, Xiuyuan </td></tr>
+<tr><td>41026</td><td> Wang, Zeyu </td></tr>
+<tr><td>41027</td><td> Xia, Yilin </td></tr>
+<tr><td>41028</td><td> Xu, Yuting </td></tr>
+<tr><td>41029</td><td> Xu, Zhizhou </td></tr>
+<tr><td>41030</td><td> Yang, Qinwen </td></tr>
+<tr><td>41031</td><td> Zhang, Boyu </td></tr>
+<tr><td>41032</td><td> Zhang, Jingfang </td></tr>
+<tr><td>41033</td><td> Zhang, Yunjia </td></tr>
+<tr><td>41034</td><td> Zhang, Zheng </td></tr>
+<tr><td>41035</td><td> Zheng, Shaojun </td></tr>
+</tbody></table></center>
+
+<br><br><br>
+ </body></html> </body></html>

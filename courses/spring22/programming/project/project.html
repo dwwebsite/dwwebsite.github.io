@@ -1,0 +1,150 @@
+
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="GENERATOR" content="Mozilla/4.78 [en] (X11; U; SunOS 5.8 sun4u) [Netscape]">
+  <meta name="Author" content="Dong Wang"><title>Spring 2022 IS496 Mini-Project</title>
+</head>
+
+<body bgcolor="#ffffff">
+ <br>
+
+<h1>Spring 2022 IS496 Course Mini-Project</h1>
+<br>
+<b>Total Points: </b> 120 points
+<br>
+<!-- <b>Assigned:</b> Mar. 28, 2022 -->
+<!-- <br> -->
+<b>Proposal Due: <font color="red">April 4, 2022, by the end of the day (11:59 pm CST). </font> </b>
+<br>
+<b>Project Due: <font color="red">May 6, 2022, by the end of the day (11:59 pm CST). </font> </b>
+<br>
+<b>Grouping: <u> To be completed by a group.</u> </b>
+<br>
+<font color="black" style="background-color:#FFFF00"><b>Note:</b> This project is for graduate students only.</font>
+<br>
+<hr>
+
+
+<h2>Overview</h2>
+The project in this course will be open-ended. 
+<!-- The goal of this assignmet to provide you an opportunity for in-depth engagement with socket programming in computer networks.  -->
+The goal of this assignment is to provide you with an opportunity to apply what you have learned from the previous programming assignments (PGs) and the course to a network application you are excited about. 
+You will propose, design, implement, and report upon a project in groups of two or three students. (Please let the TA know if your group for this project is different from your PG group.)
+The project needs to be implemented using <b>Socket programming</b> learned in this class. However, it <i>cannot</i> be a simple integration of existing projects/codes (e.g., PGs, GitHub repositories). 
+<!-- Your submited code will be checked for plagiarism. -->
+You are welcome to seek out and exploit external manuals, books, websites, and other documentation that can help you to complete your project, provided that you indicate what sources you have used in your project proposal, project report, source codes, and README file (please refer to Submissions section for the details).
+However, the core functions of the application must be designed and implemented solely by you and your project partner(s).
+<b>Note:</b> If you have any questions about the project ideas or requirements, you can always check with the instructor or the TA. 
+
+
+
+<h2>Project Ideas</h2>
+The following are some ideas for possible projects. These are just some examples to help you get started. You can choose from these examples or come up with your own ideas! 
+
+
+<ul>
+  <li><b>Online Pong Game.</b> The Pong game is played by two competitors. A ball bounces between the two sides of the court, and each player controls a paddle to deflect the ball when it reaches their side. The goal is to score points by getting the ball past the opponent's paddle. 
+  <!-- The left paddle is controlled using the W / S keys, and the right paddle is controlled by the UP / DOWN arrow keys.  -->
+  An <b><i>online</i></b> Pong game is designed to be played by two players (i.e., a server hosting the game and a client joining the game) over the network where the game state (i.e., paddle/ball positions, scores, etc.) is synchronized over the network. A few challenges need to be addressed to develop a networked Pong game: 1) game state synchronization, such as whether to synchronize at a fixed rate or only when an event happens (e.g., a paddle moves, a point is scored); 2) score discrepancy resolution, namely how to resolve the score discrepancy when the ball and paddle move at about the same time but a point is scored on one side of the game but is not scored on the other side due to the network delay.
+  A starter code of the local Pong game (i.e., the game that can be played locally) can be downloaded here: <a href="https://canvas.illinois.edu/courses/16629/files/4035919/">Python</a> and <a href="https://canvas.illinois.edu/courses/16629/files/4035920/">C/C++</a>.
+  <!-- (You are encouraged to reach out to the TA for a starter code of the Pong game that can be played locally.)  -->
+  </li>
+  <li><b>Online Reservation Management System.</b> An online reservation management system can help businesses (e.g., restaurants, hotels, etc.) with scheduling and managing online bookings. The reservation database dynamically changes and the reservation management system should guarantee that there are no conflict bookings. Conflict bookings indicate that the number of reservations for the same date and time exceeds the number of available resources (e.g., restaurant tables at the same time slots, hotel rooms on the same day).
+  The system (i.e., server) should handle the requests (e.g., make a new booking, modify/cancel existing bookings) simultaneously from multiple users (i.e., client). The system can also be designed to manage the reservations for multiple businesses. 
+  </li>
+  <li><b>COVID-19 Vaccine Availability Checking System.</b> The availability of the COVID-19 vaccine is limited due to the strict storage conditions and handling requirements of the vaccines. The COVID-19 vaccine availability checking system can help people find pharmacies and other locations that offer COVID-19 vaccines by different vaccine manufacturers. The system (i.e., server) is expected to handle the requests from two types of clients: 1) patients: the eligible patients who are looking for the nearest locations for available COVID-19 vaccine; 2) vaccine providers: the pharmacies or other locations that periodically update the vaccine availability. 
+  <!-- Examples of the main functions of the COVID-19 vaccine availability checking system include: 1) verifying the eligibility of the patient (e.g., age, occupation, COVID-19 vaccine history, etc.), 2) checking the availability of COVID-19 vaccine near the location of interest, 3) updating the vaccine availability information input by the vaccine providers.  -->
+  The server should handle the requests (e.g., checking vaccine eligibility/availability, updating vaccine availability information) simultaneously from multiple patients/vaccine providers (i.e., client).
+  You may use a list of pharmacies in Champaign county (<a href="https://www.countyoffice.org/il-champaign-county-pharmacy/">link</a>) to set up your initial database and expand it to other locations if you want.
+  </li>
+  <!-- <li><b>Library Book Search Portal.</b> An online book search portal can help library members efficiently find the books or other resources they need. In particular, the search portal should be able to access multiple book catalogs (e.g., MySQL/SQL databases, CSV files) from different libraries (e.g., the university library and the city library) for book search requests. The portal is expected to search books by multiple criteria, such as book title, author name, publish year, preferred library. If the book cannot be found in the preferred library specified by the user, the system can also search nearby libraries. 
+  </li> -->
+  <li><b>Movie Recommendation/Search Application:</b> IMDb is an online database of information related to films, television series, home videos, video games, and streaming content online. 
+  <!-- The goal of the movie recommendation/search application server is to retrieve the relevant movies from the IMDb database based on the user's (i.e., client) searching criteria (e.g., name, keyword, genre, year, cast member, etc.).  -->
+
+  Examples of the functions of the movie recommendation/search server include: 1) retrieving a list of relevant movies from the IMDb database based on the user's (i.e., client) searching criteria (e.g., movie name, genre, cast, rating, runtimes, etc.); 
+  2) displaying essential information (e.g., director, cast members, company, year, etc.) of a retrieved movie that is selected by the user;
+  3) allowing the user to register for/login to an account and save/view their favorite movie list.
+  The server is also expected to interact with different clients simultaneously.
+  The IMDb database API can be accessed with the Python library <a href="https://imdbpy.readthedocs.io/en/latest/">IMDbPY</a>.
+
+  </li>
+  <li><b>Come Up with Your Own.</b> The above examples are only ideas to get you thinking! You are encouraged to come up with your own idea or modify one of those above!
+  </li>
+</ul>
+
+
+
+<h2>Submissions</h2>
+
+<ul>
+
+  <li><b>Project Proposal</b> (Due: April 4, 2022, by the end of the day)</li>
+  Submit a one-page proposal of your proposed project to Canvas. One submission per group is sufficient. Your proposal must:
+  <ol>
+    <li>Explain the high-level idea of the computer networks application your group proposes to develop and the key challenges to be addressed and/or key functions to be implemented in your application. Feel free to include system diagrams, illustrative figures, or mock-up interfaces that will be helpful to understand your idea.
+    </li>
+    <li>Justify how you will apply Socket programming to develop the key networking functions of the application you propose. Specify which protocol (i.e., UDP, TCP, or both) you plan to use and why.</li>
+    <li>[Optional] Identify any external sources (e.g., starter code, database) that you plan to use in the project and how you will use them. You will also need to explicitly justify what is your group's contribution to the project if you choose to use external sources.</li>
+    <li>Propose a timeline and milestones to finish the project on time.</li>
+    <li>Indicate the main responsibility of each team member, such as application design, implementation, report write-up, demo preparation, etc.</li>
+  </ol>
+  <font color="black"><b>Note:</b> the feedback of the proposal will be sent to each group within one week of the proposal due date. The feedback will include the assessment of the challenging level of the proposed project and any suggestions/comments of the proposed project.</font>
+
+  <li><b>Final Project</b> (Due: May 6, 2022, by the end of the day)</li>
+
+
+Submit a <b>gzipped tar file</b> of your entire assignment package to the corresponding assignment on <a href="https://canvas.illinois.edu/courses/16629/assignments">Canvas</a>. One submission per group is sufficient. The submission must include the following:
+<ul>
+<li><b>Project Report</b>
+<ul>
+  <li>A 3-5 pages report that describes the design of your application, including the goal of the application, the target groups/users who will benefit from the application, the workflow and key functions of your application and how you implement them, any external sources used, any technical challenges you have encountered and how you resolve them. In addition, you will need to indicate the contribution of each team member.</li>
+  <li>A demo video (in .mp4 or .mov) that shows how your application works. You may record your video with the narrative using Zoom or other screen recording apps.</li>
+</ul>
+</li>
+
+
+<li><b>Working Code</b>
+<ul>
+	<!-- <li>Makefile for the game</li> -->
+	<li>Source code file(s) with proper comments for the network application.</li>
+  <li>The name and netid of each team member (that are added at the beginning of each source code file).</li>
+  <li>README: Listing of the included file names and example commands to run your code in the <font color="black">submission</font>.</li>
+</ul>
+<b>Note:</b> If your work contains the codes from external sources, you will also need to be clear about which portion of your codes is borrowed from which source in the README file and proper comments in the source codes.
+</li>
+
+</ul>
+</ul>
+
+<h2>Grading Rubric</h2>
+Total: 120 points
+<ul>
+<li>Project Proposal (20 pts total)</li>
+  <ul>
+  <li>[20 pts] A clear description of the proposed network application (please refer to the detailed requirements above)</font></li>
+  </ul>
+
+<li>Project Report (40 pts total)</li>
+  <ul>
+    <li>[30 pts] <font color="black">A project report meets the requirements discussed above.</font></li>
+    <li>[10 pts] An informative demo video</li>
+  </ul>
+
+
+<li>Project Code (60 pts total) 
+  <ul>
+    <li>[5 pts] Code compiles without warnings or errors</li>
+    <li>[5 pts] Reasonable code performance (runs without errors)</li>
+    <li>[30 pts] Functions of the application that meet the description in the project report</li>
+    <li><font color="black">[20 pts] The challenging level of the project </font></li>
+  </ul>
+</li>
+</ul>
+
+<br>
+
+
+<br><br><br>
+ </body></html>
