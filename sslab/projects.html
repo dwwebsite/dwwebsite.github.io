@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>The Social Sensing Lab</title>
+    <title>Social Sensing & Intelligence Lab</title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,6 +30,13 @@
   margin: auto;
   margin-bottom: 30px !important;
 }
+.center-fit2{
+  width: 70vw;
+  height: 40vw;
+  display: block;
+  margin: 2vw 2vw;
+}
+
 a{
     text-decoration: underline !important;
 }
@@ -108,8 +115,7 @@ h2 {
 }
 
 #topnav {
-   display: block !important;
-
+    display: block !important;
 }
 #midnav {
    display: none !important;
@@ -123,8 +129,11 @@ h2 {
 }
 
 
+
 img{
-    margin-top:40px !important
+    margin-top:40px !important;
+    display: block;
+    margin: auto;
 }
 #nd {
    display: none !important;
@@ -174,15 +183,15 @@ img{
         <!-- ******HEADER****** --> 
         <header class="header">  
            
-            <div class="header-main container" style="margin-left: 10% !important; min-width: 80% !important;margin-right: 10% !important;">
-               <div class="row">
+            <div class="header-main container" style="margin-left: 5% !important; min-width: 90% !important;margin-right: 5% !important;">
+                <div class="row">
                     <h1 class="logo col-md-4 col-12">
-                        <a href="index.html"><img id="logo" src="assets/images/logo-new.png" alt="Logo", width="280" height="110"></a>
+                        <a href="index.html"><img id="logo" src="assets/images/logo-new.png" alt="Logo", width="300" height="120"></a>
                     </h1><!--//logo-->           
                     <div class="info col-md-8 col-12 ">
                     <div class="float-right">
                                                 <a href="https://illinois.edu/"><img id="uiuc" src="assets/images/uiuc3.png" alt="UIUC", width="300" height="80"></a>
-</div>
+                    </div>
 
 
                     </div><!--//info-->
@@ -233,90 +242,54 @@ img{
 
 
 <p style="font-size:18px;">
-The primary research focus of the lab lies in the emerging area of Social Sensing & Intelligence. Some example topics in this area include human-centered AI, AI for social good, trustworthy AI, responsible machine learning, social media, social informatics, social computing, crowdsourcing/crowdsensing, privacy, robustness, and FATE (fairness, accountability, transparency, ethics).  We carry out a set of projects to address several key challenges in the above domains and we believe the theories, algorithms, frameworks, and systems developed in these projects are useful in building future human-centered computing systems in general. An overview of social sensing and intelligence can be found in  <a href="./pdf/computer-18.pdf"> <b> IEEE Computer Perspective Paper</b></a>. </p> 
+The primary research focus of the lab lies in the emerging area of Social Sensing & Intelligence. Some example topics in this area include human-centered AI, AI for social good, trustworthy AI, responsible machine learning, social media, social informatics, social computing, crowdsourcing/crowdsensing, privacy, robustness, and FATE (fairness, accountability, transparency, ethics).  We carry out a set of projects to address several key challenges in the above domains and we believe the theories, algorithms, frameworks, and systems developed in these projects are useful in building future human-centered computing systems in general. An overview of social sensing and intelligence can be found in  <a href="https://ieeexplore.ieee.org/document/8666667"> <b> IEEE Computer Perspective Paper</b></a>. </p> 
                     </div>
                     
        
 
- <h1>Current Projects:</h1> <br> <p>
+<h1>Current Projects:</h1> <br> <p>
 
-
-<table class="table-project">
-<col align="left" />
-<col align="right" />
-
-
-<tr>
-<td>
 
 <h2>FairFL: A Fair Federated Learning Approach to Reducing Demographic Bias in Privacy-Sensitive Classification Models</h2> <br>
 <p style="font-size:18px;">
-The recent advance of the federated learning (FL) has brought new opportunities for privacy-aware distributed machine learning (ML) applications to train a powerful ML model without accessing the private training data of the participants. In this paper, we focus on addressing a novel fair classification problem in FL where the model trained by FL displays discriminatory bias towards particular demographic groups. Addressing the fairness issue in a FL framework posts three critical challenges: fairness and performance trade-offs, restricted information, and constrained coordination. To address these challenges, we propose to develop FairFL, a fair federated learning framework dedicated to reducing the bias in privacy-sensitive ML applications. It consists of a principled deep multi-agent reinforcement learning framework and a secure information aggregation protocol that optimizes both the accuracy and the fairness of the learned model while respecting the strict privacy constraints of the clients. The results have been published in <a href="https://ieeexplore.ieee.org/document/9378043"> <b>IEEE BigData 2020</b> </a> and <a href="https://ieeexplore.ieee.org/document/9488776"> <b>IEEE INFOCOM 2021</b> </a>. 
+The recent advance of the federated learning (FL) has brought new opportunities for privacy-aware distributed machine learning (ML) applications to train a powerful ML model without accessing the private training data of the participants. In this paper, we focus on addressing a novel fair classification problem in FL where the model trained by FL displays discriminatory bias towards particular demographic groups. Addressing the fairness issue in a FL framework posts three critical challenges: fairness and performance trade-offs, restricted information, and constrained coordination. To address these challenges, we propose to develop FairFL, a fair federated learning framework dedicated to reducing the bias in privacy-sensitive ML applications. It consists of a principled deep multi-agent reinforcement learning framework and a secure information aggregation protocol that optimizes both the accuracy and the fairness of the learned model while respecting the strict privacy constraints of the clients. The results have been published in <a href="https://ieeexplore.ieee.org/document/9378043"> <b>IEEE BigData 2020</b></a> and <a href="https://ieeexplore.ieee.org/document/9488776"> <b>IEEE INFOCOM 2021</b></a>. 
 </p>
-</td>
-</tr>
-</table>
 
-<table class="table-project">
-<col align="left" />
-<col align="right" />
+<div style="display: flex; flex-flow: row wrap;">    
+    <div ><img class="center-fit2" src="./pic/fairfl.jpg", alt="Social Sensing", width="480" height="250" style="max-width: 480px;max-height: 250px;" /> </div>
+    <div ><img class="center-fit2" src="./pic/fedsens.jpg", alt="Social Sensing", width="480" height="250" style="max-width: 480px;max-height: 250px;"/> </div>
+</div>
 
-<tr>
-<td>
-  <img class="" src="./pic/fairfl.jpg", alt="Social Sensing",  width="480" height="250", hspace="150" /> </td>
-<td>
-  <img class="" src="./pic/fedsens.jpg", alt="Social Sensing",  width="480" height="250" /> </td>
-</tr>
-
-</table>
 <br>
 <br>
 
 
-<tr>
-<td>
 
 <h2>CrowdLearn: A Crowd-AI Hybrid System for Deep Learning-based Applications</h2> <br>
 <p style="font-size:18px;">
-Artificial Intelligence (AI) has been widely adopted in many important application domains such as speech recognition, computer vision, autonomous driving, and AI for social good. While AI algorithms often significantly reduce the detection time and labor cost in many applications, their performance sometimes falls short of the desired accuracy and is considered to be less reliable than domain experts. To exacerbate the problem, the black-box nature of the AI algorithms also makes it difficult to troubleshoot the system when their performance is unsatisfactory. The emergence of crowdsourcing platforms (e.g., Amazon Mechanic Turk, Waze) brings about the opportunity to incorporate human intelligence into AI algorithms. However, the crowdsourcing platform is also black-box in terms of the uncertain response delay and crowd worker quality. In this project, we develop the CrowdLearn, a crowd-AI hybrid system that leverages the crowdsourcing platform to troubleshoot, tune, and eventually improve the blackbox AI algorithms by welding crowd intelligence with machine intelligence. The system is specifically designed for deep learningbased damage assessment (DDA) applications where the crowd tend to be more accurate but less responsive than machines. The results have been published in <a href="https://ieeexplore.ieee.org/document/8885305"> <b>IEEE ICDCS 2019</b> </a> and <a href="https://ojs.aaai.org/index.php/AAAI/article/view/5658"> <b>AAAI 2020</b> </a>. 
+Artificial Intelligence (AI) has been widely adopted in many important application domains such as speech recognition, computer vision, autonomous driving, and AI for social good. While AI algorithms often significantly reduce the detection time and labor cost in many applications, their performance sometimes falls short of the desired accuracy and is considered to be less reliable than domain experts. To exacerbate the problem, the black-box nature of the AI algorithms also makes it difficult to troubleshoot the system when their performance is unsatisfactory. The emergence of crowdsourcing platforms (e.g., Amazon Mechanic Turk, Waze) brings about the opportunity to incorporate human intelligence into AI algorithms. However, the crowdsourcing platform is also black-box in terms of the uncertain response delay and crowd worker quality. In this project, we develop the CrowdLearn, a crowd-AI hybrid system that leverages the crowdsourcing platform to troubleshoot, tune, and eventually improve the blackbox AI algorithms by welding crowd intelligence with machine intelligence. The system is specifically designed for deep learningbased damage assessment (DDA) applications where the crowd tend to be more accurate but less responsive than machines. The results have been published in <a href="https://ieeexplore.ieee.org/document/8885305"> <b>IEEE ICDCS 2019</b></a> and <a href="https://ojs.aaai.org/index.php/AAAI/article/view/5658"> <b>AAAI 2020</b></a>. 
 </p>
-</p>
-</td>
-</tr>
-</table>
 
-<table class="table-project">
-<col align="left" />
-<col align="right" />
 
-<tr>
-<td>
-  <img class="" src="./pic/crowdlearn.jpg", alt="Social Sensing",  width="520" height="280", hspace="100" /> </td>
-<td>
-  <img class="" src="./pic/idsa.jpg", alt="Social Sensing",  width="520" height="280" /> </td>
 
-</tr>
+<div style="display: flex; flex-flow: row wrap;">    
+    <div><img class="center-fit2" src="./pic/crowdlearn.jpg", alt="Social Sensing", style="max-width: 500px;max-height: 280px;"/> </div>
+    <div><img class="center-fit2" src="./pic/idsa.jpg", alt="Social Sensing", style="max-width: 500px;max-height: 280px;"/> </div>
+</div>
 
-</table>
 <br>
-<br>
+<br> 
 
-                        
-<table class="table-project">
-<col align="left" />
-<col align="right" />
 
-<tr>
-<td>
+
+  
 <h2>Towards Reliable and Optimized Crowdsensing based Cyber-Physical Systems (C-CPS) </h2> <br>
 <p style="font-size:18px;">
-This project is motivated by the challenges in data and predictive analytics and in control for participatory science data collection and curation (known as crowdsensing) in cyber-physical systems (CPS).  This project focuses on data-driven frameworks to address these challenges in CPS-enabled participatory science that builds on statistics, optimization, control, and natural language processing. Our framework tightly combines the underlying methods and techniques, especially focusing on physical sensors, mobility, and model-based approaches, to improve efficiency, effectiveness, and accountability. This project also closely integrates education and training with foundational research and public outreach that enhances interdisciplinary thinking about CPS systems, engages the public through participatory science, and broadens participation in science, technology, engineering, mathematics, and computer science. The results have been published in <a href="https://ieeexplore.ieee.org/document/9534702"> <b>IEEE TCSS 2021</b> </a> and <a href="https://ojs.aaai.org/index.php/HCOMP/article/view/18950"> <b>AAAI HComp 2021</b> </a>. 
+This project is motivated by the challenges in data and predictive analytics and in control for participatory science data collection and curation (known as crowdsensing) in cyber-physical systems (CPS).  This project focuses on data-driven frameworks to address these challenges in CPS-enabled participatory science that builds on statistics, optimization, control, and natural language processing. Our framework tightly combines the underlying methods and techniques, especially focusing on physical sensors, mobility, and model-based approaches, to improve efficiency, effectiveness, and accountability. This project also closely integrates education and training with foundational research and public outreach that enhances interdisciplinary thinking about CPS systems, engages the public through participatory science, and broadens participation in science, technology, engineering, mathematics, and computer science. The results have been published in <a href="https://ieeexplore.ieee.org/document/9534702"> <b>IEEE TCSS 2021</b></a> and <a href="https://ojs.aaai.org/index.php/HCOMP/article/view/18950"> <b>AAAI HComp 2021</b></a>. 
 </p>
-</td>
-</tr>
-</table>
 
-<table class="table-project">
+
+<!-- <table class="table-project">
 <col align="left" />
 <col align="right" />
 
@@ -328,30 +301,25 @@ This project is motivated by the challenges in data and predictive analytics and
 <td>
   <img class="" src="./pic/streamcollab.jpg", alt="Social Sensing",  width="430" height="250"> </td>
 </tr>
-
-</table>
+</table>-->
+<div style="display: flex; flex-flow: row wrap;">    
+    <div><img src="./pic/hcps.png", alt="Social Sensing",  style="max-width: 320px;max-height: 250px; width: 65vw; height: 52vw; display: block;margin: 2vw 2vw;" /> </div>
+    <div><img class="center-fit2" src="./pic/collablearn.jpg", alt="Social Sensing", style="max-width: 380px;max-height: 230px;"/> </div>
+    <div><img class="center-fit2" src="./pic/streamcollab.jpg", alt="Social Sensing", style="max-width: 430px;max-height: 250px;"/> </div>
+</div>
 <br>
 <br>
 
 
 
 
-<table class="table-project">
-<col align="left" />
-<col align="right" />
-
-
-<tr>
-<td>
 <h2>SocialDrone: An Integrated Social Media and Drone Sensing System for  Reliable Disaster Response</h2> <br>
 <p style="font-size:18px;">
-Social media sensing has emerged as a new disaster response application paradigm to collect real-time observations from online social media users about the disaster status. Due to the noisy nature of social media data, the task of identifying trustworthy information (referred to as "truth discovery") has been a crucial task in social media sensing.  In this project, we develop SocialDrone, a novel closed-loop social-physical active sensing framework that integrates social media and unmanned aerial vehicles (UAVs) for reliable disaster response applications. In SocialDrone, signals emitted from social media are distilled to drive the drones to target areas to verify the emergency events. The verification results are then taken back to improve the sensing and distillation process on social media. The SocialDrone framework introduces several unique challenges: i) how to drive the drones  using unreliable social media signals? ii) How to ensure the system is adaptive to the high dynamics from both the physical world and social media? iii) How to incorporate real-world constraints (e.g., the deadlines of events, limited number of drones) into the framework? The SocialDrone addresses these challenges by building a novel integrated social-physical sensing system that leverages techniques from game theory, constrained optimization, and reinforcement learning.  The results have been published in <a href="https://ieeexplore.ieee.org/document/9155522"> <b>IEEE Infocom 2020</b> </a> and <a href="https://ieeexplore.ieee.org/document/9600048"> <b>IEEE DCoSS 2021</b> </a>. 
+Social media sensing has emerged as a new disaster response application paradigm to collect real-time observations from online social media users about the disaster status. Due to the noisy nature of social media data, the task of identifying trustworthy information (referred to as "truth discovery") has been a crucial task in social media sensing.  In this project, we develop SocialDrone, a novel closed-loop social-physical active sensing framework that integrates social media and unmanned aerial vehicles (UAVs) for reliable disaster response applications. In SocialDrone, signals emitted from social media are distilled to drive the drones to target areas to verify the emergency events. The verification results are then taken back to improve the sensing and distillation process on social media. The SocialDrone framework introduces several unique challenges: i) how to drive the drones  using unreliable social media signals? ii) How to ensure the system is adaptive to the high dynamics from both the physical world and social media? iii) How to incorporate real-world constraints (e.g., the deadlines of events, limited number of drones) into the framework? The SocialDrone addresses these challenges by building a novel integrated social-physical sensing system that leverages techniques from game theory, constrained optimization, and reinforcement learning.  The results have been published in <a href="https://ieeexplore.ieee.org/document/9155522"> <b>IEEE INFOCOM 2020</b></a> and <a href="https://ieeexplore.ieee.org/document/9600048"> <b>IEEE DCoSS 2021</b></a>. 
 </p>
-</td>
-</tr>
-</table>
 
-<table class="table-project">
+
+<!-- <table class="table-project">
 <col align="left" />
 <col align="right" />
 
@@ -360,27 +328,26 @@ Social media sensing has emerged as a new disaster response application paradigm
 <td><img class="" src="./pic/heterosas.jpg", alt="Social Sensing",  width="450" height="280"  hspace="50" /> </td>
 <td><img class="" src="./pic/socialsas.jpg", alt="Social Sensing",  width="350" height="220" /> </td>
 </tr>
-</table>
+</table> -->
+
+<div style="display: flex; flex-flow: row wrap;">    
+    <div><img class="center-fit2" src="./pic/socialdrone.png", alt="Social Sensing",  style="max-width: 320px;max-height: 220px;" /> </div>
+    <div><img class="center-fit2" src="./pic/heterosas.jpg", alt="Social Sensing", style="max-width: 450px;max-height: 280px;"/> </div>
+    <div><img class="center-fit2" src="./pic/socialsas.jpg", alt="Social Sensing", style="max-width: 350px;max-height: 220px;"/> </div>
+</div>
+
 <br>
 <br>
 
 
-<table class="table-project">
-<col align="left" />
-<col align="right" />
 
-
-<tr>
-<td>
 <h2>FauxBuster: A Content-Agnostic Fauxtography Detector using Social Media Comments</h2> <br>
 <p style="font-size:18px;">
-With the increasing popularity of online social media (e.g., Facebook, Twitter, Reddit), the detection of misleading content on social media has become a critical undertaking. This paper focuses on an important but largely unsolved problem: detecting fauxtography (i.e., social media posts with misleading images). We found that the existing literature falls short in solving this problem. In particular, current solutions either focus on the detection of fake images or misinformed texts of a social media post. However, they cannot solve our problem because the detection of fauxtography depends not only on the truthfulness of the images and the texts but also on the information they deliver together on the posts. In this project, we develop the FauxBuster, an end-to-end supervised learning system that can effectively track down fauxtography by exploring the valuable clues from users' comments of a post on social media. The FauxBuster is content-agnostic in that it does not rely on the analysis of the actual content of the images, and hence is robust against malicious uploaders who can intentionally modify the presentation and description of the images. We evaluate FauxBuster on two mainstream social media platforms - Reddit and Twitter. Results show that FauxBuster is both effective and efficient in addressing the fauxtography problem. The results have been published in <a href="https://ieeexplore.ieee.org/document/8622344"> <b>IEEE BigData 2018 </b> </a>, <a href="https://link.springer.com/article/10.1007/s13278-020-00689-w"> <b>Springer SNAM 20 </b> </a>, <a href="https://ieeexplore.ieee.org/document/9378019"> <b>IEEE BigData 2020</b> </a>, and  <a href="https://ieeexplore.ieee.org/document/9625796"> <b>IEEE TBD 2021</b> </a>.
+With the increasing popularity of online social media (e.g., Facebook, Twitter, Reddit), the detection of misleading content on social media has become a critical undertaking. This paper focuses on an important but largely unsolved problem: detecting fauxtography (i.e., social media posts with misleading images). We found that the existing literature falls short in solving this problem. In particular, current solutions either focus on the detection of fake images or misinformed texts of a social media post. However, they cannot solve our problem because the detection of fauxtography depends not only on the truthfulness of the images and the texts but also on the information they deliver together on the posts. In this project, we develop the FauxBuster, an end-to-end supervised learning system that can effectively track down fauxtography by exploring the valuable clues from users' comments of a post on social media. The FauxBuster is content-agnostic in that it does not rely on the analysis of the actual content of the images, and hence is robust against malicious uploaders who can intentionally modify the presentation and description of the images. We evaluate FauxBuster on two mainstream social media platforms - Reddit and Twitter. Results show that FauxBuster is both effective and efficient in addressing the fauxtography problem. The results have been published in <a href="https://ieeexplore.ieee.org/document/8622344"> <b>IEEE BigData 2018 </b></a>, <a href="https://link.springer.com/article/10.1007/s13278-020-00689-w"> <b>Springer SNAM 20 </b></a>, <a href="https://ieeexplore.ieee.org/document/9378019"> <b>IEEE BigData 2020</b></a>, and  <a href="https://ieeexplore.ieee.org/document/9625796"> <b>IEEE TBD 2021</b></a>.
 </p>
-</td>
-</tr>
-</table>
 
-<table class="table-project">
+
+<!-- <table class="table-project">
 <col align="left" />
 <col align="right" />
 
@@ -389,26 +356,23 @@ With the increasing popularity of online social media (e.g., Facebook, Twitter, 
 <td><img class="" src="./pic/fauxtography.jpg", alt="Social Sensing",  width="330" height="300", hspace="100" /> </td>
 <td><img class="" src="./pic/DExFC.jpg", alt="DExFC",  width="480" height="280" /> </td>
 </tr>
-</table>
+</table> -->
+<div style="display: flex; flex-flow: row wrap;">    
+    <div><img src="./pic/fauxbuster.png", alt="Social Sensing",  style="max-width: 330px;max-height: 280px; width: 65vw; height: 50vw; display: block; margin: 2vw 2vw;" /> </div>
+    <div><img src="./pic/fauxtography.jpg", alt="Social Sensing", style="max-width: 330px;max-height: 300px; width: 70vw; height: 60vw; display: block;margin: 2vw 2vw;"/> </div>
+    <div><img class="center-fit2" src="./pic/DExFC.jpg", alt="DExFC", style="max-width: 480px;max-height: 280px;"/> </div>
+</div>
 <br>
 <br>
 
-<table class="table-project">
-<col align="left" />
-<col align="right" />
 
-
-<tr>
-<td>
 <h2>Smart Water Crowdsensing: Examining How Innovative Data Analytics and Citizen Science Can Ensure Safe Drinking Water in Rural Versus Suburban Communities</h2> <br>
 <p style="font-size:18px;">
-Monitoring drinking water contamination is vitally important to inform consumers about water safety, identify source water problems, and facilitate discussion of public health and the environment of our drinking water. The overall goal of this project is to develop a framework for reliable and timely detection of drinking water contamination to build sustainable and connected communities. It focuses on communities that use private wells for drinking water without the benefit of a central utility to monitor water quality. It engages the community to participate, leveraging advances in data analytics, exploring the technological and social dimensions to answer a public health question: Is the drinking water in the community safe? This project advances the role of public participatory scientific research, also referred to as citizen science, in data gathering. It develops new inference models using approaches from machine learning and statistics to improve accuracy, reliability, trustworthiness and value of the data, gathered through public participation. It improves understanding of key socio-demographic factors that influence public participation and data quality in contrasting community types. It demonstrates the potential role of citizen science in eliciting changes in behavior, and how that influences programmatic and regulatory practices, e.g., in this study of groundwater quality for healthy and sustainable communities. Additional information of the project can be found on the <a href="https://swcproject.weebly.com/"> <b>Project Website</b> </a>.  The results have been published in <a href="https://smartcomp.aalto.fi/accepted/"> <b>SmartComp 2022</b> </a>, and  <a href="https://ngwa.onlinelibrary.wiley.com/doi/abs/10.1111/gwat.13150"> <b>Groundwater 2021</b> </a>.
+Monitoring drinking water contamination is vitally important to inform consumers about water safety, identify source water problems, and facilitate discussion of public health and the environment of our drinking water. The overall goal of this project is to develop a framework for reliable and timely detection of drinking water contamination to build sustainable and connected communities. It focuses on communities that use private wells for drinking water without the benefit of a central utility to monitor water quality. It engages the community to participate, leveraging advances in data analytics, exploring the technological and social dimensions to answer a public health question: Is the drinking water in the community safe? This project advances the role of public participatory scientific research, also referred to as citizen science, in data gathering. It develops new inference models using approaches from machine learning and statistics to improve accuracy, reliability, trustworthiness and value of the data, gathered through public participation. It improves understanding of key socio-demographic factors that influence public participation and data quality in contrasting community types. It demonstrates the potential role of citizen science in eliciting changes in behavior, and how that influences programmatic and regulatory practices, e.g., in this study of groundwater quality for healthy and sustainable communities. Additional information of the project can be found on the <a href="https://swcproject.weebly.com/"> <b>Project Website</b></a>.  The results have been published in <a href="https://smartcomp.aalto.fi/accepted/"> <b>SmartComp 2022</b></a>, and  <a href="https://ngwa.onlinelibrary.wiley.com/doi/abs/10.1111/gwat.13150"> <b>Groundwater 2021</b></a>.
 </p>
-</td>
-</tr>
-</table>
 
-<table class="table-project">
+
+<!-- <table class="table-project">
 <col align="left" />
 <col align="right" />
 
@@ -417,7 +381,12 @@ Monitoring drinking water contamination is vitally important to inform consumers
 <td><img class="" src="./pic/swc2.jpg", alt="Social Sensing",  width="400" height="220", hspace="30" /> </td>
 <td><img class="" src="./pic/swc3.jpg", alt="Social Sensing",  width="480" height="190" /> </td>
 </tr>
-</table>
+</table> -->
+<div style="display: flex; flex-flow: row wrap;">    
+    <div><img src="./pic/swc1.jpg", alt="Social Sensing",  style="max-width: 450px;max-height: 230px; width: 75vw; height: 35vw; display: block;margin: 2vw 2vw;" /> </div>
+    <div><img src="./pic/swc2.jpg", alt="Social Sensing", style="max-width: 360px;max-height: 220px; width: 70vw; height: 40vw; display: block;margin: 2vw 2vw;"/> </div>
+    <div><img src="./pic/swc3.jpg", alt="DExFC", style="max-width: 450px;max-height: 190px; width: 80vw; height: 35vw; display: block;margin: 2vw 2vw;"/> </div>
+</div>
 <br>
 <br>
 
@@ -425,7 +394,7 @@ Monitoring drinking water contamination is vitally important to inform consumers
 
 
 
-<h1>Prior Projects:</h1> <br> <p>
+<h1>Prior Projects:</h1> <br> 
 
 
 <table class="table-project">
@@ -437,7 +406,7 @@ Monitoring drinking water contamination is vitally important to inform consumers
 <td>
 <h2>VisualPoet: Classical Poetry Recommendation with Visual Input on Social Media</h2> <br>
 <p style="font-size:18px;">
-With the increasing popularity of  portable devices with cameras (e.g., smartphones and tablets) and ubiquitous Internet connectivity, travelers can share their instant experience during the travel by posting photos they took to social media platforms. In this project, we develop a new image-driven poetry recommender system that takes a traveler's photo as input and recommends classical poems that can enrich the photo with aesthetically pleasing quotes from the poems.  Three critical challenges exist to solve this new problem: i) how to extract the implicit artistic conception embedded in both poems and images? ii) How to identify the salient objects in the image without knowing the creator's intent? iii) How to accommodate the diverse user perceptions of the image and make a diversified poetry recommendation?  The VisualPoet system  jointly addresses the above challenges by developing heterogeneous information network and neural embedding techniques. Evaluation results from real-world datasets and a user study demonstrate that our system can recommend highly relevant classical poems for a given photo and receive significantly higher user ratings compared to the state-of-the-art solutions. The results have been published in <a href="./pdf/asonam19-vp.pdf"> <b>ACM/IEEE ASONAM 2019</b> </a>. 
+With the increasing popularity of  portable devices with cameras (e.g., smartphones and tablets) and ubiquitous Internet connectivity, travelers can share their instant experience during the travel by posting photos they took to social media platforms. In this project, we develop a new image-driven poetry recommender system that takes a traveler's photo as input and recommends classical poems that can enrich the photo with aesthetically pleasing quotes from the poems.  Three critical challenges exist to solve this new problem: i) how to extract the implicit artistic conception embedded in both poems and images? ii) How to identify the salient objects in the image without knowing the creator's intent? iii) How to accommodate the diverse user perceptions of the image and make a diversified poetry recommendation?  The VisualPoet system  jointly addresses the above challenges by developing heterogeneous information network and neural embedding techniques. Evaluation results from real-world datasets and a user study demonstrate that our system can recommend highly relevant classical poems for a given photo and receive significantly higher user ratings compared to the state-of-the-art solutions. The results have been published in <a href="https://ieeexplore.ieee.org/document/9073288"> <b>ACM/IEEE ASONAM 2019</b></a>. 
 </p>
 </td>
 </tr>
@@ -462,7 +431,7 @@ With the increasing popularity of  portable devices with cameras (e.g., smartpho
 <h2>TransLand: An Adversarial Transfer Learning Framework for Migratable Urban Land Usage Classification</h2> <br>
 <p style="font-size:18px;">
 Urban land usage classification is a critical task in big data based smart city applications that aim to understand the social-economic land functions and physical land attributes in urban environments. This project focuses on a migratable urban land usage classification problem using remote sensing data (i.e., satellite images). Our goal is to accurately classify the land usage of locations in a target city where the ground truth land usage data is not available by leveraging a classification model from a source city where such data is available. This problem is motivated by the limitation of current solutions that primarily rely on a rich set of ground-truth data for accurate model training, which encounters high annotation costs. In this project, we develop TransLand, an adversarial transfer learning framework to translate the satellite images from the target city to the source city for accurate land usage classification.
-We evaluated our framework on the real-world satellite imagery and land usage datasets collected from different cities in Europe. The results show that TransLand significantly outperforms the state-of-the-art land usage classification baselines in classifying the land usage of locations in a city.  The results have been published in <a href="./pdf/bigdata19-tl.pdf"> <b>IEEE BigData 2019</b> </a>. 
+We evaluated our framework on the real-world satellite imagery and land usage datasets collected from different cities in Europe. The results show that TransLand significantly outperforms the state-of-the-art land usage classification baselines in classifying the land usage of locations in a city.  The results have been published in <a href="https://ieeexplore.ieee.org/document/9006360"> <b>IEEE BigData 2019</b></a>. 
 </p>
 </td>
 </tr>
@@ -482,7 +451,7 @@ We evaluated our framework on the real-world satellite imagery and land usage da
 <td>
 <h2>EdgeBatch: Towards AI-empowered Intelligent Edge Systems</h2> <br>
 <p style="font-size:18px;">
-Modern Internet of Things (IoT) systems are increasingly leveraging deep neural networks (DNNs) with the goal of enabling intelligence at the edge of the network. While applying DNNs can greatly improve the accuracy of autonomous decisions and inferences, a significant challenge is that DNNs are traditionally designed and developed for advanced hardware (e.g., GPU clusters) and can not easily meet the real time requirements when deployed in a resource-constrained edge computing environment. While many systems have been proposed to facilitate deep learning at the edge,  a key limitation lies in the under-utilization of the parallelizable GPU resources of edge nodes (e.g., IoT devices). In this project, we develop EdgeBatch, a collaborative intelligent edge computing framework that minimizes the delay and energy consumption of executing DNN tasks at the edge by sharing idle GPU resources among privately owned IoT devices. We implemented EdgeBatch on a real-world edge computing testbed that consists of heterogeneous IoT devices. The results show that EdgeBatch achieved significant performance gains in terms of both the end-to-end delay and energy savings compared to the state-of-the-art solutions. The results have been published in <a href="./pdf/rtss19.pdf"> <b>IEEE RTSS 2019</b> </a>, <a href="./pdf/infocom19.pdf"> <b>IEEE Infocom 2019</b> </a>. 
+Modern Internet of Things (IoT) systems are increasingly leveraging deep neural networks (DNNs) with the goal of enabling intelligence at the edge of the network. While applying DNNs can greatly improve the accuracy of autonomous decisions and inferences, a significant challenge is that DNNs are traditionally designed and developed for advanced hardware (e.g., GPU clusters) and can not easily meet the real time requirements when deployed in a resource-constrained edge computing environment. While many systems have been proposed to facilitate deep learning at the edge,  a key limitation lies in the under-utilization of the parallelizable GPU resources of edge nodes (e.g., IoT devices). In this project, we develop EdgeBatch, a collaborative intelligent edge computing framework that minimizes the delay and energy consumption of executing DNN tasks at the edge by sharing idle GPU resources among privately owned IoT devices. We implemented EdgeBatch on a real-world edge computing testbed that consists of heterogeneous IoT devices. The results show that EdgeBatch achieved significant performance gains in terms of both the end-to-end delay and energy savings compared to the state-of-the-art solutions. The results have been published in <a href="https://ieeexplore.ieee.org/document/9052125"> <b>IEEE RTSS 2019</b></a>, <a href="https://ieeexplore.ieee.org/document/8737409"> <b>IEEE INFOCOM 2019</b></a>. 
 </p>
 </td>
 </tr>
@@ -499,7 +468,7 @@ Modern Internet of Things (IoT) systems are increasingly leveraging deep neural 
 <h2>StreamGuard: A Social Sensing Approach to Detecting the Copyright Infringement in Live Video Sharing Platforms</h2> <br>
 <p style="font-size:18px;">
 Copyright infringement detection is a critical problem in large-scale online video sharing systems: the copyright-infringing videos must be correctly identified and removed from the system to protect the copyright of the content owners.
-This project focuses on a challenging problem of detecting copyright infringement in live video streams. The problem is particularly difficult because i) streamers can be sophisticated and modify the title or tweak the presentation of the video to bypass the detection system; ii) legal videos and copyright-infringing ones may have very similar visual content and descriptions. We found current commercial copyright detection systems did not address this problem well: a large amount of copyrighted content bypasses the detection system while legal streams are taken down by mistake. In this project, we develop StreamGuard, an online video copyright infringement detection system that addresses the above challenges by leveraging live chat messages from the audience. We evaluated our system on real-world live video streams collected from YouTube. The results show that StreamGuard is effective and efficient in identifying the copyright-infringing videos. The results have been published in <a href="./pdf/bigdata18-sg.pdf"> <b>IEEE BigData 2018 </b> </a>, <a href="./pdf/asonam18-sg.pdf"> <b>ACM/ASONAM 2018</b></a>. 
+This project focuses on a challenging problem of detecting copyright infringement in live video streams. The problem is particularly difficult because i) streamers can be sophisticated and modify the title or tweak the presentation of the video to bypass the detection system; ii) legal videos and copyright-infringing ones may have very similar visual content and descriptions. We found current commercial copyright detection systems did not address this problem well: a large amount of copyrighted content bypasses the detection system while legal streams are taken down by mistake. In this project, we develop StreamGuard, an online video copyright infringement detection system that addresses the above challenges by leveraging live chat messages from the audience. We evaluated our system on real-world live video streams collected from YouTube. The results show that StreamGuard is effective and efficient in identifying the copyright-infringing videos. The results have been published in <a href="https://ieeexplore.ieee.org/document/8622306"> <b>IEEE BigData 2018 </b></a>, <a href="https://ieeexplore.ieee.org/document/8508523"> <b>ACM/IEEE ASONAM 2018</b></a>. 
 </p>
 </td>
 </tr>
@@ -521,7 +490,7 @@ This project focuses on a challenging problem of detecting copyright infringemen
 <h2>RiskSens: A Multi-view Learning Approach to Identifying Urban Traffic Risk using Social and Remote Sensing</h2> <br>
 <p style="font-size:18px;">
 With the ever-increasing number of road traffic accidents worldwide, the road traffic safety has become a critical problem in intelligent transportation systems. A key step towards improving the road traffic safety is to identify the locations where severe traffic accidents happen with a high probability so the precautions can be applied effectively. We refer to this problem as risky traffic location identification. While previous efforts have been made to address similar problems, two important limitations exist: i) data availability: many cities (especially in developing countries) do not maintain a publicly accessible database for the traffic accident records in a city, which makes it difficult to accurately estimate the accidents in the city; ii) location accuracy: many self-reported traffic accidents (e.g., social media posts from common citizens) are not associated with the exact GPS locations due to the privacy concerns. To address these limitations, this project develops the RiskSens, a multi-view learning approach to identifying the risky traffic locations in a city by jointly exploring the social and remote sensing data. We evaluated RiskSens using real world datasets from large cities. The evaluation results show that RiskSens significantly outperforms the state-of-the-art baselines in identifying risky traffic locations in a city.   
-The results have been published in <a href="./pdf/bigdata18-rs.pdf"> <b>IEEE BigData 2018</b> </a>, <a href="./pdf/asonam19-rc.pdf"> <b>ACM/IEEE ASONAM 2019</b> </a>, <a href="./pdf/dcoss19-dr.pdf"> <b>IEEE DCoSS 2019</b> </a>. 
+The results have been published in <a href="https://ieeexplore.ieee.org/document/8621996"> <b>IEEE BigData 2018</b></a>, <a href="https://ieeexplore.ieee.org/document/9073376"> <b>ACM/IEEE ASONAM 2019</b></a>, <a href="https://ieeexplore.ieee.org/document/8804745"> <b>IEEE DCoSS 2019</b></a>. 
 </p>
 </td>
 </tr>
@@ -543,7 +512,7 @@ The results have been published in <a href="./pdf/bigdata18-rs.pdf"> <b>IEEE Big
 <h2>When Social Sensing meets Edge Computing</h2> <br>
 <p style="font-size:18px;">
 A key limitation in the current social sensing solution space is that data processing and analytic tasks are often done on a "backend" system (e.g., on dedicated servers or commercial clouds). Unfortunately, this scheme ignores the rich processing capability of increasingly powerful edge devices owned by individuals (e.g., mobile phones, tablets, smart wearables, and the Internet of Things). The advent of edge computing pushes the frontier of computation, service, and data along the cloud-to-things continuum to the edge of the network, and brings new opportunities for social sensing applications. By combining social sensing with edge computing, the privately owned edge devices not only serve as pervasive sensors, but also form a federation of computational nodes where the data collected from them can be processed and consumed at the edge.  We refer to the marriage of social sensing and edge computing as Social Sensing based Edge Computing paradigm (SSEC). In this project, we investigate several fundamental challenges in SSEC such as resource management, incentives design, robustness.
-The results have been published in <a href="./pdf/rtas18.pdf"> <b>IEEE RTAS 2018</b> </a>, <a href="./pdf/sec18.pdf"> <b>ACM SEC 2018</b> </a>, <a href="./pdf/icccn-survey.pdf"> <b>IEEE ICCCN 2019</b></a>. 
+The results have been published in <a href="https://ieeexplore.ieee.org/document/8430093"> <b>IEEE RTAS 2018</b></a>, <a href="https://ieeexplore.ieee.org/document/8567670"> <b>IEEE/ACM SEC 2018</b></a>, <a href="https://ieeexplore.ieee.org/document/8847174"> <b>IEEE ICCCN 2019</b></a>. 
 </p>
 </td>
 </tr>
@@ -566,7 +535,7 @@ The results have been published in <a href="./pdf/rtas18.pdf"> <b>IEEE RTAS 2018
 <td>
 <h2>Scalable, Dynamic and Constraint-Aware Social Sensing System</h2> <br>
 <p style="font-size:18px;">
-While significant progress has been made to build a reliable social sensing system, some important challenges have not been well addressed yet. First, existing social sensing systems did not fully solve the dynamic truth estimation problem where the ground truth of claims changes over time. Second, many current solutions are not scalable to large-scale social sensing events because of the centralized nature of their data analytics algorithms. Third, the transition of true values of measured variables is constrained by some physical rules that must be followed to ensure correct estimation. In this project, we developed a scalable streaming social sensing system with explicit considerations of the physical constraints on the measured variables to address the above challenges. We evaluated our framework through real world social sensing applications. The evaluation results show that our system is scalable and outperforms the state-of-the-art solutions in terms of both effectiveness and efficiency. The results have been published in <a href="./pdf/icdcs17.pdf"> <b>IEEE ICDCS 2017 </b> </a>, <a href="./pdf/bigdata17-1.pdf"> <b>IEEE BigData 2017</b></a>, <a href="./pdf/tbd18.pdf"> <b> IEEE Transaction on Big Data</b></a>. 
+While significant progress has been made to build a reliable social sensing system, some important challenges have not been well addressed yet. First, existing social sensing systems did not fully solve the dynamic truth estimation problem where the ground truth of claims changes over time. Second, many current solutions are not scalable to large-scale social sensing events because of the centralized nature of their data analytics algorithms. Third, the transition of true values of measured variables is constrained by some physical rules that must be followed to ensure correct estimation. In this project, we developed a scalable streaming social sensing system with explicit considerations of the physical constraints on the measured variables to address the above challenges. We evaluated our framework through real world social sensing applications. The evaluation results show that our system is scalable and outperforms the state-of-the-art solutions in terms of both effectiveness and efficiency. The results have been published in <a href="https://ieeexplore.ieee.org/document/7980038"> <b>IEEE ICDCS 2017 </b></a>, <a href="https://ieeexplore.ieee.org/abstract/document/8257911"> <b>IEEE BigData 2017</b></a>, <a href="https://ieeexplore.ieee.org/document/8334619"> <b> IEEE Transaction on Big Data</b></a>. 
 </p>
 </td>
 </tr>
@@ -589,7 +558,7 @@ While significant progress has been made to build a reliable social sensing syst
 <td>
 <h2>From Big Data to Small Data: Taming the two V's of Veracity and Variety</h2> <br>
 <p style="font-size:18px;">
-Data of questionable quality has led to significantly negative economic and social impacts on organizations, leading to overrun in costs, lost revenue, and decreased efficiencies. The issues on data reliability, credibility, and provenance have become even more daunting when dealing with the variety of data, especially data that are not directly collected by an organization, but from the third-party sources such as social media, data brokers, and crowdsourcing. To address such issues, this project aims to develop a <i> Data Valuation Engine (DVE) </i> that solves the critical problem of data reliability, credibility and provenance, and provides accountability and quality processes right from data acquisition. The DVE leverages and innovates techniques in estimation theory, data fusion and machine learning to fill a critical gap in data accountability and quality, thereby providing a transformative step in countering the ubiquitous data quality issues found in almost every application domain from business to environment to health to national security. The DVE will be integrated in the <i> Hadoop ecosystem </i> and will be agnostic to the data source, application or analytics, and provided as a hosted solution to the community. The results have been published in <a href="./pdf/bigdata16-c.pdf"> <b> IEEE BigData 16 </b> </a>, <a href="./pdf/recsys16.pdf"> <b> ACM Recsys 16 </b> </a>, <a href="./pdf/tbd17.pdf"> <b> IEEE Transaction on Big Data</b></a>. 
+Data of questionable quality has led to significantly negative economic and social impacts on organizations, leading to overrun in costs, lost revenue, and decreased efficiencies. The issues on data reliability, credibility, and provenance have become even more daunting when dealing with the variety of data, especially data that are not directly collected by an organization, but from the third-party sources such as social media, data brokers, and crowdsourcing. To address such issues, this project aims to develop a <i> Data Valuation Engine (DVE) </i> that solves the critical problem of data reliability, credibility and provenance, and provides accountability and quality processes right from data acquisition. The DVE leverages and innovates techniques in estimation theory, data fusion and machine learning to fill a critical gap in data accountability and quality, thereby providing a transformative step in countering the ubiquitous data quality issues found in almost every application domain from business to environment to health to national security. The DVE will be integrated in the <i> Hadoop ecosystem </i> and will be agnostic to the data source, application or analytics, and provided as a hosted solution to the community. The results have been published in <a href="https://ieeexplore.ieee.org/abstract/document/7840710"> <b> IEEE BigData 16 </b></a>, <a href="https://dl.acm.org/doi/abs/10.1145/2959100.2959147"> <b> ACM RecSys 16 </b></a>, <a href="https://ieeexplore.ieee.org/document/7855694"> <b> IEEE Transaction on Big Data</b></a>. 
 </p>
 </td>
 </tr>
@@ -621,7 +590,7 @@ perform extensive experiments to evaluate the performance of
 our scheme and compared it to the state-of-the-art techniques
 using three real world data traces collected from Foursquare.
 The results showed the effectiveness of our scheme in accurately
-profiling the home locations of people. The results have been published in <a href="./pdf/asonam16.pdf"> <b> IEEE ASONAM 16 </b></a>, <a href="./pdf/bigdata17-poi.pdf"> <b> IEEE BigData 17 </b></a>, <a href="./pdf/infocom17.pdf"> <b> IEEE INFOCOM 17 </b></a>, <a href="./pdf/asonam17.pdf"> <b> IEEE ASONAM 17 </b></a>.
+profiling the home locations of people. The results have been published in <a href="https://ieeexplore.ieee.org/abstract/document/7752247"> <b> IEEE/ACM ASONAM 16 </b></a>, <a href="https://ieeexplore.ieee.org/abstract/document/8258026"> <b> IEEE BigData 17 </b></a>, <a href="https://ieeexplore.ieee.org/document/8057112"> <b> IEEE INFOCOM 17 </b></a>, <a href="https://dl.acm.org/doi/abs/10.1145/3110025.3110159"> <b> IEEE/ACM ASONAM 17 </b></a>.
 
 </p>
 </td>
@@ -654,7 +623,7 @@ explicitly incorporating both the user's travel experience and social relationsh
 into a rigorous analytical framework. Our framework can find interesting
 places not typically identified by traditional travel websites (e.g., TripAdvisor,
 Expedia). We validate the effectiveness of our framework through
-real-world datasets collected from location-based social network services. The results have been published in <a href="./pdf/smartcity15-c.pdf"> <b> IEEE Smart City 15 </b></a>, <a href="./pdf/dcoss16-c.pdf"> <b> IEEE DCoSS 16 </b></a>, <a href="./pdf/kbs17.pdf"> <b> Elsevier KBS </b></a>. 
+real-world datasets collected from location-based social network services. The results have been published in <a href="https://ieeexplore.ieee.org/document/7463694"> <b> IEEE Smart City 15 </b></a>, <a href="https://ieeexplore.ieee.org/document/7536314"> <b> IEEE DCoSS 16 </b></a>, <a href="https://www.sciencedirect.com/science/article/pii/S095070511730059X"> <b> Elsevier KBS </b></a>. 
 </p>
 </td>
 </tr>
@@ -674,7 +643,7 @@ real-world datasets collected from location-based social network services. The r
 <td>
 <h2>Who to Choose: Source/Sensor Selection in Social Sensing</h2> <br>
 <p style="font-size:18px;">
-This project investigates a new problem of critical source selection in social sensing applications. The goal of this problem is to identify a subset of critical sources that can help effectively reduce the computational complexity of the information distillation problem and improve the accuracy of the analysis results. In this project, we propose a new scheme, Critical Source Selection (CSS), to find the critical set of sources by explicitly exploring both dependency and speak rate of sources. We evaluated the performance of our scheme and compared it to the state-of-the-art baselines using data traces collected from a real-world social sensing application. The results showed that our scheme significantly outperforms the baselines by finding more truthful information at a higher speed. The results have been published in  <a href="./pdf/dcoss17.pdf"> <b> IEEE DCoSS 17 </b></a>, <a href="./pdf/kbs18.pdf"> <b> Elsevier KBS </b></a>. 
+This project investigates a new problem of critical source selection in social sensing applications. The goal of this problem is to identify a subset of critical sources that can help effectively reduce the computational complexity of the information distillation problem and improve the accuracy of the analysis results. In this project, we propose a new scheme, Critical Source Selection (CSS), to find the critical set of sources by explicitly exploring both dependency and speak rate of sources. We evaluated the performance of our scheme and compared it to the state-of-the-art baselines using data traces collected from a real-world social sensing application. The results showed that our scheme significantly outperforms the baselines by finding more truthful information at a higher speed. The results have been published in  <a href="https://ieeexplore.ieee.org/document/8271944"> <b> IEEE DCoSS 17 </b></a>, <a href="https://www.sciencedirect.com/science/article/abs/pii/S0950705118300066"> <b> Elsevier KBS </b></a>. 
 </p>
 </td>
 </tr>
@@ -693,7 +662,7 @@ This project investigates a new problem of critical source selection in social s
 <td>
 <h2>Truth Discovery in Social Sensing</h2> <br>
 <p style="font-size:18px;">
-This project solves a fundamental problem in information distillation in social sensing where data are collected from human sources or devices in their possession: how to ascertain the <i>credibility of information</i> and estimate <i>reliability of sources</i>, as the information sources are usually unvetted and potentially unreliable. We call this problem <i>truth discovery</i>. Current research in data mining and machine learning (e.g., fact-finding) solves similar problems with important limitations on analysis semantics and suboptimal solutions. In contrast, our research presented, for the first time, an <i>optimal</i> truth discovery framework and system that provides accurate and quantifiable conclusions on both information credibility and source reliability without prior knowledge on either. Our work provides a new generic foundation for distilling reliable and quantifiable information from unreliable sources (e.g., humans). The results have been published in <a href="./pdf/fusion11.pdf"> <b> Fusion 11 </b> </a>, <a href="./pdf/ipsn12.pdf"> <b> ACM/IEEE IPSN 12 </b> </a>, <a href="./pdf/tosn14.pdf"><b>ACM ToSN</b> </a>, <a href="./pdf/secon15.pdf"> <b> IEEE SECON 15</b>, </a> <a href="./pdf/icwsm16.pdf"> <b> ICWSM 16</b> </a>, <a href="./pdf/dcoss16-j.pdf"> <b> IEEE DCoSS 16</b>,</a> <a href="./pdf/mass17.pdf"> <b> IEEE MASS 17</b> </a>.
+This project solves a fundamental problem in information distillation in social sensing where data are collected from human sources or devices in their possession: how to ascertain the <i>credibility of information</i> and estimate <i>reliability of sources</i>, as the information sources are usually unvetted and potentially unreliable. We call this problem <i>truth discovery</i>. Current research in data mining and machine learning (e.g., fact-finding) solves similar problems with important limitations on analysis semantics and suboptimal solutions. In contrast, our research presented, for the first time, an <i>optimal</i> truth discovery framework and system that provides accurate and quantifiable conclusions on both information credibility and source reliability without prior knowledge on either. Our work provides a new generic foundation for distilling reliable and quantifiable information from unreliable sources (e.g., humans). The results have been published in <a href="https://ieeexplore.ieee.org/document/5977540"> <b> Fusion 11 </b></a>, <a href="https://dl.acm.org/doi/abs/10.1145/2185677.2185737"> <b> ACM/IEEE IPSN 12 </b></a>, <a href="https://dl.acm.org/doi/abs/10.1145/2530289"><b>ACM ToSN</b></a>, <a href="https://ieeexplore.ieee.org/abstract/document/7338333"> <b> IEEE SECON 15</b>,</a> <a href="https://www.aaai.org/ocs/index.php/ICWSM/ICWSM16/paper/view/13012/12760"> <b> ICWSM 16</b></a>, <a href="https://ieeexplore.ieee.org/document/7536331"> <b> IEEE DCoSS 16</b>,</a> <a href="https://ieeexplore.ieee.org/abstract/document/8108765"> <b> IEEE MASS 17</b></a>.
 </p>
 </td>
 </tr>
@@ -712,7 +681,7 @@ This project solves a fundamental problem in information distillation in social 
 <td>
 <h2>Quality of Information (QoI) Assurance in Social Sensing</h2> <br>
 <p style="font-size:18px;">
-This project investigates another critical problem in social sensing: how to accurately assess the quality of the truth discovery results by quantifying estimation errors and providing confidence bounds. This guaranteed quality analysis is immensely important in any practical settings where errors have consequences. However, this is largely missing in current literature. We successfully derived the first performance bound that is able to accurately predict the estimation errors of the truth discovery results. Our work allows real world applications to assess the quality of data obtained from unreliable sources to a desired confidence level, in the absence of independent means to verify the data and in the absence of prior knowledge of reliability of sources.  Our work was mentioned explicitly in the <b> National Academies Press </b> as a "good example of Army's cross-genre research" in 2013. The research results have been published in <a href="./pdf/dmsn11.pdf"> <b> DMSN 11</b> </a>, <a href="./pdf/secon12.pdf"> <b> IEEE SECON 12</b> </a>, <a href="./pdf/jsac13.pdf"> <b> IEEE JSAC</b> </a>.
+This project investigates another critical problem in social sensing: how to accurately assess the quality of the truth discovery results by quantifying estimation errors and providing confidence bounds. This guaranteed quality analysis is immensely important in any practical settings where errors have consequences. However, this is largely missing in current literature. We successfully derived the first performance bound that is able to accurately predict the estimation errors of the truth discovery results. Our work allows real world applications to assess the quality of data obtained from unreliable sources to a desired confidence level, in the absence of independent means to verify the data and in the absence of prior knowledge of reliability of sources.  Our work was mentioned explicitly in the <b> National Academies Press </b> as a "good example of Army's cross-genre research" in 2013. The research results have been published in <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.297.8813&rep=rep1&type=pdf"><b> DMSN 11</b></a>, <a href="https://ieeexplore.ieee.org/document/6275819"><b>IEEE SECON 12</b></a>, <a href="https://ieeexplore.ieee.org/document/6517107"><b>IEEE JSAC</b></a>.
 </p>
 </td>
 </tr>
@@ -733,7 +702,7 @@ This project investigates another critical problem in social sensing: how to acc
 <h2>Link Analysis across Multi-genre Networks</h2> <br>
 <p style="font-size:18px;">
 Social sensing data is generated through the complicated interactions of information, social and physical networks. The interdisciplinary network systems are so complex that link analysis across multi-genre networks is essential. However, link analysis taking into account the three networks altogether is rare in current research. 
-In this project, we generalized the truth discovery framework to jointly analyze links across multi-genre networks and developed a new information distillation system, called Apollo. Apollo has been continuously tested through real world case studies using large-scale datasets collected from open-source media and smart road applications. The results showed good correspondence between observations deemed correct by Apollo and ground truth, demonstrating the power of using link analysis across multi-genre networks for efficient information distillation. The results have been published in <a href="./pdf/rtss13.pdf"> <b>IEEE RTSS 13</b> </a>, <a href="./pdf/jrts-15.pdf"> <b>Journal of Real-time Systems</b> </a>.
+In this project, we generalized the truth discovery framework to jointly analyze links across multi-genre networks and developed a new information distillation system, called Apollo. Apollo has been continuously tested through real world case studies using large-scale datasets collected from open-source media and smart road applications. The results showed good correspondence between observations deemed correct by Apollo and ground truth, demonstrating the power of using link analysis across multi-genre networks for efficient information distillation. The results have been published in <a href="https://ieeexplore.ieee.org/document/6728876"> <b>IEEE RTSS 13</b></a>, <a href="https://link.springer.com/article/10.1007/s11241-015-9238-8"> <b>Journal of Real-time Systems</b></a>.
 </p>
 </td>
 </tr>
@@ -755,7 +724,7 @@ In this project, we generalized the truth discovery framework to jointly analyze
 <td>
 <h3>Real-Time Information Distillation from Streaming Data</h3> 
 <p style="font-size:18px;">
-Social sensing data usually come at such large volume and high speed (e.g., more than 200k tweets are uploaded to Twitter every minute) that they must be processed in real-time in order to maximize their value. However, the truth discovery studies in current research are mostly batch algorithms that generally cannot scale with the streaming data or do not exploit all data available.  In this project, we developed the first <i>on-line</i> truth estimation approach to determine the quality of information and the reliability of sources in <i>real-time</i> for social sensing applications. The results demonstrated that our approach was able to analyze the data at a speed 10-100 times faster than the state-of-arts while keeping the estimation accuracy approximately the same. The results have been published in <a href="./pdf/icdcs13.pdf"> <b>ICDCS 13</b> </a>.
+Social sensing data usually come at such large volume and high speed (e.g., more than 200k tweets are uploaded to Twitter every minute) that they must be processed in real-time in order to maximize their value. However, the truth discovery studies in current research are mostly batch algorithms that generally cannot scale with the streaming data or do not exploit all data available.  In this project, we developed the first <i>on-line</i> truth estimation approach to determine the quality of information and the reliability of sources in <i>real-time</i> for social sensing applications. The results demonstrated that our approach was able to analyze the data at a speed 10-100 times faster than the state-of-arts while keeping the estimation accuracy approximately the same. The results have been published in <a href="./pdf/icdcs13.pdf"> <b>ICDCS 13</b></a>.
 </p>
 </td>
 </tr>
@@ -771,7 +740,7 @@ Social sensing data usually come at such large volume and high speed (e.g., more
 <td>
 <h2>Using Humans as Sensors: The Uncertain Data Provenance Challenge</h2> <br>
 <p style="font-size:18px;">
-The explosive growth in social network content suggests that the largest "sensor network" yet might be <i> human </i>. Extending the social sensing model, this project explores the prospect of utilizing social networks as sensor networks, which gives rise to an interesting <i> reliable sensing </i> problem. From a networked sensing standpoint, what makes this sensing problem formulation different is that, in the case of human participants, not only is the reliability of sources usually unknown but also the original data provenance may be uncertain. Individuals may report observations made by others as their own. The contribution of this project lies in developing a model that considers the impact of such information sharing on the analytical foundations of reliable sensing, and embed it into our tool <i> Apollo </i> that uses Twitter as a "sensor network" for observing events in the physical world. Evaluation, using Twitter-based case-studies, shows good correspondence between observations deemed correct by Apollo and ground truth. The results have been published in </a> <a href="./pdf/ipsn14.pdf"> <b>ACM/IEEE IPSN 14</b> </a>, <a href="./pdf/ipsn16.pdf"> <b>ACM/IEEE IPSN 16</b>.
+The explosive growth in social network content suggests that the largest "sensor network" yet might be <i> human </i>. Extending the social sensing model, this project explores the prospect of utilizing social networks as sensor networks, which gives rise to an interesting <i> reliable sensing </i> problem. From a networked sensing standpoint, what makes this sensing problem formulation different is that, in the case of human participants, not only is the reliability of sources usually unknown but also the original data provenance may be uncertain. Individuals may report observations made by others as their own. The contribution of this project lies in developing a model that considers the impact of such information sharing on the analytical foundations of reliable sensing, and embed it into our tool <i> Apollo </i> that uses Twitter as a "sensor network" for observing events in the physical world. Evaluation, using Twitter-based case-studies, shows good correspondence between observations deemed correct by Apollo and ground truth. The results have been published in</a> <a href="https://ieeexplore.ieee.org/document/6846739"><b>ACM/IEEE IPSN 14</b></a>, <a href="https://ieeexplore.ieee.org/document/7460724"><b>ACM/IEEE IPSN 16</b>.
 </p>
 </td>
 </tr>
@@ -791,7 +760,7 @@ The explosive growth in social network content suggests that the largest "sensor
 <td>
 <h2>Provenance-assisted Classification in Social Networks</h2> <br>
 <p style="font-size:18px;">
-Signal feature extraction and classification are two common tasks in the signal processing literature. This project investigates the use of source identities as a common mechanism for enhancing the classification accuracy of <i> social signals </i>. We define social signals as outputs, such as microblog entries, geotags, or uploaded images, contributed by users in a social network. While the design of such classifiers is application-specific, social signals share in common one key property: they are augmented by the explicit identity of the source. This motivates investigating whether or not knowing the source of each signal allows the classification accuracy to be improved. We call it <i> provenance-assisted </i> classification. This project answers the above question affirmatively, demonstrating how source identities can improve classification accuracy, and derives confidence bounds to quantify the accuracy of results. Evaluation is performed in two real-world contexts: (i) fact-finding that classifies microblog entries into true and false, and (ii) language classification of tweets issued by a set of possibly multi-lingual speakers. The results show that provenance features significantly improve classification accuracy of social signals. This observation offers a general mechanism for enhancing classification results in social networks.  The results of this work are going to appear in <a href="./pdf/jstsp14.pdf"> <b>  IEEE J-STSP 14 </b> </a>.
+Signal feature extraction and classification are two common tasks in the signal processing literature. This project investigates the use of source identities as a common mechanism for enhancing the classification accuracy of <i> social signals </i>. We define social signals as outputs, such as microblog entries, geotags, or uploaded images, contributed by users in a social network. While the design of such classifiers is application-specific, social signals share in common one key property: they are augmented by the explicit identity of the source. This motivates investigating whether or not knowing the source of each signal allows the classification accuracy to be improved. We call it <i> provenance-assisted </i> classification. This project answers the above question affirmatively, demonstrating how source identities can improve classification accuracy, and derives confidence bounds to quantify the accuracy of results. Evaluation is performed in two real-world contexts: (i) fact-finding that classifies microblog entries into true and false, and (ii) language classification of tweets issued by a set of possibly multi-lingual speakers. The results show that provenance features significantly improve classification accuracy of social signals. This observation offers a general mechanism for enhancing classification results in social networks.  The results of this work are going to appear in <a href="https://ieeexplore.ieee.org/document/6766747"><b>IEEE J-STSP 14</b></a>.
 </p>
 </td>
 </tr>
@@ -804,7 +773,7 @@ Signal feature extraction and classification are two common tasks in the signal 
 <!--
 
 <hr />
-<a name="systems"> <h2>Tool and Demo</h2> </a>
+<a name="systems"> <h2>Tool and Demo</h2></a>
 
 
 <p style="font-size:18px;">
@@ -847,7 +816,7 @@ Our research work also generated a reliable information distillation tool called
                     </div><!--//footer-col-inner-->
                 </div><!--//foooter-col-->
                 <div class="footer-col col-lg-6 col-md-8 col-12 newsletter">
-                    <div class="footer-col-inner">
+                    <!-- <div class="footer-col-inner">
                         <h3>Join our mailing list</h3>
                         <p>Subscribe to get our weekly newsletter delivered directly to your inbox</p>
                         <form class="subscribe-form">
@@ -856,7 +825,7 @@ Our research work also generated a reliable information distillation tool called
                             </div>
                             <input class="btn btn-theme btn-subscribe" type="submit" value="Subscribe">
                         </form>
-                    </div><!--//footer-col-inner-->
+                    </div> --><!--//footer-col-inner-->
                 </div><!--//foooter-col--> 
                 <div class="footer-col col-lg-3 col-12 contact">
                     <div class="footer-col-inner">
@@ -865,7 +834,7 @@ Our research work also generated a reliable information distillation tool called
                             <p class="adr clearfix col-lg-12 col-md-4 col-12">
                                 <i class="fas fa-map-marker-alt float-left"></i>        
                                 <span class="adr-group float-left">       
-                                    <span class="street-address">501 E. Daniel St.</span><br>
+                                    <span class="street-address">614 E. Daniel St.</span><br>
                                     <span class="region">School of Information Sciences</span><br>
                                     <span class="postal-code">Champaign, IL 61820</span><br>
                                     <span class="country-name">USA</span>
@@ -881,7 +850,7 @@ Our research work also generated a reliable information distillation tool called
         <div class="bottom-bar">
             <div class="container">
                 <div class="row">
-                    <small class="copyright col-lg-6 col-12"> Copyright @ <a href="#">SSLAB 2020</a></small>
+                    <small class="copyright col-lg-6 col-12"> Copyright @ <a href="#">SSI-LAB 2022</a></small>
                     <ul class="social float-right col-lg-6 col-12">
                         <li><a href="#" ><i class="fab fa-twitter"></i></a></li>
                         <li><a href="#" ><i class="fab fa-facebook-f"></i></a></li>
