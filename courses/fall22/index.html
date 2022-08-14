@@ -1,0 +1,556 @@
+<title>IS 596 - Social Sensing - Fall 2022</title>
+
+<center>
+<h1>IS 596 - Social Sensing and Human-Cyber-Physical Systems - Fall 2022</h1>
+<hr>
+<table><tr><td><img src=images/socialsensing.png  width="320" height="210" align=right><td><img src=images/socialmedia.jpg width="300" height="210" align=right><td><img src=images/cps.jpg width="320" height="270" align=right></table>
+<hr>
+</center>
+
+<h2>Instructor</h2>
+<dir>
+<li>	
+<b><a href=http://www.wangdong.org>Prof. Dong Wang</a></b> <br>
+Email: dwang24 at illinois dot edu <br>
+Office Hours: By Appointment (<a href="https://illinois.zoom.us/j/88676506153?pwd=VVJNeS9qcm90Q0tHdDgyMTd3NWhjdz09">Office Hour Zoom</a>)
+
+<li> <b>TA: Lanyu Shang</b><br>
+Email: lshang3 at illinois dot edu<br>
+Office Hours: Monday 10am - Noon or By Appointment (<a href="https://illinois.zoom.us/j/88676506153?pwd=VVJNeS9qcm90Q0tHdDgyMTd3NWhjdz09">Office Hour Zoom</a>)
+</dir>
+
+
+<h2>Lecture Time and Zoom Link</h2>
+<dir>
+Monday 1:00- 2:55 pm 
+<a href=https://canvas.illinois.edu/courses/22386/external_tools/327> Lecture Zoom Link</a>
+</dir>
+
+
+<h2>Course Overview</h2>
+
+Online social media (e.g., Twitter, Facebook), smartphones, and ubiquitous internet connectivity have greatly facilitated data sharing at scale, allowing for a firehose of human and sensor observations to pour in about the physical world in real-time. This opens up unprecedented challenges and opportunities in the field of <i>social sensing and human-centric cyber-physical systems (H-CPS) </i> where an important goal is to efficiently organize the real-time data feeds and accurately reconstruct the "states of the world", both physical and social. This course offers students the opportunity to learn the theoretical foundations, state-of-the-art techniques, and hands-on experience in this exciting area. The topic of this class is timely due to the increasing interest in online social networks, big data, and human-in-the-loop systems, as well as the proliferation of computing artifacts that interact with or monitor the physical world. 
+<p>
+The class contains four main components: (i) the introduction to social sensing and cyber-physical systems; (ii) key technical challenges (e.g., big data analytics, system reliability, user mobility, energy, privacy, etc.); (iii) state-of-the-art techniques and systems (e.g., MapReduce/Hadoop, fact-finding, etc);  (iv) emerging applications (smartphone-based crowdsensing, online social media sensing, participatory/opportunistic sensing, intelligent transportation, smart buildings, body area networks etc). The students will have the opportunities to work with real world social sensing and cyber-physical system problems.
+<p>
+
+<h2>Getting Help</h2>
+
+<dir>
+<li> <a href=https://canvas.illinois.edu/courses/22386>Canvas Page</a> - General announcement and Q&A after class. 
+<li> <b>Office Hours</b> - Please refer to the above schedule.
+<li> <b>Email</b> - Contact Prof. Wang for questions about grades, course policies, etc.
+<li> <a href=https://canvas.illinois.edu/courses/22386/gradebook>Grades</a> are available on Canvas.
+</dir>
+
+
+<h2>Course Documents</h2>
+<dir>
+<li> <a href=https://canvas.illinois.edu/courses/22386/external_tools/327>Lecture Zoom Link</a>
+<li> <a href=https://canvas.illinois.edu/courses/22386/files/5100775>Syllabus</a> 
+<li> <a href=https://canvas.illinois.edu/courses/22386/pages/course-project-for-social-sensing-and-h-cps>Course Project</a> (<a href="https://canvas.illinois.edu/courses/22386/assignments/522835">Group Signup</a>)
+
+
+<!-- <li> <a href=https://canvas.illinois.edu/courses/22386/assignments/522827> Assignment 1: Twitter Data Crawler </a>	
+
+<li> <a href=https://canvas.illinois.edu/courses/22386/assignments/522828> Assignment 2: Reddit Data Crawler</a>   
+
+<li> <a href=https://canvas.illinois.edu/courses/22386/assignments/522829> Assignment 3: Misinformation Detection</a>    -->   
+
+
+
+<!--
+	
+<li> <a href=https://canvas.illinois.edu/courses/22386/pages/mid-term-project-presentation-instruction>Mid-term Project Presentation</a>		
+
+<li> <a href= ./presentation/presentations-final.html>Final Project Presentation</a>
+
+-->
+
+</dir>
+
+
+<!-- <h2>Project Meeting Links</h2>
+<dir>
+
+	
+<li> <a href= >Project Kick-off Meetings</a>
+
+
+<li> <a href=>Project Mid-term Meetings</a>
+
+
+<li> <a href=>Project Pre-Final Meetings</a>
+
+
+</dir>	 -->
+
+
+<h2> Grading </h2>
+ 
+<dir>
+<li> 
+10% of the grade will be assigned on individuals' class participation and proactive discussion of lecture topics and project presentations. Attendance/camera-on is recorded in Zoom and will be used in final participation grade calculation. (Individual-based)
+<p>
+
+<li> 
+10% of the grade will be assigned on an in-class paper presentation on the selected topic by each group. (Group-based)
+<p>
+
+<li> 
+30% of the grade will be assigned on individuals' homework assignments. (Individual-based)
+<p>
+
+
+
+<li> 
+50% of the grade will be determined by a group course project. This grade includes project proposal, mid-term report, mid-term project presentation, a final project presentation, a final project paper, and project updates and demonstrations (to the instructor). The project will implement some innovative social sensing model, service, system, or computing environment. Students will be allowed to work in groups of 2 or 3 on the project. The project will proceed through the landmarks stated below. (Group-based)
+<p>
+
+
+<dir>
+<li> 
+5%:  Project discussion and updates
+<p>
+<li> 
+5%:  Project proposal
+<p>
+<li> 
+5%:  Mid-term project presentation
+<p>
+<li> 
+10%:  Mid-term project report
+<p>
+<li> 
+10%:  Final project presentation
+<p>
+<li> 
+15%:  Final project paper
+<p>
+</dir>
+
+
+<b> Note: </b> For individual based work, each student will receive the credit based on her/his own work. For the group based work, every student in the group will receive the same credit based on the group's work. However, an <b>optional peer-evaluation form</b> will be provided to evaluate the contribution of individual members by other members in the same group. If evidence (e.g., code commit/document edit/email history) from the peer evaluation reflects that a member did not contribute sufficiently to the group project, the grade of that member will be adjusted accordingly.  
+<!--
+<p>
+Final grade will be decided on a fixed scale:
+</p> 
+
+<li>	93 - 100:	 A
+<li>	88 - 92.9:	 A-
+<li>	85 - 87.9: 	B+
+<li>	82 - 84.9: 	B
+<li>	78 - 81.9:	B-
+<li>	74 - 77.9:	C+
+<li>	70 - 73.9:	C
+<li>	66 - 69.9:	C-
+<li>	60 - 65.9:	D
+<li>	0 - 59.9:	F
+-->
+
+</dir>
+
+<p>
+The iSchool has the responsibility for maintaining academic integrity so as to protect the quality of education and research in our school and to protect those who depend on our integrity. Consequences of academic integrity infractions may be serious, ranging from a written warning to a failing grade for the course or dismissal from the University.
+See the student code for academic integrity requirements: <a href=http://studentcode.illinois.edu/article1/part4/1-401/> http://studentcode.illinois.edu/article1/part4/1-401/</a>
+
+
+<h2>Course Project</h2>
+
+<dir>
+<li>	
+The project will be chosen by each group within the first couple of weeks of class. Here are <a href=https://canvas.illinois.edu/courses/22386/pages/course-project-for-social-sensing-and-h-cps> <b> some ideas </b> </a> to help you get started. Groups are encouraged to come up with their own ideas. If you have some really cool idea that does not satisfy such restriction, please schedule a meeting to discuss it with the instructor. <b> Project title, abstract, and member list are due on Sep. 2 at 11:59 pm.</b> 
+<p>
+
+<!-- The <b> only restriction of the project </b> is that it should use online social media data (e.g., Twitter, Flickr, Foursquare, Facebook, etc.) to solve some interesting problem in social sensing.-->
+
+<li>	
+Each group will schedule a regular meeting (during project meeting slots and office hours) to meet with the instructor and discuss the progress and problems encountered on their projects. 
+<p>
+ 
+<li> 
+Each group will prepare and submit a two-page project proposal. The proposal should include an overview of the project (preferably with a diagram), a brief review of state-of-the-arts in related fields, the proposed method/solution, a credible set of initial project results if available, a list of further proposed milestones, and a plan of action for the rest of the semester. <b> The proposal is due on Sep. 30 at 11:59 pm. </b>
+<p>
+
+
+
+<li> 
+Each group is responsible for <b> a Mid-term Project Presentation in class starting from Oct. 17. </b> The presentation will allow the instructor and classmates to comment on the initial results and current state of the project and also give constructive feedback to the group members. 
+<p>
+
+
+<li> 
+Each group will prepare and submit a four-page mid-term project report. The mid-term report should include a reasonable amount of preliminary results, a description of finished milestones, a discussion of encountered problems and relevant solutions, and any modifications to the plan (if there are) to finish the remaining tasks. <b> The mid-term report is due on Oct. 21 at 11:59 pm.</b> 
+<p>
+ 
+<li>
+<b> Final project presentations </b> will be conducted by each group in <b>the week of Dec. 5.</b>
+<p>
+ 
+<li> 
+Each group will prepare and submit a final project paper. The final project paper is a comprehensive summary of the whole project and should follow a technical paper writing style. The expected number of pages for the final paper is 8-10 pages (including references). <b> Final project paper is due on Dec. 12 at 11:59 pm.</b>
+<p>
+
+<li>
+The proposal, mid-term report and final project paper should all follow a <b> standard technical paper format </b>. Here is the template: <a href="http://www.ieee.org/conferences_events/conferences/publishing/templates.html"> IEEE Latex or Word Template </a>. 
+<p>
+
+<li> 
+A successful project could result in a conference or journal quality paper.
+<p>
+
+
+</dir>
+<b> Note </b>: For more information about the project (e.g., possible ideas and milestones), please visit <a href=https://canvas.illinois.edu/courses/22386/pages/course-project-for-social-sensing-and-h-cps> <b> Course Project Page </b> </a><br> 
+
+
+You are encouraged to seek out and exploit external manuals, books, websites, and other documentation that can help you to complete your project, provided that you indicate what sources you have used. However, all software development, experimental work, and writing of the proposal, report and paper must be done solely by you and your project partner(s).
+<br>
+<br>
+
+</dir>
+<b> <i>Project Documents Submission Instruction:</i> To submit the project related documents (i.e., abstract, proposal, mid-term/final presentation slides and reports), please upload your submission to the corresponding assignments on Canvas.</b>
+	<!-- (1) <u> email the document (i.e., pdf for text documents and pptx/pdf for slides) directly to Prof. Wang before the deadline; </u> (2) upload a copy of the submission to Canvas as a backup. One submission per group is sufficient. </b>  -->
+
+	<br>
+
+
+</dir>
+
+
+
+
+
+<h2>Assignments</h2>
+
+<p>
+ Assignments are normally due at <b> 11:59 pm on the due date</b>. This might change due to the break (e.g., Fall Break). Please double check with the assignment description and the course website for the actual due date. Late assignments will receive no credit. This includes assignments submitted after 11:59 pm on the due date. </p>
+
+<p>
+ Programming assignments will be turned in electronically by uploading all required files to Canvas. You are free to turn in assignments multiple times before the deadline expires. It would be a good habit to turn in an incomplete but working assignment on a daily basis. Thus, there is no excuse for failing to turn in an assignment: everyone should turn in something long before the deadline. Exceptions will be made only in grave circumstances.
+</p>
+
+<!-- <dir>
+
+<li> <a href=https://canvas.illinois.edu/courses/22386/assignments/522827> Assignment 1: Twitter Data Crawler </a>  
+
+<li> <a href=https://canvas.illinois.edu/courses/22386/assignments/522828> Assignment 2: Reddit Data Crawler</a>   
+
+<li> <a href=https://canvas.illinois.edu/courses/22386/assignments/522829> Assignment 3: Misinformation Detection</a>
+
+</dir> -->
+
+
+<!--
+<h2><a href=https://canvas.illinois.edu/courses/22386/assignments/522839>In-class Paper Presentation</a></h2>
+-->
+
+<h2>In-class Paper Presentation</h2>
+<dir>
+<li> Each group will do an in-class paper presentation to present a selected technical paper in the second half of the semester.</li>
+
+
+
+<li> Detailed instructions will come soon.</li>
+
+
+<!-- <li> The in-class paper presentation will provide good opportunities for you to exercise your scientific presentation ability, practice critical thinking, understand how to judge and challenge other's work in a professional way, and learn how to organize and lead an active scientific/technical discussion session.</li>
+
+
+<li> Detailed instructions are available <a href=https://canvas.illinois.edu/courses/22386/assignments/522839>here</a> </b> <br>
+ -->
+</dir>
+
+
+
+<h2>Tentative Schedule</h2>
+<b> Note: </b> Lecture notes are avaliable on <a href=https://canvas.illinois.edu/courses/22386/modules><b>Canvas</b></a>.
+<table valign=top border=1>
+<tr>
+<td><b>Week</b>
+<td>Lecture
+<td><b>Materials</b>
+<tr>
+
+<td> Aug. 22 
+<td> Social Sensing and Cyber-Physical Systems Landscape
+<td>
+Reading: <br>
+<a href=https://canvas.illinois.edu/courses/22386/files/5083088>Introduction to Social Sensing</a><br>
+<a href=https://canvas.illinois.edu/courses/22386/files/5083090>Cyber-Physical Systems: The Next Computing Revolution</a><br>
+<b>Project Title, Abstract and Member List Due Friday, Sep. 2 at 11:59 pm. (<a href="https://canvas.illinois.edu/courses/22386/assignments/522835">Group Signup</a>)</b> <br>
+
+<tr>
+<td> Aug. 29
+<td> Project Idea Brainstorm
+<td>
+<!-- <b>  <a href=https://canvas.illinois.edu/courses/22386/assignments/522827> Assignment 1 </a> is out, due: Sep. 12</b> <br> -->
+
+
+<tr>
+<td> Sep. 5
+
+<!-- <td> Classical CPS Challenges -->
+<td> Labor Day   
+<td>
+<!-- Reading: <br> -->
+<!-- <a href=papers/real-time/liu73.pdf>Liu and Layland Seminal Paper</a><br>
+<a href=papers/real-time/pip.pdf>Priority Inheritance Protocols</a><br>
+<a href=papers/real-time/survey.pdf>A Comprehensive Suervey on Real-time Scheduling Theory</a><br> -->
+
+
+
+<tr>
+<td> Sep. 12
+<td> Data Reliability and Information Overload
+<td>
+Reading: <br>
+<!-- MOVED FROM THE WEEK OF SEP 6 
+<a href=papers/real-time/liu73.pdf>Liu and Layland Seminal Paper</a><br>
+<a href=papers/real-time/pip.pdf>Priority Inheritance Protocols</a><br>
+<a href=papers/real-time/survey.pdf>A Comprehensive Suervey on Real-time Scheduling Theory</a><br>
+-->
+<!-- END OF READINGs IN THE WEEK OF SEP 6 -->
+<a href=https://canvas.illinois.edu/courses/22386/files/5083985>Truth Discovery in Social Sensing</a><br>
+<a href=https://canvas.illinois.edu/courses/22386/files/5083983>Quantifying the Quality of Information</a><br>
+<a href=https://canvas.illinois.edu/courses/22386/files/5083986>Using Humans as Sensors</a><br>
+
+<!-- <b>Please sign up your meeting slot on <a href=> Doodle </a> by end of September 14. </b>
+<br> -->
+
+<!-- <b><a href=https://canvas.illinois.edu/courses/22386/assignments/522828
+> Assignment 2 </a> is out, due: Sept. 26</b> <br> -->
+
+
+<tr>
+<td> Sep. 19
+<td> Project Kick-off Meetings
+<td>
+	
+
+
+
+<tr>
+<td> Sep. 26
+<td> Data Reliability and Information Overload Cont.
+<td>
+Reading: <br>
+<a href=https://canvas.illinois.edu/courses/22386/files/5084080>Exploitation of Physical Constraints</a><br>
+<a href=https://canvas.illinois.edu/courses/22386/files/5084081>Handling Conflicting Claims</a><br>
+<a href=https://canvas.illinois.edu/courses/22386/files/5084084>Provenance-Assisted Social Signal Classification</a><br>
+<b>Project Proposal Due Friday, Sep. 30 at 11:59 pm.</b><br>
+
+
+
+
+
+<tr>
+<td> Oct. 3
+<td> Online Social Media Sensing
+<td>
+Reading: 
+<br>
+<a href=https://canvas.illinois.edu/courses/22386/files/5084402>Earthquake Shakes Twitter Users</a><br>
+<a href=https://canvas.illinois.edu/courses/22386/files/5084413>From Tweets to Polls</a><br>
+<a href=https://canvas.illinois.edu/courses/22386/files/5084417>You Are Where You Tweet</a><br>
+<a href=https://canvas.illinois.edu/courses/22386/files/5084414>Groundhog Day: Near-Duplicate Detection on Twitter</a><br>
+
+
+<!-- <b>Please sign up your meeting slot on <a href=> Doodle </a> by end of October 5.</b><br> -->
+<!-- <b><a href=https://canvas.illinois.edu/courses/22386/assignments/522829> Assignment 3 </a> is out, due: Nov. 1</b> <br>  -->
+
+
+
+<tr>
+<td> Oct. 10
+<td>
+Project Mid-term Meetings
+<td>
+
+
+
+<tr>
+<td> Oct. 17
+<td> Mid-term Project Presentations
+<td>
+<b>	
+Mid-term Project Presentation	
+<a href=https://canvas.illinois.edu/courses/22386/pages/mid-term-project-presentation-instruction>Mid-term Project Presentation</a>
+</b> <br>	
+
+<b>Project Mid-term Report Due Friday, Oct. 21 at 11:59 pm.</b> <br>
+
+
+
+<tr>
+<td> Oct. 24
+<td> Big Data Issues 
+<td>
+Reading: <br>
+
+<a href=https://canvas.illinois.edu/courses/22386/files/5084481>Big Table Paper</a><br>
+<a href=https://canvas.illinois.edu/courses/22386/files/5084483>Map-Reduce Paper</a><br>
+<a href=https://canvas.illinois.edu/courses/22386/files/5084482>Data Cube Paper</a><br>
+
+
+
+<tr>
+<td> Oct. 31
+<td> Crowdsensing and Mobile Sensing
+<td>
+Reading: <br>
+
+<a href=https://canvas.illinois.edu/courses/22386/files/5084532>A Survey of Mobile Sensing</a><br>
+<a href=https://canvas.illinois.edu/courses/22386/files/5084534>How Long to Wait: Bus Arrival Time Prediction</a><br>
+<a href=https://canvas.illinois.edu/courses/22386/files/5084533>Automatically Characterizing Places</a><br>
+
+
+<!--
+<tr>
+<td>March 30
+<td> Guest Lectures  
+<td> 
+	
+<a href=presentation/guest-lecture1.txt>Remote Sensing</a>, Prof. Marc Muller <br>
+<a href=presentation/guest-lecture2.txt>The Revolution Driven by Sensing: Possible Impacts on Security and Privacy</a>, Prof. Taeho Jung<br>
+
+Reading: <br>
+<a href=papers/guest/p1.pdf>Impact of the Syrian refugee crisis on land use and transboundary freshwater resources</a><br>
+<a href=papers/guest/p2.pdf>Combining satellite imagery and machine learning to predict poverty</a><br>
+-->
+
+
+<!--
+<tr>
+<td>March 29
+<td>  Energy Issues 
+<td>
+Reading:  <br>
+<a href=papers/energy/mPlatform.pdf>mPlatform: Energy-Optimal Scheduling and Data Processing</a><br>
+<a href=papers/energy/ACE.pdf>ACE: Energy-Efficient Conntinous Context Sensing</a><br>
+<a href=papers/energy/Smartthermostat.pdf>Smart Thermostat: Save Energy in Homes</a><br>
+<a href=papers/energy/BuildingAudit.pdf>Wireless Buidling Eenergy Auditing Network</a><br>
+-->
+
+
+
+
+
+<tr>
+<td> Nov. 7 
+<!-- April 13 (Mon): Easter Holiday <br>	 -->
+<td> Automotive Sensing and Intelligent Transportation <br>
+<td>
+Reading: <br>
+<a href=https://canvas.illinois.edu/courses/22386/files/5084576>GreenGPS: A Participatory Sensing Fuel-Efficient Maps Application</a><br>
+<a href=https://canvas.illinois.edu/courses/22386/files/5084577>SignalGuru: A Collaborative Traffic Signal Schedule Advisory Service</a><br>
+<a href=https://canvas.illinois.edu/courses/22386/files/5084575>CarSpeak: A Content-Centric Network for Autonomous Driving</a><br>
+	<!--
+Guest Lecture (April 19, Wed): <br>  
+<a href=presentation/guest-lecture.txt> Principled Structure Discovery from Networks </a>, Prof. Tim Weninger 
+-->
+
+<!--
+Lecture on April 19 Thursday will be canceled due to Prof. Wang's trip to <br>
+<a href=http://www.cpsweek.org/2017/> CPS Week 2017 </a>, please use it to prepare your in-class paper presentation <br>
+and final project presentation.
+-->
+
+
+<tr>
+<td> Nov. 14
+<td> Medical Sensing, Privacy or Open Issues <br> (Students In-class Presentation)
+<td> 	
+
+<b><a href=https://canvas.illinois.edu/courses/22386/pages/in-class-paper-presentation-instruction>In-class Paper Presentation</a></b>
+<br>
+
+<!-- 
+Reading:  <br>
+Medical Sensing: <br>
+<a href=papers/medical/p1.pdf>Detecting Cocaine Use with Wearable Electrocardiogram Sensors</a><br>
+<a href=papers/medical/p2.pdf>Sensor Selection for Energy-Efficient Ambulatory Medical Monitoring</a><br>
+<a href=papers/medical/p3.pdf>Real-time Clinical Monitoring and Deterioration Warning</a><br>
+<a href=papers/medical/p4.pdf>Context-Aware Assisted-Living and Residential Monitoring</a><br>
+<a href=papers/medical/p5.pdf>Cyber-Physical Modeling of Implantable Cardiac Medical Devices</a><br>
+<a href=papers/medical/p6.pdf>BiliCam: Using Mobile Phones to Monitor Newborn Jaundice</a><br>
+<a href=papers/medical/p7.pdf>Contactless Sleep Apnea Detection on Smartphones</a><br>
+<a href=papers/medical/p8.pdf>MyHealthAssistant: An Event-driven Middleware for Multiple Medical Applications on a Smartphone-Mediated Body Sensor Network</a><br>
+<a href=papers/medical/p9.pdf>SADHealth: A Personal Mobile Sensing System for
+Seasonal Health Monitoring</a><br>
+<a href=papers/medical/p10.pdf>Recognizing Academic Performance, Sleep Quality, Stress Level, and Mental Health using Personality Traits, Wearable Sensors and Mobile Phones</a><br>
+
+Privacy: <br>
+<a href=papers/privacy/p1.pdf>ProtectMyPrivacy: Detecting and Mitigating Privacy Leaks on iOS Devices</a><br>
+<a href=papers/privacy/p2.pdf>Cloud-Enabled Privacy-Preserving Collaborative Learning for Mobile Sensing</a><br>
+<a href=papers/privacy/p3.pdf>Understanding Users' Mental Models of Mobile App Privacy through Crowdsourcing</a><br>
+<a href=papers/privacy/p4.pdf>Privacy Manipulation and Acclimation in a Location Sharing Application</a><br>
+<a href=papers/privacy/p5.pdf>Privacy-aware Regression Modeling of Participatory Sensing Data</a><br>
+<a href=papers/privacy/p6.pdf>Privacy.Tag: Privacy Concern Expressed and Respected</a><br>
+<a href=papers/privacy/p7.pdf>Privacy-Preserving Compressive Sensing for Crowdsensing based Trajectory Recovery</a><br>
+<a href=papers/privacy/p8.pdf>A Privacy-Preserving Vehicular Crowdsensing-Based Road Surface Condition Monitoring System Using Fog Computing</a><br>
+<a href=papers/privacy/p9.pdf>Location Privacy-Preserving Task Allocation for Mobile Crowdsensing with Differential Geo-Obfuscation</a><br>
+<a href=papers/privacy/p10.pdf>AnonySense: Privacy-Aware People-Centric Sensing</a><br>
+<a href=papers/privacy/p11.pdf>Is This Thing On?</a><br>
+ -->
+
+
+<tr>
+<td> Nov. 21
+<td> Fall Break
+<td>	
+
+
+<!--
+<tr>
+<td> Dec. 6
+<td> Body-Area Sensor Network <br>
+
+<td>
+Reading:  <br>
+<a href=papers/bsn/BSNOverview.pdf>Body Sensor Networks (BSN) </a><br>
+-->
+<!-- <a href=papers/bsn/BikeCalorie.pdf>Accurate Caloric Expenditure of Bicyclists using Cellphones</a><br>
+<a href=papers/bsn/RadioSense.pdf>RadioSense: ExploitingWireless Communication Patterns for BSN</a><br>
+-->
+<!--
+<a href=papers/bsn/BodyScope.pdf> BodyScope: A Wearable Acoustic Sensor for Activity Recognition</a><br>
+-->
+
+
+<tr>
+<td> Nov. 28
+<td> Project Final Meetings
+<td>
+    
+
+<!-- <b>Please sign up your meeting slot on <a href= https://doodle.com/poll/izrfh7xweccqg5wa?utm_source=poll&utm_medium=link> Doodle </a> by end of November 18. </b> -->
+
+
+
+
+<tr>
+<td> Dec. 5
+<td> Final Project Presentation
+<td>
+    
+<b><a href=https://canvas.illinois.edu/courses/22386/pages/final-project-presentation-instruction>Final Project Presentation</a></b>
+
+
+
+<tr>
+<td> Dec. 12
+<td> Final Project Report
+<td>
+	
+<b> 
+	<!-- <a href= ./presentation/presentations-final.html>Final Project Presentation</a>  -->
+<b>Final Project Report Due Monday, Dec. 12 at 11:59 pm.</b>
+
+
+</table>
+</center>
+
+<p>
+
+
