@@ -270,6 +270,35 @@ The recent advance of the federated learning (FL) has brought new opportunities 
 <br>
 
 
+<h2>Robustness of Out-Domain Uncertainty Estimation in Deep Learning</h2> <br>
+<p style="font-size:18px;">
+In many mission-critical applications (e.g. autonomous driving, misinformation detection), purely pursuing high performance of deep neural networks (DNNs) could not meet the actual needs on uncertainty quantification, since predictions without uncertainty quantification could lead to catastrophic consequences especially when they are incorrect. To avoid over-confident predictions, various uncertainty estimation algorithms have been developed to quantify the predictive uncertainty in DNNs. Based on the uncertainty estimation, the models are able to reject low-confident predictions, and the rejected cases could be further deferred to domain experts for better judgements. However, whether the estimated uncertainty itself is robust or not is under-explored. What if these uncertainty estimation algorithms are vulnerable under some malicious attacks? What if the uncertainty estimation models could be easily fooled by adversarial attacks? This project investigates the robustness of the out-domain uncertainty estimation in DNNs from the perspective of test-time evasion attacks and training-time poisoning attacks. Extensive experimental results on various datasets and various applications suggest that state–of-the-art uncertainty estimation algorithms could collapse drastically under the new types of attacks on uncertainty estimation. The results have been published in <a href="https://www.ijcai.org/proceedings/2022/678"> <b>IJCAI 2022</b></a> and <a href="https://uobevents.eventsair.com/cikm2023/"> <b>CIKM 2023</b></a>. 
+</p>
+
+<div style="display: flex; flex-flow: row wrap;">    
+    <div ><img class="center-fit2" src="./pic/robust-uncertain1.png", alt="Social Sensing", width="480" height="250" style="max-width: 630px;max-height: 250px;" /> </div>
+    <div ><img class="center-fit2" src="./pic/robust-uncertain2.png", alt="Social Sensing", width="480" height="250" style="max-width: 700px;max-height: 250px;"/> </div>
+</div>
+
+<br>
+<br>
+
+
+<h2>RobustFair: Studying the Robust Fairness in AI Models</h2> <br>
+<p style="font-size:18px;">
+Demographic fairness has become an imperative objective when developing modern AI systems, especially for identity-sensitive applications (face attribute recognition). While great efforts have been made to improve the fairness of the models, the investigation on the adversarial robustness of the fairness (e.g., whether the fairness of the models could still be maintained under potential malicious fairness attacks) is largely ignored. On the other hand, the fact that the minority demographic group usually suffers from worse model performance than the majority group defines the vulnerability of the minority group. A natural question is: what is the relationship between the adversarial robustness and demographic fairness in developing AI models? Therefore, this project explores the relationship between adversarial robustness and demographic fairness in AI models. In particular, we firstly investigate the adversarial robustness of demographic fairness, where an adversarial game between the fairness attacker and fairness defender is formulated and studied. We also exploit the adversarial robustness of all demographic groups, and develop various fairness-boosting algorithms, achieving state-of-the-art performance. 
+ The results have been published in <a href="https://www.ijcai.org/proceedings/2023/0059.pdf"> <b>IJCAI 2023</b></a> and <a href="https://www.sciencedirect.com/science/article/abs/pii/S0950705123001065"> <b>KBS 2023</b></a>. 
+</p>
+
+<div style="display: flex; flex-flow: row wrap;">    
+    <div ><img class="center-fit2" src="./pic/robust-fair1.png", alt="Social Sensing", width="480" height="250" style="max-width: 630px;max-height: 200px;" /> </div>
+    <div ><img class="center-fit2" src="./pic/robust-fair2.png", alt="Social Sensing", width="480" height="250" style="max-width: 700px;max-height: 250px;"/> </div>
+</div>
+
+<br>
+<br>
+
+
 
 <h2>CrowdLearn: A Crowd-AI Hybrid System for Deep Learning-based Applications</h2> <br>
 <p style="font-size:18px;">
@@ -319,37 +348,12 @@ This project is motivated by the challenges in data and predictive analytics and
 
 
 
-<h2>SocialDrone: An Integrated Social Media and Drone Sensing System for  Reliable Disaster Response</h2> <br>
-<p style="font-size:18px;">
-Social media sensing has emerged as a new disaster response application paradigm to collect real-time observations from online social media users about the disaster status. Due to the noisy nature of social media data, the task of identifying trustworthy information (referred to as "truth discovery") has been a crucial task in social media sensing.  In this project, we develop SocialDrone, a novel closed-loop social-physical active sensing framework that integrates social media and unmanned aerial vehicles (UAVs) for reliable disaster response applications. In SocialDrone, signals emitted from social media are distilled to drive the drones to target areas to verify the emergency events. The verification results are then taken back to improve the sensing and distillation process on social media. The SocialDrone framework introduces several unique challenges: i) how to drive the drones  using unreliable social media signals? ii) How to ensure the system is adaptive to the high dynamics from both the physical world and social media? iii) How to incorporate real-world constraints (e.g., the deadlines of events, limited number of drones) into the framework? The SocialDrone addresses these challenges by building a novel integrated social-physical sensing system that leverages techniques from game theory, constrained optimization, and reinforcement learning.  The results have been published in <a href="https://ieeexplore.ieee.org/document/9155522"> <b>IEEE INFOCOM 2020</b></a> and <a href="https://ieeexplore.ieee.org/document/9600048"> <b>IEEE DCoSS 2021</b></a>. 
-</p>
-
-
-<!-- <table class="table-project">
-<col align="left" />
-<col align="right" />
-
-<tr>  
-<td><img class="" src="./pic/socialdrone.png", alt="Social Sensing",  width="320" height="220", hspace="50" /> </td>
-<td><img class="" src="./pic/heterosas.jpg", alt="Social Sensing",  width="450" height="280"  hspace="50" /> </td>
-<td><img class="" src="./pic/socialsas.jpg", alt="Social Sensing",  width="350" height="220" /> </td>
-</tr>
-</table> -->
-
-<div style="display: flex; flex-flow: row wrap;">    
-    <div><img class="center-fit2" src="./pic/socialdrone.png", alt="Social Sensing",  style="max-width: 320px;max-height: 220px;" /> </div>
-    <div><img class="center-fit2" src="./pic/heterosas.jpg", alt="Social Sensing", style="max-width: 450px;max-height: 280px;"/> </div>
-    <div><img class="center-fit2" src="./pic/socialsas.jpg", alt="Social Sensing", style="max-width: 350px;max-height: 220px;"/> </div>
-</div>
-
-<br>
-<br>
 
 
 
 <h2>FauxBuster: A Content-Agnostic Fauxtography Detector using Social Media Comments</h2> <br>
 <p style="font-size:18px;">
-With the increasing popularity of online social media (e.g., Facebook, Twitter, Reddit), the detection of misleading content on social media has become a critical undertaking. This paper focuses on an important but largely unsolved problem: detecting fauxtography (i.e., social media posts with misleading images). We found that the existing literature falls short in solving this problem. In particular, current solutions either focus on the detection of fake images or misinformed texts of a social media post. However, they cannot solve our problem because the detection of fauxtography depends not only on the truthfulness of the images and the texts but also on the information they deliver together on the posts. In this project, we develop the FauxBuster, an end-to-end supervised learning system that can effectively track down fauxtography by exploring the valuable clues from users' comments of a post on social media. The FauxBuster is content-agnostic in that it does not rely on the analysis of the actual content of the images, and hence is robust against malicious uploaders who can intentionally modify the presentation and description of the images. We evaluate FauxBuster on two mainstream social media platforms - Reddit and Twitter. Results show that FauxBuster is both effective and efficient in addressing the fauxtography problem. The results have been published in <a href="https://ieeexplore.ieee.org/document/8622344"> <b>IEEE BigData 2018 </b></a>, <a href="https://link.springer.com/article/10.1007/s13278-020-00689-w"> <b>Springer SNAM 20 </b></a>, <a href="https://ieeexplore.ieee.org/document/9378019"> <b>IEEE BigData 2020</b></a>, and  <a href="https://ieeexplore.ieee.org/document/9625796"> <b>IEEE TBD 2021</b></a>.
+With the increasing popularity of online social media (e.g., Facebook, Twitter, Reddit), the detection of misleading content on social media has become a critical undertaking. This paper focuses on an important but largely unsolved problem: detecting fauxtography (i.e., social media posts with misleading images). We found that the existing literature falls short in solving this problem. In particular, current solutions either focus on the detection of fake images or misinformed texts of a social media post. However, they cannot solve our problem because the detection of fauxtography depends not only on the truthfulness of the images and the texts but also on the information they deliver together on the posts. In this project, we develop the FauxBuster, an end-to-end supervised learning system that can effectively track down fauxtography by exploring the valuable clues from users' comments of a post on social media. The FauxBuster is content-agnostic in that it does not rely on the analysis of the actual content of the images, and hence is robust against malicious uploaders who can intentionally modify the presentation and description of the images. We evaluate FauxBuster on two mainstream social media platforms - Reddit and Twitter. Results show that FauxBuster is both effective and efficient in addressing the fauxtography problem. The results have been published in <a href="https://ieeexplore.ieee.org/document/8622344"> <b>IEEE BigData 2018 </b></a>, <a href="https://link.springer.com/article/10.1007/s13278-020-00689-w"> <b>Springer SNAM 20 </b></a>, <a href="https://ieeexplore.ieee.org/document/9378019"> <b>IEEE BigData 2020</b></a>, <a href="https://ieeexplore.ieee.org/document/9625796"> <b>IEEE TBD 2021</b></a>, <a href="https://dl.acm.org/doi/10.1145/3555178"> <b>CSCW 2022</b></a> and <a href="https://dl.acm.org/doi/abs/10.1145/3543507.3583869"> <b>ACM WWW 2023</b></a>.
 </p>
 
 
@@ -374,7 +378,7 @@ With the increasing popularity of online social media (e.g., Facebook, Twitter, 
 
 <h2>Smart Water Crowdsensing: Examining How Innovative Data Analytics and Citizen Science Can Ensure Safe Drinking Water in Rural Versus Suburban Communities</h2> <br>
 <p style="font-size:18px;">
-Monitoring drinking water contamination is vitally important to inform consumers about water safety, identify source water problems, and facilitate discussion of public health and the environment of our drinking water. The overall goal of this project is to develop a framework for reliable and timely detection of drinking water contamination to build sustainable and connected communities. It focuses on communities that use private wells for drinking water without the benefit of a central utility to monitor water quality. It engages the community to participate, leveraging advances in data analytics, exploring the technological and social dimensions to answer a public health question: Is the drinking water in the community safe? This project advances the role of public participatory scientific research, also referred to as citizen science, in data gathering. It develops new inference models using approaches from machine learning and statistics to improve accuracy, reliability, trustworthiness and value of the data, gathered through public participation. It improves understanding of key socio-demographic factors that influence public participation and data quality in contrasting community types. It demonstrates the potential role of citizen science in eliciting changes in behavior, and how that influences programmatic and regulatory practices, e.g., in this study of groundwater quality for healthy and sustainable communities. Additional information of the project can be found on the <a href="https://swcproject.weebly.com/"> <b>Project Website</b></a>.  The results have been published in <a href="https://smartcomp.aalto.fi/accepted/"> <b>SmartComp 2022</b></a>, and  <a href="https://ngwa.onlinelibrary.wiley.com/doi/abs/10.1111/gwat.13150"> <b>Groundwater 2021</b></a>.
+Monitoring drinking water contamination is vitally important to inform consumers about water safety, identify source water problems, and facilitate discussion of public health and the environment of our drinking water. The overall goal of this project is to develop a framework for reliable and timely detection of drinking water contamination to build sustainable and connected communities. It focuses on communities that use private wells for drinking water without the benefit of a central utility to monitor water quality. It engages the community to participate, leveraging advances in data analytics, exploring the technological and social dimensions to answer a public health question: Is the drinking water in the community safe? This project advances the role of public participatory scientific research, also referred to as citizen science, in data gathering. It develops new inference models using approaches from machine learning and statistics to improve accuracy, reliability, trustworthiness and value of the data, gathered through public participation. It improves understanding of key socio-demographic factors that influence public participation and data quality in contrasting community types. It demonstrates the potential role of citizen science in eliciting changes in behavior, and how that influences programmatic and regulatory practices, e.g., in this study of groundwater quality for healthy and sustainable communities. Additional information of the project can be found on the <a href="https://swcproject.weebly.com/"> <b>Project Website</b></a>.  The results have been published in <a href="https://ngwa.onlinelibrary.wiley.com/doi/abs/10.1111/gwat.13150"> <b>Groundwater 2021</b></a>,  <a href="https://smartcomp.aalto.fi/accepted/"> <b>SmartComp 2022</b></a>, and <a href="https://www.sciencedirect.com/science/article/abs/pii/S1574119223000469"> <b>PMC 2023</b></a>, .
 </p>
 
 
@@ -401,6 +405,54 @@ Monitoring drinking water contamination is vitally important to inform consumers
 
 
 <h1>Prior Projects:</h1> <br> 
+
+
+<table class="table-project">
+<col align="left" />
+<col align="right" />
+
+
+<tr>
+<td>
+<h2>SocialDrone: An Integrated Social Media and Drone Sensing System for  Reliable Disaster Response</h2> <br>
+<p style="font-size:18px;">
+Social media sensing has emerged as a new disaster response application paradigm to collect real-time observations from online social media users about the disaster status. Due to the noisy nature of social media data, the task of identifying trustworthy information (referred to as "truth discovery") has been a crucial task in social media sensing.  In this project, we develop SocialDrone, a novel closed-loop social-physical active sensing framework that integrates social media and unmanned aerial vehicles (UAVs) for reliable disaster response applications. In SocialDrone, signals emitted from social media are distilled to drive the drones to target areas to verify the emergency events. The verification results are then taken back to improve the sensing and distillation process on social media. The SocialDrone framework introduces several unique challenges: i) how to drive the drones  using unreliable social media signals? ii) How to ensure the system is adaptive to the high dynamics from both the physical world and social media? iii) How to incorporate real-world constraints (e.g., the deadlines of events, limited number of drones) into the framework? The SocialDrone addresses these challenges by building a novel integrated social-physical sensing system that leverages techniques from game theory, constrained optimization, and reinforcement learning.  The results have been published in <a href="https://ieeexplore.ieee.org/document/9155522"> <b>IEEE INFOCOM 2020</b></a> and <a href="https://ieeexplore.ieee.org/document/9600048"> <b>IEEE DCoSS 2021</b></a>. 
+</p>
+
+</p>
+</td>
+</tr>
+
+<tr>  
+<td><img class="center-fit" src="./pic/socialdrone.png", alt="Social Sensing",  width="320" height="250" /> </td>
+</tr>
+</table>
+<br>
+
+<!-- <table class="table-project">
+<col align="left" />
+<col align="right" />
+
+<tr>  
+<td><img class="" src="./pic/socialdrone.png", alt="Social Sensing",  width="320" height="220", hspace="50" /> </td>
+<td><img class="" src="./pic/heterosas.jpg", alt="Social Sensing",  width="450" height="280"  hspace="50" /> </td>
+<td><img class="" src="./pic/socialsas.jpg", alt="Social Sensing",  width="350" height="220" /> </td>
+</tr>
+</table>
+
+<div style="display: flex; flex-flow: row wrap;">    
+    <div><img class="center-fit" src="./pic/socialdrone.png", alt="Social Sensing",  swidth="320" height="250" /> 
+   </tr>
+</table>
+<br>
+
+    <div><img class="center-fit2" src="./pic/heterosas.jpg", alt="Social Sensing", style="max-width: 450px;max-height: 280px;"/> </div>
+    <div><img class="center-fit2" src="./pic/socialsas.jpg", alt="Social Sensing", style="max-width: 350px;max-height: 220px;"/> </div>
+    </div>
+
+<br>
+<br>
+-->
 
 
 <table class="table-project">
